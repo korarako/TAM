@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "problem": "lj13",
+  "replicate_kind": "sampling_and_evaluation_seeds_from_one_shared_checkpoint",
+  "beta0": 0.8,
+  "beta1": 1.0,
+  "energy_w2_samples": 2000,
+  "filter": "sample max pair distance < 10.0 nm",
+  "runs": [
+    {
+      "seed": 101,
+      "fm_filtered_energy_w2_2k": 0.365277380758536,
+      "am_filtered_energy_w2_2k": 0.29572953611194586,
+      "fm_filtered_pairwise_w2": 0.008770940791418309,
+      "am_filtered_pairwise_w2": 0.006269827051668698,
+      "fm_radial_w2": 0.007413646936047779,
+      "am_radial_w2": 0.006105148617325433,
+      "fm_removed_samples": 0,
+      "am_removed_samples": 0
+    },
+    {
+      "seed": 202,
+      "fm_filtered_energy_w2_2k": 0.1734956545677238,
+      "am_filtered_energy_w2_2k": 0.5613912021921704,
+      "fm_filtered_pairwise_w2": 0.005846110356368382,
+      "am_filtered_pairwise_w2": 0.004524938397489199,
+      "fm_radial_w2": 0.006305015701670255,
+      "am_radial_w2": 0.005899371358955992,
+      "fm_removed_samples": 0,
+      "am_removed_samples": 0
+    },
+    {
+      "seed": 303,
+      "fm_filtered_energy_w2_2k": 0.5842178432376379,
+      "am_filtered_energy_w2_2k": 0.5859735124616676,
+      "fm_filtered_pairwise_w2": 0.008592535118193327,
+      "am_filtered_pairwise_w2": 0.00687220040092472,
+      "fm_radial_w2": 0.007232468573725366,
+      "am_radial_w2": 0.0065972082609044415,
+      "fm_removed_samples": 1,
+      "am_removed_samples": 1
+    }
+  ],
+  "aggregate": "results/lj13/aggregate.json"
+}

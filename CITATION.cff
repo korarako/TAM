@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "TAM: Thermodynamic Adjoint Matching for Boltzmann Generators"
+message: "If you use this software, please cite this release."
+type: software
+version: 0.1.0
+date-released: 2026-07-24
+authors:
+  - given-names: "Ke"
+    family-names: "Xin"
+    email: "go25bah@tum.de"
+repository-code: "https://github.com/korarako/TAM"
+url: "https://github.com/korarako/TAM/releases/tag/v0.1.0"
+license: MIT
+keywords:
+  - adjoint matching
+  - flow matching
+  - Boltzmann generators
+  - molecular simulation
+abstract: >-
+  TAM is a research implementation of thermodynamic Adjoint Matching for
+  refining inverse-temperature-conditioned Flow Matching models with
+  energy-derived terminal adjoints.

@@ -1,0 +1,9 @@
+jax>=0.7,<0.8
+jaxlib>=0.7,<0.8
+numpy>=1.26,<3
+scipy>=1.11
+PyYAML>=6
+dm-haiku>=0.0.16
+jraph>=0.0.6.dev0
+matplotlib>=3.8
+pytest>=8

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "problem": "dw4",
+  "replicate_kind": "independent_am_training_runs",
+  "beta0": 0.8,
+  "beta1": 1.0,
+  "energy_w2_samples": 2000,
+  "geometric_w2_samples": 2000,
+  "runs": [
+    {
+      "seed": 1,
+      "fm_energy_w2_2k": 0.5251185014949311,
+      "am_energy_w2_2k": 0.1953898513596274,
+      "fm_geometric_w2_2k": 0.18232964264511292,
+      "am_geometric_w2_2k": 0.178075340877506,
+      "fm_pairwise_distance_w2": 0.0384136632863984,
+      "am_pairwise_distance_w2": 0.022108105635114093
+    },
+    {
+      "seed": 2,
+      "fm_energy_w2_2k": 0.5251184997914593,
+      "am_energy_w2_2k": 0.1324607626024654,
+      "fm_geometric_w2_2k": 0.186378708051327,
+      "am_geometric_w2_2k": 0.1826085917130821,
+      "fm_pairwise_distance_w2": 0.03841366319993783,
+      "am_pairwise_distance_w2": 0.01606573867319548
+    },
+    {
+      "seed": 3,
+      "fm_energy_w2_2k": 0.5251185054529898,
+      "am_energy_w2_2k": 0.21287721460418663,
+      "fm_geometric_w2_2k": 0.18144729156053835,
+      "am_geometric_w2_2k": 0.16114895339183474,
+      "fm_pairwise_distance_w2": 0.0384136632579344,
+      "am_pairwise_distance_w2": 0.020481320852562462
+    }
+  ],
+  "aggregate": "results/dw4/aggregate.json"
+}

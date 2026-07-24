@@ -1,0 +1,48 @@
+{
+  "energy_w2_samples": 1000,
+  "eval_betas": [
+    0.3006808876068151
+  ],
+  "n_eval": 10000,
+  "ode_method": "euler",
+  "ode_steps": 150,
+  "per_beta": {
+    "0.30": {
+      "beta": 0.3006808876068151,
+      "com_norm_mean": 5.919511547602951e-09,
+      "energy_finite_fraction": 1.0,
+      "energy_finite_mean": -65.7150590487633,
+      "energy_finite_q50": -71.56193161010742,
+      "energy_finite_q90": -40.07644424438477,
+      "energy_finite_q99": 45.828277168274,
+      "energy_mean": -65.7150590487633,
+      "energy_std": 57.68177289099502,
+      "energy_w2_samples": 1000,
+      "ew2": 55.4390043213045,
+      "ew2_2k": 30.354840271141292,
+      "md_energy_finite_fraction": 1.0,
+      "md_energy_finite_q50": -44.977163314819336,
+      "md_energy_finite_q90": -19.849347114562985,
+      "md_energy_finite_q99": 3.5381401562690797,
+      "md_energy_mean": -43.78629216670706,
+      "md_energy_std": 18.189964198070044,
+      "md_min_pair_distance_q01": 0.093327327221632,
+      "md_min_pair_distance_q05": 0.09520450755953788,
+      "md_min_pair_distance_q50": 0.099463552236557,
+      "min_pair_distance_q01": 0.09419380895793437,
+      "min_pair_distance_q05": 0.0966722957789898,
+      "min_pair_distance_q50": 0.0999237410724163,
+      "min_pair_distance_w2": 0.0013966174062111179,
+      "phi_circ_mean": -1.770115472380174,
+      "phi_circ_r": 0.8115104807658863,
+      "phi_w2": 0.10032628558338984,
+      "psi_circ_mean": 2.224762544294869,
+      "psi_circ_r": 0.3260415980405868,
+      "psi_w2": 0.2392160556466678,
+      "rama_js": 0.07996239988260186,
+      "reference_source": "ala2-external:ala2_obc1_actual400K_sys0_dataset.npz",
+      "w2": 0.0011637978348754074
+    }
+  },
+  "problem": "ala2"
+}

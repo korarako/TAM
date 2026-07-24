@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "problem": "dw4",
+  "status": "positive",
+  "transfer": {
+    "beta0": 0.8,
+    "beta1": 1.0
+  },
+  "metric_protocol": {
+    "energy_w2_samples": 2000,
+    "geometric_w2_samples": 2000,
+    "generated_samples_per_run": 12000,
+    "lower_is_better": true
+  },
+  "replicate_semantics": {
+    "kind": "independent_am_training_runs",
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "n": 3,
+    "std_definition": "sample standard deviation (ddof=1)",
+    "note": "The FM checkpoint is shared; the three AM checkpoints are independent formal training runs."
+  },
+  "runs": [
+    {
+      "seed": 1,
+      "fm": {
+        "energy_w2_2k": 0.5251185014949311,
+        "geometric_w2_2k": 0.18232964264511292,
+        "pairwise_distance_w2": 0.0384136632863984
+      },
+      "am": {
+        "energy_w2_2k": 0.1953898513596274,
+        "geometric_w2_2k": 0.178075340877506,
+        "pairwise_distance_w2": 0.022108105635114093
+      }
+    },
+    {
+      "seed": 2,
+      "fm": {
+        "energy_w2_2k": 0.5251184997914593,
+        "geometric_w2_2k": 0.186378708051327,
+        "pairwise_distance_w2": 0.03841366319993783
+      },
+      "am": {
+        "energy_w2_2k": 0.1324607626024654,
+        "geometric_w2_2k": 0.1826085917130821,
+        "pairwise_distance_w2": 0.01606573867319548
+      }
+    },
+    {
+      "seed": 3,
+      "fm": {
+        "energy_w2_2k": 0.5251185054529898,
+        "geometric_w2_2k": 0.18144729156053835,
+        "pairwise_distance_w2": 0.0384136632579344
+      },
+      "am": {
+        "energy_w2_2k": 0.21287721460418663,
+        "geometric_w2_2k": 0.16114895339183474,
+        "pairwise_distance_w2": 0.020481320852562462
+      }
+    }
+  ],
+  "aggregate": {
+    "fm": {
+      "energy_w2_2k": {
+        "mean": 0.5251185022464601,
+        "std_ddof_1": 2.9046219424313603e-09
+      },
+      "geometric_w2_2k": {
+        "mean": 0.1833852140856594,
+        "std_ddof_1": 0.002629712997834295
+      },
+      "pairwise_distance_w2": {
+        "mean": 0.03841366324809021,
+        "std_ddof_1": 4.4062892287005115e-11
+      }
+    },
+    "am": {
+      "energy_w2_2k": {
+        "mean": 0.18024260952209314,
+        "std_ddof_1": 0.04229397876293793
+      },
+      "geometric_w2_2k": {
+        "mean": 0.17394429532747427,
+        "std_ddof_1": 0.011310533684226168
+      },
+      "pairwise_distance_w2": {
+        "mean": 0.01955172172029068,
+        "std_ddof_1": 0.003126606072990604
+      }
+    }
+  },
+  "outcome_counts": {
+    "energy_better": 3,
+    "energy_worse": 0,
+    "geometry_better": 3,
+    "geometry_worse": 0,
+    "pairwise_better": 3,
+    "pairwise_worse": 0
+  },
+  "source": "results/public/dw4/formal_runs.json"
+}

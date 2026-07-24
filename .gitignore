@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+samples/
+outputs/
+local_archive/
+data/**/*.npy
+data/**/*.npz
+!data/**/dataset_manifest.yaml

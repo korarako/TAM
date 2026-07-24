@@ -1,0 +1,12 @@
+problem: dw4
+sampler: langevin
+betas: [0.80, 1.00, 1.20]
+samples_per_beta: 250000
+release_asset: tam-reference-data-v0.1.0.tar.gz
+files:
+  samples_beta_0.80.npy: {shape: [250000, 8], dtype: float32, sha256: 8af0df424babce2db59127069dce7900824542f7825256e832f77fd61737c960}
+  samples_beta_1.00.npy: {shape: [250000, 8], dtype: float32, sha256: d5dd7267af58e6bd5afaf084b6afd30df404aa25d00f37005c5a7f47293c82ac}
+  samples_beta_1.20.npy: {shape: [250000, 8], dtype: float32, sha256: 6e54cfe7227f610b5255bcea6946c5ff8819221967532d65c9a1a9deee55f65c}
+source_root: null
+source_id: adtm_workspace/dw4_paper
+note: Paper-aligned reference realization; files differ from data/dw4.

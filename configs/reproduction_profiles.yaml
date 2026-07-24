@@ -1,0 +1,86 @@
+schema_version: 1
+notes:
+  - Profiles reproduce the recorded training setup; accelerator kernels need not be bitwise deterministic.
+  - exact means a saved ADTM config and final checkpoint provenance are available.
+  - reconstructed means some AM arguments came from the legacy CLI defaults because that run did not save a separate AM config.
+
+profiles:
+  dw1d_best:
+    status: reconstructed
+    problem: dw1d
+    model: mlp
+    data_dir: data/dw1d
+    fm: {beta_grid: [0.25, 1.5], steps: 30000, batch_size: 512, lr: 0.001, lr_min: 0.00001, hidden_dim: 512, n_layers: 3, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 1.0, grad_clip: 1.0, seed: 0}
+    am: {beta0: 0.25, beta1: 0.70, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 0.70, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  dw2d_best:
+    status: reconstructed
+    problem: dw2d
+    model: mlp
+    data_dir: data/dw2d
+    fm: {beta_grid: [0.25, 1.5], steps: 30000, batch_size: 512, lr: 0.001, lr_min: 0.00001, hidden_dim: 512, n_layers: 3, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 1.0, grad_clip: 1.0, seed: 0}
+    am: {beta0: 0.25, beta1: 0.70, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 0.70, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  mb2d_0p25_to_0p30:
+    status: reconstructed
+    problem: mb2d
+    model: mlp
+    data_dir: data/mb2d
+    fm: &mb2d_fm {beta_grid: [0.25, 0.5, 0.75, 1.0, 1.5], steps: 30000, batch_size: 512, lr: 0.001, lr_min: 0.00001, hidden_dim: 512, n_layers: 3, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 1.0, grad_clip: 1.0, seed: 0}
+    am: {beta0: 0.25, beta1: 0.30, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 0.30, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  mb2d_0p50_to_0p60:
+    status: reconstructed
+    problem: mb2d
+    model: mlp
+    data_dir: data/mb2d
+    fm: *mb2d_fm
+    am: {beta0: 0.50, beta1: 0.60, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 0.60, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  mb2d_0p75_to_0p90:
+    status: reconstructed
+    problem: mb2d
+    model: mlp
+    data_dir: data/mb2d
+    fm: *mb2d_fm
+    am: {beta0: 0.75, beta1: 0.90, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 0.90, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  mb2d_1p00_to_1p20:
+    status: reconstructed
+    problem: mb2d
+    model: mlp
+    data_dir: data/mb2d
+    fm: *mb2d_fm
+    am: {beta0: 1.00, beta1: 1.20, steps: 10000, batch_size: 512, lr: 0.00002, lr_min: 0.0000002, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 1.20, ode_steps: 300, method: euler, prior_scale: 1.0}
+
+  dw4_best_formal_seed2:
+    status: exact
+    problem: dw4
+    model: egnn
+    data_dir: data/dw4_paper
+    fm: {beta_grid: [0.8, 1.2], steps: 100000, batch_size: 512, lr: 0.0003, lr_min: 0.0003, hidden_dim: 128, n_layers: 5, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 1.0, grad_clip: 1.0, seed: 0}
+    am: {beta0: 0.8, beta1: 1.0, steps: 1000, batch_size: 512, lr: 0.0000005, lr_min: 0.000000005, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 1.0, am_parameterization: target-refinement, seed: 2}
+    sampling: {beta: 1.0, ode_steps: 150, method: euler, prior_scale: 1.0}
+
+  lj13_best:
+    status: exact
+    problem: lj13
+    model: painn
+    data_dir: data/lj13_paper
+    fm: {beta_grid: [0.8, 1.2], steps: 100000, batch_size: 64, lr: 0.0003, lr_min: 0.0003, hidden_dim: 128, n_layers: 5, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 1.0, grad_clip: 1.0, seed: 0}
+    am: {beta0: 0.8, beta1: 1.0, steps: 1000, batch_size: 64, lr: 0.0000005, lr_min: 0.000000005, sde_steps: 40, loss_steps: 20, keep_last_steps: 10, max_sigma: 50.0, energy_grad_scale: 1.0, grad_clip: 0.0, am_parameterization: target-refinement, seed: 0}
+    sampling: {beta: 1.0, ode_steps: 150, method: euler, prior_scale: 1.0}
+
+  ala2_fm_baseline:
+    status: exact_fm_only_no_successful_am
+    problem: ala2
+    model: ala2_chiro_painn_jax
+    data_dir: data/ala2
+    fm: {beta_grid: [0.40090785014242014, 0.24054471008545208, 0.1718176500610372, 0.13363595004747336], samples_per_beta: 125000, steps: 30000, batch_size: 256, lr: 0.001, lr_min: 0.001, hidden_dim: 128, n_layers: 3, t_embed_dim: 16, beta_embed_dim: 8, prior_scale: 0.15, grad_clip: 0.5, painn_atom_embed_dim: 16, log_every: 1000, save_checkpoints: [5000, 10000, 15000, 20000, 25000, 30000], seed: 0}
+    sampling: {ode_steps: 150, method: euler, prior_scale: 0.15}

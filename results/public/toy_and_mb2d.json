@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "metric_protocol": {
+    "metric_samples": 2000,
+    "lower_is_better": true
+  },
+  "dw1d": {
+    "status": "positive",
+    "beta0": 0.25,
+    "beta1": 0.7,
+    "fm": {
+      "energy_w2_2k": 0.6042780426772028,
+      "geometric_w2_2k": 0.24655412137508392
+    },
+    "am": {
+      "energy_w2_2k": 0.18434365081006437,
+      "geometric_w2_2k": 0.07800266146659851
+    }
+  },
+  "dw2d": {
+    "status": "positive",
+    "beta0": 0.25,
+    "beta1": 0.7,
+    "fm": {
+      "energy_w2_2k": 1.940773244323372,
+      "geometric_w2_2k": 0.7155295014381409
+    },
+    "am": {
+      "energy_w2_2k": 0.1513745862351376,
+      "geometric_w2_2k": 0.15685728192329407
+    }
+  },
+  "mb2d": {
+    "status": "mixed",
+    "transfers": [
+      {
+        "beta0": 0.25,
+        "beta1": 0.3,
+        "fm_energy_w2_2k": 0.47374250125532025,
+        "am_energy_w2_2k": 0.7494195640295517,
+        "fm_geometric_w2_2k": 0.11139363795518875,
+        "am_geometric_w2_2k": 0.09755992144346237
+      },
+      {
+        "beta0": 0.5,
+        "beta1": 0.6,
+        "fm_energy_w2_2k": 0.13767816607191663,
+        "am_energy_w2_2k": 0.3146783248925369,
+        "fm_geometric_w2_2k": 0.10182785242795944,
+        "am_geometric_w2_2k": 0.0947309359908104
+      },
+      {
+        "beta0": 0.75,
+        "beta1": 0.9,
+        "fm_energy_w2_2k": 0.21376015411249402,
+        "am_energy_w2_2k": 0.14019221462838088,
+        "fm_geometric_w2_2k": 0.10375947505235672,
+        "am_geometric_w2_2k": 0.0896783396601677
+      },
+      {
+        "beta0": 1.0,
+        "beta1": 1.2,
+        "fm_energy_w2_2k": 0.21026446934174356,
+        "am_energy_w2_2k": 0.14394685733296647,
+        "fm_geometric_w2_2k": 0.20811165869235992,
+        "am_geometric_w2_2k": 0.07717698812484741
+      }
+    ]
+  }
+}

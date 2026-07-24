@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "release": "v0.1.0",
+  "title": "Frozen TAM benchmark results",
+  "metric_protocol": {
+    "primary_energy_metric": "energy_w2_2k",
+    "primary_geometry_metric": "geometric_w2_2k",
+    "metric_samples": 2000,
+    "lower_is_better": true,
+    "notes": [
+      "DW4 aggregates use three independent AM training runs and report sample standard deviations with ddof=1.",
+      "LJ13 aggregates use three sampling/evaluation seeds from one shared FM/AM checkpoint; they are not independent training runs.",
+      "Ala2 legacy energy_w2_fixed values use 1000 samples and are excluded from the successful-system aggregate."
+    ]
+  },
+  "classification": {
+    "positive": [
+      "dw1d",
+      "dw2d",
+      "dw4"
+    ],
+    "mixed": [
+      "mb2d",
+      "lj13"
+    ],
+    "experimental_failed_case": [
+      "ala2"
+    ]
+  },
+  "systems": {
+    "dw1d": {
+      "status": "positive",
+      "transfer": {
+        "beta0": 0.25,
+        "beta1": 0.7
+      },
+      "training_runs": 1,
+      "metrics": {
+        "fm": {
+          "energy_w2_2k": 0.6042780426772028,
+          "geometric_w2_2k": 0.24655412137508392
+        },
+        "am": {
+          "energy_w2_2k": 0.18434365081006437,
+          "geometric_w2_2k": 0.07800266146659851
+        }
+      },
+      "source": "checkpoints/dw1d/0p25_to_0p70/metrics.json"
+    },
+    "dw2d": {
+      "status": "positive",
+      "transfer": {
+        "beta0": 0.25,
+        "beta1": 0.7
+      },
+      "training_runs": 1,
+      "metrics": {
+        "fm": {
+          "energy_w2_2k": 1.940773244323372,
+          "geometric_w2_2k": 0.7155295014381409
+        },
+        "am": {
+          "energy_w2_2k": 0.1513745862351376,
+          "geometric_w2_2k": 0.15685728192329407
+        }
+      },
+      "source": "checkpoints/dw2d/0p25_to_0p70/metrics.json"
+    },
+    "mb2d": {
+      "status": "mixed",
+      "training_runs_per_transfer": 1,
+      "interpretation": "Geometry improves in all four released transfers. Energy W2 worsens in the two lower-beta transfers and improves in the two higher-beta transfers.",
+      "transfers": [
+        {
+          "beta0": 0.25,
+          "beta1": 0.3,
+          "fm": {
+            "energy_w2_2k": 0.47374250125532025,
+            "geometric_w2_2k": 0.11139363795518875
+          },
+          "am": {
+            "energy_w2_2k": 0.7494195640295517,
+            "geometric_w2_2k": 0.09755992144346237
+          },
+          "energy_outcome": "worse",
+          "geometry_outcome": "better",
+          "source": "checkpoints/mb2d/0p25_to_0p30/metrics.json"
+        },
+        {
+          "beta0": 0.5,
+          "beta1": 0.6,
+          "fm": {
+            "energy_w2_2k": 0.13767816607191663,
+            "geometric_w2_2k": 0.10182785242795944
+          },
+          "am": {
+            "energy_w2_2k": 0.3146783248925369,
+            "geometric_w2_2k": 0.0947309359908104
+          },
+          "energy_outcome": "worse",
+          "geometry_outcome": "better",
+          "source": "checkpoints/mb2d/0p50_to_0p60/metrics.json"
+        },
+        {
+          "beta0": 0.75,
+          "beta1": 0.9,
+          "fm": {
+            "energy_w2_2k": 0.21376015411249402,
+            "geometric_w2_2k": 0.10375947505235672
+          },
+          "am": {
+            "energy_w2_2k": 0.14019221462838088,
+            "geometric_w2_2k": 0.0896783396601677
+          },
+          "energy_outcome": "better",
+          "geometry_outcome": "better",
+          "source": "checkpoints/mb2d/0p75_to_0p90/metrics.json"
+        },
+        {
+          "beta0": 1.0,
+          "beta1": 1.2,
+          "fm": {
+            "energy_w2_2k": 0.21026446934174356,
+            "geometric_w2_2k": 0.20811165869235992
+          },
+          "am": {
+            "energy_w2_2k": 0.14394685733296647,
+            "geometric_w2_2k": 0.07717698812484741
+          },
+          "energy_outcome": "better",
+          "geometry_outcome": "better",
+          "source": "checkpoints/mb2d/1p00_to_1p20/metrics.json"
+        }
+      ]
+    },
+    "dw4": {
+      "status": "positive",
+      "transfer": {
+        "beta0": 0.8,
+        "beta1": 1.0
+      },
+      "independent_am_training_runs": 3,
+      "metrics": {
+        "fm_energy_w2_2k": {
+          "mean": 0.5251185022464601,
+          "std_ddof_1": 2.9046219424313603e-09
+        },
+        "am_energy_w2_2k": {
+          "mean": 0.18024260952209314,
+          "std_ddof_1": 0.04229397876293793
+        },
+        "fm_geometric_w2_2k": {
+          "mean": 0.1833852140856594,
+          "std_ddof_1": 0.002629712997834295
+        },
+        "am_geometric_w2_2k": {
+          "mean": 0.17394429532747427,
+          "std_ddof_1": 0.011310533684226168
+        }
+      },
+      "aggregate": "results/dw4/aggregate.json",
+      "public_runs": "results/public/dw4/formal_runs.json"
+    },
+    "lj13": {
+      "status": "mixed",
+      "transfer": {
+        "beta0": 0.8,
+        "beta1": 1.0
+      },
+      "independent_training_runs": 1,
+      "evaluation_seeds": [
+        101,
+        202,
+        303
+      ],
+      "interpretation": "Pairwise and radial W2 improve for all three evaluation seeds, while energy W2 improves for one seed and worsens for two.",
+      "metrics": {
+        "fm_filtered_energy_w2_2k": {
+          "mean": 0.3743302928546326,
+          "std_ddof_1": 0.20551069431909347
+        },
+        "am_filtered_energy_w2_2k": {
+          "mean": 0.481031416921928,
+          "std_ddof_1": 0.16094614865952547
+        },
+        "fm_filtered_pairwise_w2": {
+          "mean": 0.007736528755326673,
+          "std_ddof_1": 0.0016395787380908962
+        },
+        "am_filtered_pairwise_w2": {
+          "mean": 0.005888988616694205,
+          "std_ddof_1": 0.0012190931725501542
+        }
+      },
+      "aggregate": "results/lj13/aggregate.json",
+      "public_runs": "results/public/lj13/evaluation_runs.json"
+    },
+    "ala2": {
+      "status": "experimental_failed_case",
+      "included_in_successful_aggregate": false,
+      "representative_attempts": [
+        "grid35_t400",
+        "grid3579_t400",
+        "grid3579_t600",
+        "grid3579_125k_t800"
+      ],
+      "interpretation": "Some individual energy or torsion metrics improve, but no released AM attempt resolves the heavy energy tail while consistently improving structural metrics.",
+      "source": "results/ala2/experimental_summary.yaml",
+      "public_attempts": "results/public/ala2/representative_attempts.json"
+    }
+  }
+}

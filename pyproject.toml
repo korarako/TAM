@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tam-boltzmann"
+version = "0.1.0"
+description = "Thermodynamic Adjoint Matching for Boltzmann generators"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = [
+  "jax>=0.7,<0.8",
+  "jaxlib>=0.7,<0.8",
+  "numpy>=1.26,<3",
+  "scipy>=1.11",
+  "PyYAML>=6",
+  "dm-haiku>=0.0.16",
+  "jraph>=0.0.6.dev0",
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.8"]
+test = ["pytest>=8"]
+ala2 = ["openmm>=8"]
+
+[project.scripts]
+tam = "adj_thermo.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["adj_thermo*", "painn_jax*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
