@@ -1,0 +1,14 @@
+schema_version: 2
+dataset: mb2d_reference_v2
+status: validated_corrected_equilibrium_reference
+method: analytic_float64_midpoint_quadrature
+target_density: exp(-beta * U(x)) / Z_beta
+energy: 0.02 * scaled Mueller-Brown
+betas: [0.25, 0.50, 0.75, 1.00, 1.20, 1.50]
+grid_resolution: [1024, 1024]
+train_samples_per_beta: 100000
+eval_samples_per_beta: 100000
+independent_train_eval: true
+source_manifest_sha256: 8f8d27311420b47833fe7ccbc7a1d831b851cb327731b93a99479c285069fbfc
+public_metadata: results/corrected/mb2d/reference_bundle/manifest.json
+arrays_in_source_release: false

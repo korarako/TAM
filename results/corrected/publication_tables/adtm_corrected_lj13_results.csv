@@ -1,0 +1,6 @@
+metric,n_samples,fm_seed0,am_mean,am_sample_sd,am_wins_of_3,reference_floor_mean,reference_floor_sample_sd,verdict
+Energy W2,2000,1.343121,1.508057,0.115961,0,0.399366,0.130476,negative
+Geometric W2,2000,3.005161,3.013798,0.003287,0,2.975889,0.005635,negative
+Pair-distance W2,2000,0.040800,0.042236,0.003034,1,,,mixed
+Radius-of-gyration W2,2000,0.027494,0.028268,0.002072,1,,,mixed
+Minimum-pair W2,2000,0.012508,0.010450,0.000576,3,,,positive auxiliary

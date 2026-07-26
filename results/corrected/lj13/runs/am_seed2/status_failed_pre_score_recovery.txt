@@ -1,0 +1,5 @@
+phase=failed
+exit_code=1
+updated_utc=2026-07-26T18:48:56Z
+host=TUMWMFM-GPU03
+cuda_visible_devices=0

@@ -1,142 +1,25 @@
 schema_version: 2
-release_version: 0.1.0
-note: Formal benchmark checkpoints are listed under checkpoints with an explicit result status. Historical Ala2 failed-case artifacts are separated under experimental_checkpoints and excluded from aggregate success claims.
+release: v0.2.0
+payloads_included: false
 
-checkpoints:
-  dw1d_0p25_to_0p70:
-    result_status: positive
-    problem: dw1d
-    beta0: 0.25
-    beta1: 0.70
-    fm: {path: checkpoints/dw1d/0p25_to_0p70/fm_params.pkl, sha256: 2c6e19979ebd4e48cc9da1d4558a159058b90db8a68937bcefc07c9e975569b0}
-    am: {path: checkpoints/dw1d/0p25_to_0p70/am_params.pkl, sha256: e8adfdc4ec56e38891444b04c07e4363cfc8967e5caf615d57b18c518ea2a679}
-    source_run: outputs/dw1d/dw1d_anchor_0.25_target_0.70_am10k_two_anchor_fm_gpu0
+corrected_checkpoint_hashes:
+  mb2d_reference_v2_seed0:
+    fm_sha256: cb18f47fb2106612b0cde0611eebc6090f8d0524b71982a416a4ddf22375ebf5
+    am_sha256: 650d073f61d93fc0234d6c3593b5e9075f3db47ee6da77ce53f005396cbe6fef
 
-  dw2d_0p25_to_0p70:
-    result_status: positive
-    problem: dw2d
-    beta0: 0.25
-    beta1: 0.70
-    fm: {path: checkpoints/dw2d/0p25_to_0p70/fm_params.pkl, sha256: 56a7c5a3529dc5fcb97c7a5c4ec8d513abe7e02b48b844aec46b32d6e777e2da}
-    am: {path: checkpoints/dw2d/0p25_to_0p70/am_params.pkl, sha256: 8fbd8912d34b2f199c058e492b2eea5721f5ffd23431a831427d465b887fe261}
-    source_run: outputs/dw2d/dw2d_anchor_0.25_target_0.70_am10k_two_anchor_fm_gpu0
+  dw4_reference_v2:
+    shared_fm_sha256: 4746a1df5057301da085d20155b2e740d3d08126d1ea705863ed90cf9a61fbde
+    am_seed1_sha256: 779e0d3beb4a2a3292fefffa7c9db2951d1397a1def40aee4cd27a8ff2b63f6a
+    am_seed2_sha256: 1094f024d649b0c3a8ce71da9165eeb4cf941d594967054346a64eeedc1923f6
+    am_seed3_sha256: 410a88675024937e46d8fb7561ae0de2e876af33a6a8f53bc0ac2a5bd00ffe1a
 
-  mb2d_0p25_to_0p30:
-    result_status: mixed
-    problem: mb2d
-    beta0: 0.25
-    beta1: 0.30
-    fm: &mb2d_fm {path: checkpoints/mb2d/multianchor/fm_params.pkl, sha256: ac202709ae20764902d205155e413e4b7dbc49dc55323aa78d781a2eb4706c8d}
-    am: {path: checkpoints/mb2d/0p25_to_0p30/am_params.pkl, sha256: 93d2b6d7482eb1ea9723fa1299e2c538528bcba1b7ced7a0ab56e232c8826d4e}
-    source_run: outputs/mb2d/mb2d_anchor_0.25_target_0.30_am10k_multi_anchor_nanfix_gpu0
+  lj13_reference_v2:
+    shared_fm_sha256: a16296afeec1081d444463ab3a35f1b1552ca74253f83874275b5d8b292a6e42
+    am_seed1_sha256: d34edb86b7625fbb584f2f3e2a9dde609dd77cd7f21760c569d008627e7614bf
+    am_seed2_sha256: ff0273c355768dd06e1f51dce6b3186fab9803be491defeea997bcbeef34932f
+    am_seed3_sha256: 420dcee1c7555478ddfae22777877914ad6233fd5fff8a108b1d022a2cc8f588
 
-  mb2d_0p50_to_0p60:
-    result_status: mixed
-    problem: mb2d
-    beta0: 0.50
-    beta1: 0.60
-    fm: *mb2d_fm
-    am: {path: checkpoints/mb2d/0p50_to_0p60/am_params.pkl, sha256: 78b6ce77b771991df84a78e81c60f3fd37046e9d564f8db303739d3894d359f0}
-    source_run: outputs/mb2d/mb2d_anchor_0.50_target_0.60_am10k_multi_anchor_nanfix_gpu0
-
-  mb2d_0p75_to_0p90:
-    result_status: positive
-    problem: mb2d
-    beta0: 0.75
-    beta1: 0.90
-    fm: *mb2d_fm
-    am: {path: checkpoints/mb2d/0p75_to_0p90/am_params.pkl, sha256: b9a49099b800618c3e1bff158d6100037bf4105af3e088dce825326c5e42bcc9}
-    source_run: outputs/mb2d/mb2d_anchor_0.75_target_0.90_am10k_multi_anchor_nanfix_gpu0
-
-  mb2d_1p00_to_1p20:
-    result_status: positive
-    problem: mb2d
-    beta0: 1.00
-    beta1: 1.20
-    fm: *mb2d_fm
-    am: {path: checkpoints/mb2d/1p00_to_1p20/am_params.pkl, sha256: 2493662c3b40f9e0d60982a4e26439211b47204c999fb416efd9f45123f2fdbd}
-    source_run: outputs/mb2d/mb2d_anchor_1.00_target_1.20_am10k_multi_anchor_nanfix_gpu0
-
-  dw4_best_formal_seed2:
-    result_status: positive
-    problem: dw4
-    beta0: 0.80
-    beta1: 1.00
-    fm: {path: checkpoints/dw4/0p8_1p2_to_1p0/fm_params.pkl, sha256: c0b5b115faf0b77987e92434408000d8fca2383504e3c7d07d7e61c2fa5979d6}
-    am: {path: checkpoints/dw4/0p8_1p2_to_1p0/am_seed2.pkl, sha256: a67da19eaa62ac0d2cd4ee236e5a85457d490058757511426e6534d60cafdffe}
-    source_run: outputs/dw4/dw4_paper_egnn128x5_anchor_0p8_1p2_target_1p0_am1k_lr5e-7_clip1_seed2_formal12k
-    additional_formal_am:
-      - {path: checkpoints/dw4/0p8_1p2_to_1p0/am_seed1.pkl, sha256: 0a3b55d8050b0933d4bcfdefe54c6e8e8c7fd12aaf50ab178932aebf2f3e2171}
-      - {path: checkpoints/dw4/0p8_1p2_to_1p0/am_seed3.pkl, sha256: cdc7143388a47c276dedd22b150aee7eec7cf69e8991bad257bf06911882e2e7}
-    note: All three formal AM seeds are released. Seed 2 is representative for visualization only; aggregate claims use all three seeds.
-
-  lj13_best:
-    result_status: mixed
-    problem: lj13
-    beta0: 0.80
-    beta1: 1.00
-    fm: {path: checkpoints/lj13/0p8_1p2_to_1p0/fm_params.pkl, sha256: 99bb0ff303e42d8ac279ba06b8a3c1859e20bf0599e5bdd47ad8dea3fd0da1fa}
-    am: {path: checkpoints/lj13/0p8_1p2_to_1p0/am_params.pkl, sha256: dc84b453fd16999a5cbe750e05297bff62e0f89ac1e1faf9440c31e6020882a7}
-    source_run: outputs/lj13/lj13_paper_painn128x5_anchor_0p8_1p2_target_1p0_am1k_lr5e-7_clip0_b64_scan
-    note: Evaluation seeds 101, 202, and 303 all used this same checkpoint. Geometry improves consistently, while energy W2 is not consistently improved.
-
-experimental_checkpoints:
-  ala2_grid35_t400:
-    status: experimental_failed_case
-    problem: ala2
-    anchor_temperatures_kelvin: [300, 500]
-    beta_grid: [0.40090785014242014, 0.24054471008545208]
-    beta0: 0.24054471008545208
-    beta1: 0.3006808876068151
-    model: {type: ala2_chiro_painn_jax, hidden_dim: 128, n_layers: 5}
-    fm: {path: checkpoints/ala2/grid35_t400/fm_params.pkl, sha256: 9bf9137a7feba1fd77c1b9121f01894ca8cc48e546b288d9896f007c87de11ff}
-    am: {path: checkpoints/ala2/grid35_t400/am_params.pkl, sha256: 60000aaf0dd77723c5b2791dbc317f81f91b44e0864b80c2dc17b2f3be3e87cf}
-    fm_metrics: checkpoints/ala2/grid35_t400/fm_metrics.json
-    am_metrics: checkpoints/ala2/grid35_t400/am_metrics.json
-    source_run: outputs/ala2/pasttry/ala2_chiro_painn_jax_grid35_am_500K_to_400K_1k_lr1e-6_const_bs16_K40_loss20_keep10_eg0p35_seed2_adam095_wd0p01_gc0_fixedsigma
-    note: Best observed 400 K Ramachandran JS, but the energy tail remains much heavier than the MD reference.
-
-  ala2_grid3579_t400:
-    status: experimental_failed_case
-    problem: ala2
-    anchor_temperatures_kelvin: [300, 500, 700, 900]
-    beta_grid: [0.40090785014242014, 0.24054471008545208, 0.1718176500610372, 0.13363595004747336]
-    beta0: 0.24054471008545208
-    beta1: 0.3006808876068151
-    model: {type: ala2_chiro_painn_jax, hidden_dim: 128, n_layers: 5}
-    fm: &ala2_grid3579_fm {path: checkpoints/ala2/grid3579/fm_params.pkl, sha256: f1da5c30f1e6e5e14fc35f344f377cf7c76bd81a8faabbf8380df8ca1dd9513c}
-    am: {path: checkpoints/ala2/grid3579_t400/am_params.pkl, sha256: 7b681535d062b87cf65425b4f0ef20991406dc355f2e2fb315914ade2fe6df14}
-    fm_metrics: checkpoints/ala2/grid3579/fm_metrics.json
-    am_metrics: checkpoints/ala2/grid3579_t400/am_metrics.json
-    source_run: outputs/ala2/pasttry/ala2_chiro_painn_jax_grid3579_am_500K_to_400K_1k_lr5e-7_bs16_K40_loss20_keep10_eg1_adam095_wd0p01_gc0_fixedsigma
-    note: Balanced 400 K attempt; fixed-sample energy W2 and Ramachandran JS improve modestly, while the energy tail remains mismatched.
-
-  ala2_grid3579_t600:
-    status: experimental_failed_case
-    problem: ala2
-    anchor_temperatures_kelvin: [300, 500, 700, 900]
-    beta_grid: [0.40090785014242014, 0.24054471008545208, 0.1718176500610372, 0.13363595004747336]
-    beta0: 0.1718176500610372
-    beta1: 0.20045392507121004
-    model: {type: ala2_chiro_painn_jax, hidden_dim: 128, n_layers: 5}
-    fm: *ala2_grid3579_fm
-    am: {path: checkpoints/ala2/grid3579_t600/am_params.pkl, sha256: 50ed782bfa5972fc76869c4d59532036bae02b07c87926fd93db745d5d0b06c7}
-    fm_metrics: checkpoints/ala2/grid3579/fm_metrics.json
-    am_metrics: checkpoints/ala2/grid3579_t600/am_metrics.json
-    source_run: outputs/ala2/pasttry/ala2_chiro_painn_jax_grid3579_am_700K_to_600K_1k_lr5e-7_bs16_K40_loss20_keep10_eg1_adam095_wd0p01_gc0_fixedsigma
-    note: Representative null result; structural metrics are nearly unchanged and fixed-sample energy W2 is slightly worse.
-
-  ala2_grid3579_125k_t800:
-    status: experimental_failed_case
-    problem: ala2
-    anchor_temperatures_kelvin: [300, 500, 700, 900]
-    beta_grid: [0.40090785014242014, 0.24054471008545208, 0.1718176500610372, 0.13363595004747336]
-    beta0: 0.13363595004747336
-    beta1: 0.15034044380340755
-    model: {type: ala2_chiro_painn_jax, hidden_dim: 128, n_layers: 3}
-    fm: {path: checkpoints/ala2/grid3579_125k_t800/fm_params.pkl, sha256: f6910f85a323312fc21793482c5067a1eaefa2a3cb0c4593914bdd359d06615f}
-    am: {path: checkpoints/ala2/grid3579_125k_t800/am_params.pkl, sha256: b4b7f2d5c6e50459ac2fa93d446c9741418bfbacb6724cae20d28f3a433a10b6}
-    fm_metrics: checkpoints/ala2/grid3579_125k_t800/fm_metrics.json
-    am_metrics: checkpoints/ala2/grid3579_125k_t800/am_metrics.json
-    source_run: outputs/ala2/ala2_chiro_painn_jax_grid3579_125kperbeta_am_900K_to_800K_1k_lr1e-4_const_bs16_K40_loss20_keep10_eg0p35_adam095_wd0p01_gc0_fixedsigma
-    note: Strong energy correction with little Ramachandran change; the AM energy tail is still heavier than the MD reference.
+historical_payload_release:
+  tag: v0.1.0
+  status: immutable_historical_archive
+  note: The v0.1 MB2D, DW4, and LJ13 scientific claims are superseded.

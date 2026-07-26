@@ -1,0 +1,134 @@
+ala2:
+  openmm_device: cpu
+  openmm_grad_clip: null
+  openmm_system: amber99sbildn_obc1_xml
+beta0: 1.0
+beta1: 1.2
+beta_grid: &id001
+- 0.25
+- 0.5
+- 0.75
+- 1.0
+- 1.5
+checkpoint:
+  save_fm_checkpoints: []
+data_name: mb2d_reference_v2/train
+effective:
+  K: 40
+  adam_b1: 0.9
+  ala2_openmm_device: cpu
+  ala2_openmm_grad_clip: null
+  ala2_openmm_system: amber99sbildn_obc1_xml
+  ala2_temp_embed_l0: 75.0
+  ala2_temp_embed_max: 1000.0
+  ala2_temp_embed_min: 300.0
+  am_batch_size: 512
+  am_keep_last_steps: 10
+  am_lr: 2.0e-05
+  am_lr_min: 2.0e-07
+  am_num_loss_steps: 20
+  am_steps: 10000
+  batch_size: 512
+  beta0: 1.0
+  beta1: 1.2
+  beta_embed_dim: 8
+  beta_grid: *id001
+  clip_range: null
+  data_name: mb2d_reference_v2/train
+  dem_eq_emd2_samples: 0
+  density_hutchinson_probes: 1
+  density_mode: hutchinson
+  effective_painn_atom_identity: none
+  energy_grad_scale: 1.0
+  energy_w2_samples: 2000
+  eval_betas: null
+  eval_chunk_size: 10000
+  eval_plot_pairwise_individual: false
+  fm_eval_betas: null
+  fm_eval_chunk_size: 0
+  fm_eval_every: 0
+  fm_eval_method: euler
+  fm_eval_samples: 256
+  fm_eval_steps: 150
+  fm_lr: 0.001
+  fm_lr_min: 1.0e-05
+  fm_samples_per_beta: 0
+  fm_steps: 30000
+  geometric_w2_chunk_size: 16
+  geometric_w2_samples: 2000
+  grad_clip: 1.0
+  hidden_dim: 512
+  init_mode: normal
+  langevin_step_size: null
+  langevin_steps: 5000
+  lj13_init_file: ${AMBOLTZ_ROOT}/data/LJ13/train_split_LJ13-1000.npy
+  lj13_init_step_size: 0.0001
+  lj13_n_chains: 1024
+  lj13_sampler_kernel: mala
+  lj13_warmup_steps: 2000
+  log_every: 100
+  max_sigma: 50.0
+  merge_max_samples: 0
+  model: mlp
+  n_eval: 100000
+  n_layers: 3
+  n_per_beta: 100000
+  ode_method: euler
+  ode_steps: 300
+  painn_atom_embed_dim: 16
+  painn_atom_identity: auto
+  painn_backend: jax
+  prior_scale: 1.0
+  problem: mb2d
+  ref_split_repeats: 3
+  reference_check_samples: 2000
+  reference_data_name: mb2d_reference_v2/eval
+  reweight: false
+  run_dir: ${ADTM_ROOT}/outputs/mb2d/mb2d_reference_v2_anchor_1.00_target_1.20_seed0_run1
+  save_am_checkpoints: null
+  save_fm_checkpoints: null
+  score_kinds:
+  - fm
+  - am
+  score_ref_baseline_repeats: 0
+  seed: 0
+  shard_dir: null
+  shard_glob: null
+  smoke: false
+  stage: train-fm
+  t_embed_dim: 16
+  track_density: false
+  weight_decay: 0.0
+fm_eval:
+  betas: null
+  chunk_size: 0
+  every: 0
+  method: euler
+  samples: 256
+  steps: 150
+model:
+  ala2_temp_embed_l0: 75.0
+  ala2_temp_embed_max: 1000.0
+  ala2_temp_embed_min: 300.0
+  beta_embed_dim: 8
+  effective_painn_atom_identity: none
+  hidden_dim: 512
+  n_layers: 3
+  painn_atom_embed_dim: 16
+  painn_atom_identity: auto
+  painn_backend: jax
+  t_embed_dim: 16
+  type: mlp
+model_type: mlp
+optimizer:
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_eps: 1.0e-08
+  grad_clip: 1.0
+  weight_decay: 0.0
+problem: mb2d
+reference_data_name: mb2d_reference_v2/eval
+sampling:
+  fm_eval_method: euler
+  ode_method: euler
+seed: 0

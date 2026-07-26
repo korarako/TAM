@@ -1,0 +1,623 @@
+{
+  "base_seed": 880001,
+  "energy_w2_20k": {
+    "construction": "independent corrected SMC train split versus eval split",
+    "max": 0.06677098282856704,
+    "mean": 0.04015748166441578,
+    "median": 0.0388619471789316,
+    "metric": "energy_w2_20k",
+    "min": 0.024808616893393406,
+    "n": 30,
+    "n_rows_each": 20000,
+    "repeats": 30,
+    "runs": [
+      {
+        "eval_row_seed": 890002,
+        "n_rows_each": 20000,
+        "repeat": 0,
+        "train_row_seed": 890001,
+        "value": 0.03938632419861601
+      },
+      {
+        "eval_row_seed": 890004,
+        "n_rows_each": 20000,
+        "repeat": 1,
+        "train_row_seed": 890003,
+        "value": 0.03795908043534233
+      },
+      {
+        "eval_row_seed": 890006,
+        "n_rows_each": 20000,
+        "repeat": 2,
+        "train_row_seed": 890005,
+        "value": 0.037406221867355434
+      },
+      {
+        "eval_row_seed": 890008,
+        "n_rows_each": 20000,
+        "repeat": 3,
+        "train_row_seed": 890007,
+        "value": 0.030171875233411444
+      },
+      {
+        "eval_row_seed": 890010,
+        "n_rows_each": 20000,
+        "repeat": 4,
+        "train_row_seed": 890009,
+        "value": 0.04015477206983932
+      },
+      {
+        "eval_row_seed": 890012,
+        "n_rows_each": 20000,
+        "repeat": 5,
+        "train_row_seed": 890011,
+        "value": 0.04277563818766506
+      },
+      {
+        "eval_row_seed": 890014,
+        "n_rows_each": 20000,
+        "repeat": 6,
+        "train_row_seed": 890013,
+        "value": 0.04106276968916278
+      },
+      {
+        "eval_row_seed": 890016,
+        "n_rows_each": 20000,
+        "repeat": 7,
+        "train_row_seed": 890015,
+        "value": 0.05104315910422477
+      },
+      {
+        "eval_row_seed": 890018,
+        "n_rows_each": 20000,
+        "repeat": 8,
+        "train_row_seed": 890017,
+        "value": 0.030184895205855534
+      },
+      {
+        "eval_row_seed": 890020,
+        "n_rows_each": 20000,
+        "repeat": 9,
+        "train_row_seed": 890019,
+        "value": 0.03981498220769092
+      },
+      {
+        "eval_row_seed": 890022,
+        "n_rows_each": 20000,
+        "repeat": 10,
+        "train_row_seed": 890021,
+        "value": 0.05848955059901616
+      },
+      {
+        "eval_row_seed": 890024,
+        "n_rows_each": 20000,
+        "repeat": 11,
+        "train_row_seed": 890023,
+        "value": 0.028962663347412643
+      },
+      {
+        "eval_row_seed": 890026,
+        "n_rows_each": 20000,
+        "repeat": 12,
+        "train_row_seed": 890025,
+        "value": 0.03873906797697397
+      },
+      {
+        "eval_row_seed": 890028,
+        "n_rows_each": 20000,
+        "repeat": 13,
+        "train_row_seed": 890027,
+        "value": 0.04322603635843268
+      },
+      {
+        "eval_row_seed": 890030,
+        "n_rows_each": 20000,
+        "repeat": 14,
+        "train_row_seed": 890029,
+        "value": 0.06228803636721551
+      },
+      {
+        "eval_row_seed": 890032,
+        "n_rows_each": 20000,
+        "repeat": 15,
+        "train_row_seed": 890031,
+        "value": 0.029174046798084483
+      },
+      {
+        "eval_row_seed": 890034,
+        "n_rows_each": 20000,
+        "repeat": 16,
+        "train_row_seed": 890033,
+        "value": 0.06677098282856704
+      },
+      {
+        "eval_row_seed": 890036,
+        "n_rows_each": 20000,
+        "repeat": 17,
+        "train_row_seed": 890035,
+        "value": 0.045782915893106735
+      },
+      {
+        "eval_row_seed": 890038,
+        "n_rows_each": 20000,
+        "repeat": 18,
+        "train_row_seed": 890037,
+        "value": 0.039626783165518084
+      },
+      {
+        "eval_row_seed": 890040,
+        "n_rows_each": 20000,
+        "repeat": 19,
+        "train_row_seed": 890039,
+        "value": 0.055799115580460606
+      },
+      {
+        "eval_row_seed": 890042,
+        "n_rows_each": 20000,
+        "repeat": 20,
+        "train_row_seed": 890041,
+        "value": 0.03505766795363033
+      },
+      {
+        "eval_row_seed": 890044,
+        "n_rows_each": 20000,
+        "repeat": 21,
+        "train_row_seed": 890043,
+        "value": 0.03229533240095061
+      },
+      {
+        "eval_row_seed": 890046,
+        "n_rows_each": 20000,
+        "repeat": 22,
+        "train_row_seed": 890045,
+        "value": 0.03176165783700608
+      },
+      {
+        "eval_row_seed": 890048,
+        "n_rows_each": 20000,
+        "repeat": 23,
+        "train_row_seed": 890047,
+        "value": 0.03036685971510431
+      },
+      {
+        "eval_row_seed": 890050,
+        "n_rows_each": 20000,
+        "repeat": 24,
+        "train_row_seed": 890049,
+        "value": 0.03613963298414698
+      },
+      {
+        "eval_row_seed": 890052,
+        "n_rows_each": 20000,
+        "repeat": 25,
+        "train_row_seed": 890051,
+        "value": 0.03898482638088922
+      },
+      {
+        "eval_row_seed": 890054,
+        "n_rows_each": 20000,
+        "repeat": 26,
+        "train_row_seed": 890053,
+        "value": 0.0367583076937537
+      },
+      {
+        "eval_row_seed": 890056,
+        "n_rows_each": 20000,
+        "repeat": 27,
+        "train_row_seed": 890055,
+        "value": 0.0456357037129257
+      },
+      {
+        "eval_row_seed": 890058,
+        "n_rows_each": 20000,
+        "repeat": 28,
+        "train_row_seed": 890057,
+        "value": 0.024808616893393406
+      },
+      {
+        "eval_row_seed": 890060,
+        "n_rows_each": 20000,
+        "repeat": 29,
+        "train_row_seed": 890059,
+        "value": 0.03409692724672133
+      }
+    ],
+    "sample_std_ddof1": 0.010157553388478114,
+    "values": [
+      0.03938632419861601,
+      0.03795908043534233,
+      0.037406221867355434,
+      0.030171875233411444,
+      0.04015477206983932,
+      0.04277563818766506,
+      0.04106276968916278,
+      0.05104315910422477,
+      0.030184895205855534,
+      0.03981498220769092,
+      0.05848955059901616,
+      0.028962663347412643,
+      0.03873906797697397,
+      0.04322603635843268,
+      0.06228803636721551,
+      0.029174046798084483,
+      0.06677098282856704,
+      0.045782915893106735,
+      0.039626783165518084,
+      0.055799115580460606,
+      0.03505766795363033,
+      0.03229533240095061,
+      0.03176165783700608,
+      0.03036685971510431,
+      0.03613963298414698,
+      0.03898482638088922,
+      0.0367583076937537,
+      0.0456357037129257,
+      0.024808616893393406,
+      0.03409692724672133
+    ]
+  },
+  "geometric_w2_2k": {
+    "construction": "independent corrected SMC train split versus eval split",
+    "max": 0.13926633109980985,
+    "mean": 0.12825564482871682,
+    "median": 0.12828742434464024,
+    "metric": "geometric_w2_2k",
+    "min": 0.12005601148256669,
+    "n": 10,
+    "n_rows_each": 2000,
+    "repeats": 10,
+    "runs": [
+      {
+        "eval_row_seed": 900002,
+        "metric_seed": 910001,
+        "n_rows_each": 2000,
+        "repeat": 0,
+        "train_row_seed": 900001,
+        "value": 0.12154784149784431
+      },
+      {
+        "eval_row_seed": 900004,
+        "metric_seed": 910002,
+        "n_rows_each": 2000,
+        "repeat": 1,
+        "train_row_seed": 900003,
+        "value": 0.12672751055466286
+      },
+      {
+        "eval_row_seed": 900006,
+        "metric_seed": 910003,
+        "n_rows_each": 2000,
+        "repeat": 2,
+        "train_row_seed": 900005,
+        "value": 0.12288312543752475
+      },
+      {
+        "eval_row_seed": 900008,
+        "metric_seed": 910004,
+        "n_rows_each": 2000,
+        "repeat": 3,
+        "train_row_seed": 900007,
+        "value": 0.12005601148256669
+      },
+      {
+        "eval_row_seed": 900010,
+        "metric_seed": 910005,
+        "n_rows_each": 2000,
+        "repeat": 4,
+        "train_row_seed": 900009,
+        "value": 0.13067463526889325
+      },
+      {
+        "eval_row_seed": 900012,
+        "metric_seed": 910006,
+        "n_rows_each": 2000,
+        "repeat": 5,
+        "train_row_seed": 900011,
+        "value": 0.12984733813461766
+      },
+      {
+        "eval_row_seed": 900014,
+        "metric_seed": 910007,
+        "n_rows_each": 2000,
+        "repeat": 6,
+        "train_row_seed": 900013,
+        "value": 0.12544942364873393
+      },
+      {
+        "eval_row_seed": 900016,
+        "metric_seed": 910008,
+        "n_rows_each": 2000,
+        "repeat": 7,
+        "train_row_seed": 900015,
+        "value": 0.1328259333229302
+      },
+      {
+        "eval_row_seed": 900018,
+        "metric_seed": 910009,
+        "n_rows_each": 2000,
+        "repeat": 8,
+        "train_row_seed": 900017,
+        "value": 0.13327829783958467
+      },
+      {
+        "eval_row_seed": 900020,
+        "metric_seed": 910010,
+        "n_rows_each": 2000,
+        "repeat": 9,
+        "train_row_seed": 900019,
+        "value": 0.13926633109980985
+      }
+    ],
+    "sample_std_ddof1": 0.0060280588684573835,
+    "values": [
+      0.12154784149784431,
+      0.12672751055466286,
+      0.12288312543752475,
+      0.12005601148256669,
+      0.13067463526889325,
+      0.12984733813461766,
+      0.12544942364873393,
+      0.1328259333229302,
+      0.13327829783958467,
+      0.13926633109980985
+    ]
+  },
+  "note": "These empirical floors include finite-sample and independent-SMC-split discrepancy. SMC resampling induces genealogy, so they are not iid Monte Carlo standard errors.",
+  "pairwise_distance_w2_20k": {
+    "construction": "independent corrected SMC train split versus eval split",
+    "max": 0.005760569559156096,
+    "mean": 0.0034813272144716425,
+    "median": 0.003385232726363149,
+    "metric": "pairwise_distance_w2_20k",
+    "min": 0.0019212253547891212,
+    "n": 30,
+    "n_rows_each": 20000,
+    "repeats": 30,
+    "runs": [
+      {
+        "eval_row_seed": 890002,
+        "n_rows_each": 20000,
+        "repeat": 0,
+        "train_row_seed": 890001,
+        "value": 0.0035935411295098777
+      },
+      {
+        "eval_row_seed": 890004,
+        "n_rows_each": 20000,
+        "repeat": 1,
+        "train_row_seed": 890003,
+        "value": 0.002383734713144059
+      },
+      {
+        "eval_row_seed": 890006,
+        "n_rows_each": 20000,
+        "repeat": 2,
+        "train_row_seed": 890005,
+        "value": 0.004199749287458931
+      },
+      {
+        "eval_row_seed": 890008,
+        "n_rows_each": 20000,
+        "repeat": 3,
+        "train_row_seed": 890007,
+        "value": 0.0023854503038352863
+      },
+      {
+        "eval_row_seed": 890010,
+        "n_rows_each": 20000,
+        "repeat": 4,
+        "train_row_seed": 890009,
+        "value": 0.003749829506113583
+      },
+      {
+        "eval_row_seed": 890012,
+        "n_rows_each": 20000,
+        "repeat": 5,
+        "train_row_seed": 890011,
+        "value": 0.003019070081097355
+      },
+      {
+        "eval_row_seed": 890014,
+        "n_rows_each": 20000,
+        "repeat": 6,
+        "train_row_seed": 890013,
+        "value": 0.002536617729235008
+      },
+      {
+        "eval_row_seed": 890016,
+        "n_rows_each": 20000,
+        "repeat": 7,
+        "train_row_seed": 890015,
+        "value": 0.0039673139648716636
+      },
+      {
+        "eval_row_seed": 890018,
+        "n_rows_each": 20000,
+        "repeat": 8,
+        "train_row_seed": 890017,
+        "value": 0.0035621550066440525
+      },
+      {
+        "eval_row_seed": 890020,
+        "n_rows_each": 20000,
+        "repeat": 9,
+        "train_row_seed": 890019,
+        "value": 0.0019212253547891212
+      },
+      {
+        "eval_row_seed": 890022,
+        "n_rows_each": 20000,
+        "repeat": 10,
+        "train_row_seed": 890021,
+        "value": 0.0034047044505413717
+      },
+      {
+        "eval_row_seed": 890024,
+        "n_rows_each": 20000,
+        "repeat": 11,
+        "train_row_seed": 890023,
+        "value": 0.0033657610021849264
+      },
+      {
+        "eval_row_seed": 890026,
+        "n_rows_each": 20000,
+        "repeat": 12,
+        "train_row_seed": 890025,
+        "value": 0.0031184110473818673
+      },
+      {
+        "eval_row_seed": 890028,
+        "n_rows_each": 20000,
+        "repeat": 13,
+        "train_row_seed": 890027,
+        "value": 0.005760569559156096
+      },
+      {
+        "eval_row_seed": 890030,
+        "n_rows_each": 20000,
+        "repeat": 14,
+        "train_row_seed": 890029,
+        "value": 0.005229322116798215
+      },
+      {
+        "eval_row_seed": 890032,
+        "n_rows_each": 20000,
+        "repeat": 15,
+        "train_row_seed": 890031,
+        "value": 0.004311854526544566
+      },
+      {
+        "eval_row_seed": 890034,
+        "n_rows_each": 20000,
+        "repeat": 16,
+        "train_row_seed": 890033,
+        "value": 0.003225665243394125
+      },
+      {
+        "eval_row_seed": 890036,
+        "n_rows_each": 20000,
+        "repeat": 17,
+        "train_row_seed": 890035,
+        "value": 0.005546167258916523
+      },
+      {
+        "eval_row_seed": 890038,
+        "n_rows_each": 20000,
+        "repeat": 18,
+        "train_row_seed": 890037,
+        "value": 0.005039450484301964
+      },
+      {
+        "eval_row_seed": 890040,
+        "n_rows_each": 20000,
+        "repeat": 19,
+        "train_row_seed": 890039,
+        "value": 0.0028046235880973885
+      },
+      {
+        "eval_row_seed": 890042,
+        "n_rows_each": 20000,
+        "repeat": 20,
+        "train_row_seed": 890041,
+        "value": 0.0029232117820819498
+      },
+      {
+        "eval_row_seed": 890044,
+        "n_rows_each": 20000,
+        "repeat": 21,
+        "train_row_seed": 890043,
+        "value": 0.003608956314903267
+      },
+      {
+        "eval_row_seed": 890046,
+        "n_rows_each": 20000,
+        "repeat": 22,
+        "train_row_seed": 890045,
+        "value": 0.0042488327577273124
+      },
+      {
+        "eval_row_seed": 890048,
+        "n_rows_each": 20000,
+        "repeat": 23,
+        "train_row_seed": 890047,
+        "value": 0.0023068759201140005
+      },
+      {
+        "eval_row_seed": 890050,
+        "n_rows_each": 20000,
+        "repeat": 24,
+        "train_row_seed": 890049,
+        "value": 0.0024351752692883125
+      },
+      {
+        "eval_row_seed": 890052,
+        "n_rows_each": 20000,
+        "repeat": 25,
+        "train_row_seed": 890051,
+        "value": 0.003727114289282405
+      },
+      {
+        "eval_row_seed": 890054,
+        "n_rows_each": 20000,
+        "repeat": 26,
+        "train_row_seed": 890053,
+        "value": 0.0027456761879938174
+      },
+      {
+        "eval_row_seed": 890056,
+        "n_rows_each": 20000,
+        "repeat": 27,
+        "train_row_seed": 890055,
+        "value": 0.003432322596976993
+      },
+      {
+        "eval_row_seed": 890058,
+        "n_rows_each": 20000,
+        "repeat": 28,
+        "train_row_seed": 890057,
+        "value": 0.002678051772162872
+      },
+      {
+        "eval_row_seed": 890060,
+        "n_rows_each": 20000,
+        "repeat": 29,
+        "train_row_seed": 890059,
+        "value": 0.0032083831896023564
+      }
+    ],
+    "sample_std_ddof1": 0.0009792567571782979,
+    "values": [
+      0.0035935411295098777,
+      0.002383734713144059,
+      0.004199749287458931,
+      0.0023854503038352863,
+      0.003749829506113583,
+      0.003019070081097355,
+      0.002536617729235008,
+      0.0039673139648716636,
+      0.0035621550066440525,
+      0.0019212253547891212,
+      0.0034047044505413717,
+      0.0033657610021849264,
+      0.0031184110473818673,
+      0.005760569559156096,
+      0.005229322116798215,
+      0.004311854526544566,
+      0.003225665243394125,
+      0.005546167258916523,
+      0.005039450484301964,
+      0.0028046235880973885,
+      0.0029232117820819498,
+      0.003608956314903267,
+      0.0042488327577273124,
+      0.0023068759201140005,
+      0.0024351752692883125,
+      0.003727114289282405,
+      0.0027456761879938174,
+      0.003432322596976993,
+      0.002678051772162872,
+      0.0032083831896023564
+    ]
+  },
+  "schema": "adtm.dw4_reference_v2.reference_floor.v1"
+}

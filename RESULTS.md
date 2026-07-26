@@ -1,131 +1,145 @@
-# TAM v0.1.0 results
+# TAM v0.2.0 corrected results
 
-This document freezes the result claims for the first public TAM release. It
-reports both improvements and regressions. Lower Wasserstein distances are
-better.
+This document freezes the corrected-reference result claims. Lower
+Wasserstein distances are better. The machine-readable counterpart is
+[`results/summary.json`](results/summary.json); all public evidence is under
+[`results/corrected`](results/corrected).
 
-The machine-readable counterpart is [`results/summary.json`](results/summary.json).
-Path-sanitized public records are under [`results/public/`](results/public/).
-Machine-local extraction records are retained outside the public Git tree for
-provenance; the released aggregates preserve their scientific values and run
-semantics without exposing workstation paths.
+## Evidence classes
 
-## Result status
+| Class | Systems | Meaning |
+|---|---|---|
+| Hash-bound legacy | DW1D, DW2D | Retained positive artifacts with explicit provenance limitations |
+| Corrected single-seed positive pilot | MB2D | One predeclared model seed against an analytic equilibrium reference |
+| Corrected conditional positive | DW4 | Three AM seeds conditional on one shared FM seed |
+| Corrected conditional negative | LJ13 | Three AM seeds conditional on one shared FM seed |
+| Single-seed mixed diagnostic | Ala2 | Fair fixed-10k comparison with observable-dependent outcomes |
 
-| Status | Systems | Release claim |
-| --- | --- | --- |
-| **Positive** | DW1D, DW2D, DW4 | Released AM result improves the primary energy and geometry metrics. |
-| **Mixed** | MB2D, LJ13 | Improvement depends on transfer region or metric; no blanket improvement claim is made. |
-| **Experimental failed case** | Ala2 | Representative checkpoints are released for diagnosis, not as a successful benchmark. |
+These classes are not interchangeable. In particular, DW4 is not a
+three-seed end-to-end FM+AM result, and MB2D is not a multi-seed claim.
 
-## Metric protocol
+## MB2D reference-v2
 
-The primary benchmark metrics are energy W2 and geometric W2 on fixed
-2,000-sample comparisons. All toy and MB2D values below are single released
-runs and therefore have no between-training-run uncertainty estimate.
+The target density is `p_beta(x) proportional to exp[-beta U(x)]`. The
+reference uses float64 midpoint quadrature on a 1024x1024 grid and independent
+100,000-sample train/eval pools. The released pilot uses model seed 0 and the
+transfer beta 1.00 -> 1.20.
 
-DW4 reports three independent formal AM training runs as mean ± sample standard
-deviation (`ddof=1`). LJ13 instead reports three sampling/evaluation seeds from
-one shared FM/AM checkpoint; its variation must not be interpreted as
-between-training-run uncertainty.
+| Metric | FM | AM |
+|---|---:|---:|
+| Energy W2, 20k | 0.549178 | **0.065675** |
+| x1 marginal W2 | 0.119442 | **0.012751** |
+| x2 marginal W2 | 0.126021 | **0.016734** |
+| Analytic-grid JS | 0.190643 | **0.008814** |
+| Analytic-grid TV | 0.480938 | **0.085321** |
+| Basin-probability L1 | 0.142364 | **0.018293** |
 
-## Positive results
+The independent reference-vs-reference energy-W2 floor is
+`0.028405 +/- 0.003355`. AM removes most of the FM target-temperature
+discrepancy, although its remaining energy W2 is above that floor.
 
-### DW1D and DW2D
+Training settings: MLP hidden size 512 with 3 layers; FM anchors
+`[0.25, 0.50, 0.75, 1.00, 1.50]`; FM 30k updates; AM 10k updates;
+batch 512; AM `K=40`, 20 loss steps, last 10 retained; Euler sampling with
+300 steps.
 
-| System | Transfer β0→β1 | FM energy W2 | AM energy W2 | FM geometry W2 | AM geometry W2 |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| DW1D | 0.25→0.70 | 0.604278 | **0.184344** | 0.246554 | **0.078003** |
-| DW2D | 0.25→0.70 | 1.940773 | **0.151375** | 0.715530 | **0.156857** |
+## DW4 reference-v2
 
-Both released transfers improve energy and geometry. Because each row is one
-released training run, these results establish reproducible artifacts rather
-than a multi-seed estimate of method-level variability.
+The corrected reference uses intrinsic 6D SMC/MALA sampling with independent
+train/eval pools. The experiment fixes one FM seed-0 controller and trains AM
+with seeds 1, 2, and 3.
 
-### DW4
+| Metric | Shared FM | AM mean +/- sample SD | AM wins | Reference floor |
+|---|---:|---:|---:|---:|
+| Energy W2, 20k | 0.748119 | **0.359301 +/- 0.000981** | 3/3 | 0.040157 +/- 0.010158 |
+| Pair-distance W2, 20k | 0.055866 | **0.035973 +/- 0.000096** | 3/3 | 0.003481 +/- 0.000979 |
+| Geometric W2, 2k | 0.155135 | **0.137861 +/- 0.000054** | 3/3 | 0.128256 +/- 0.006028 |
 
-The DW4 comparison uses the shared FM checkpoint and three independently
-trained formal AM checkpoints.
+The mean reductions relative to the shared FM controller are 51.97% for
+energy, 35.61% for pair distance, and 11.13% for geometric W2.
 
-| Metric | FM mean ± std | AM mean ± std | AM better in runs |
-| --- | ---: | ---: | ---: |
-| Energy W2 (2k) | 0.525119 ± 0.000000003 | **0.180243 ± 0.042294** | 3/3 |
-| Geometric W2 (2k) | 0.183385 ± 0.002630 | **0.173944 ± 0.011311** | 3/3 |
-| Pairwise-distance W2 | 0.038414 ± 0.00000000004 | **0.019552 ± 0.003127** | 3/3 |
+Training settings: EGNN hidden size 128 with 5 layers; FM anchors
+`{0.8, 1.2}`; FM 100k updates with batch 512 and constant LR `3e-4`;
+AM 1k updates per seed with batch 512 and LR `5e-7 -> 5e-9`; Euler sampling
+with 150 steps.
 
-The representative release checkpoint is seed 2, but the claim is based on all
-three formal runs. Full values and replicate semantics are in
-[`results/dw4/aggregate.json`](results/dw4/aggregate.json).
+The supported conclusion is AM-stage robustness conditional on one FM model.
+Coordinate marginals are auxiliary because they depend on rotations,
+permutations, and label conventions.
 
-## Mixed results
+## LJ13 reference-v2
 
-### MB2D
+The corrected reference implements the BMS Eq. 234 target with
+`epsilon=r_m=tau=c_osc=1` in the 36D COM-free space. It uses replica-exchange
+HMC with Metropolis-corrected trajectories and swaps, four independent
+ensembles, and independent 100,000-sample train/eval pools at beta
+`{0.8, 1.0, 1.2}`. All reference audits pass with zero production
+divergences.
 
-| Transfer β0→β1 | FM energy W2 | AM energy W2 | FM geometry W2 | AM geometry W2 | Outcome |
-| --- | ---: | ---: | ---: | ---: | --- |
-| 0.25→0.30 | **0.473743** | 0.749420 | 0.111394 | **0.097560** | Energy worse; geometry better |
-| 0.50→0.60 | **0.137678** | 0.314678 | 0.101828 | **0.094731** | Energy worse; geometry better |
-| 0.75→0.90 | 0.213760 | **0.140192** | 0.103759 | **0.089678** | Both better |
-| 1.00→1.20 | 0.210264 | **0.143947** | 0.208112 | **0.077177** | Both better |
+The canonical scoring protocol is
+`adtm.lj13_reference_v2.score2k.v1`: energy, pair distance, radius of
+gyration, minimum-pair distance, and geometric W2 all use the same 2,000 rows
+without filtering.
 
-AM improves geometry in all four released transfers, but energy W2 improves
-only in the two higher-β transfers. The release therefore makes a
-transfer-dependent, mixed claim for MB2D.
+| Metric | Shared FM | AM mean +/- sample SD | AM wins |
+|---|---:|---:|---:|
+| Energy W2, 2k | **1.343121** | 1.508057 +/- 0.115961 | 0/3 |
+| Geometric W2, 2k | **3.005161** | 3.013798 +/- 0.003287 | 0/3 |
+| Pair-distance W2, 2k | **0.040800** | 0.042236 +/- 0.003034 | 1/3 |
+| Radius-of-gyration W2, 2k | **0.027494** | 0.028268 +/- 0.002072 | 1/3 |
+| Minimum-pair W2, 2k | 0.012508 | **0.010450 +/- 0.000576** | 3/3 |
 
-### LJ13
+None of the three AM seeds improves either preregistered primary metric.
+Minimum-pair distance improves in all three seeds, but this auxiliary result
+does not change the registered negative verdict. This is a conditional
+negative result, not a general impossibility claim.
 
-All three rows below use the same FM and AM checkpoint. They differ only in
-sampling/evaluation seed.
+## Ala2
 
-| Eval seed | FM energy W2 | AM energy W2 | FM pairwise W2 | AM pairwise W2 | FM radial W2 | AM radial W2 |
-| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 101 | 0.365277 | **0.295730** | 0.008771 | **0.006270** | 0.007414 | **0.006105** |
-| 202 | **0.173496** | 0.561391 | 0.005846 | **0.004525** | 0.006305 | **0.005899** |
-| 303 | **0.584218** | 0.585974 | 0.008593 | **0.006872** | 0.007232 | **0.006597** |
+Ala2 uses the same canonical MD array and the same deterministic 10,000 index
+positions for MD, FM, and AM. No sample is filtered, and OpenMM energy is
+evaluated in double precision. Robust plotting limits affect visualization
+only. No symmetry-aware geometric W2 is reported.
 
-Pairwise and radial W2 improve in all three evaluations. Energy W2 improves for
-seed 101, worsens strongly for seed 202, and is slightly worse for seed 303.
-The filtered energy mean is `0.374330 ± 0.205511` for FM and
-`0.481031 ± 0.160946` for AM. Seed 303 removes one extreme sample from both FM
-and AM under the declared `max pair distance < 10 nm` filter.
+### Best available mixed case: 500 K -> 400 K, seed 2
 
-The appropriate conclusion is consistent small geometric improvement but
-unstable energy performance. See
-[`results/lj13/aggregate.json`](results/lj13/aggregate.json).
+| Metric | FM | AM | Direction |
+|---|---:|---:|---|
+| Energy W2, kJ/mol | 4.69713e8 | 1359.06 | Improves; tail dominated |
+| Minimum-pair W2, nm | 0.00169310 | 0.00147757 | Improves |
+| Pair-distance W2, nm | 0.000854543 | 0.001100629 | Worsens |
+| Phi W2, rad | 0.142898 | 0.109137 | Improves |
+| Psi W2, rad | 0.140834 | 0.252668 | Worsens |
+| Ramachandran JS | 0.0806832 | 0.0784371 | Slightly improves |
 
-## Experimental failed case: Ala2
+### Negative/mixed diagnostic: 900 K -> 800 K
 
-Ala2 is intentionally excluded from the successful aggregate. Its legacy
-fixed-sample energy W2 values use **1,000 samples**, despite the historical
-field name `ew2_2k`.
+| Metric | FM | AM | Direction |
+|---|---:|---:|---|
+| Energy W2, kJ/mol | 925.349 | 439.490 | Improves |
+| Minimum-pair W2, nm | 0.00267833 | 0.00224099 | Improves |
+| Pair-distance W2, nm | 0.00134370 | 0.00156465 | Worsens |
+| Phi W2, rad | 0.153965 | 0.168174 | Worsens |
+| Psi W2, rad | 0.0620231 | 0.176903 | Worsens |
 
-| Attempt | Transfer | Rama JS FM→AM | Energy W2 FM→AM | Energy q99 FM→AM | Reference q99 | Interpretation |
-| --- | --- | ---: | ---: | ---: | ---: | --- |
-| grid35_t400 | 500 K→400 K | 0.02822→0.02512 | 53.43→29.71 | 161.42→114.17 | 3.44 | Some central metrics improve; ψ W2 and the energy tail remain problematic. |
-| grid3579_t400 | 500 K→400 K | 0.08436→0.07996 | 36.60→30.35 | 128.83→45.83 | 3.54 | Balanced central improvement, but the energy tail remains far too heavy. |
-| grid3579_t600 | 700 K→600 K | 0.09902→0.09900 | 41.10→46.16 | 257.59→202.04 | 74.29 | Structural result is effectively null and energy W2 worsens. |
-| grid3579_125k_t800 | 900 K→800 K | 0.11047→0.11050 | 22850.72→66.79 | 515.62→372.60 | 146.49 | Large energy/torsion correction, but no Rama JS improvement and a heavy tail remains. |
+The supported conclusion is mixed single-seed evidence. Energy and local
+contact diagnostics can improve while structural observables worsen.
 
-The frozen conclusion is:
+## Retained DW1D/DW2D legacy evidence
 
-> The released Ala2 experiments do not demonstrate a successful AM transfer.
-> Some individual energy or torsion metrics improve, but no attempt resolves
-> the high-energy tail while consistently improving the structural
-> distribution.
+| System | Energy W2 FM -> AM | Geometric W2 FM -> AM |
+|---|---:|---:|
+| DW1D | 0.604278 -> 0.184344 | 0.246554 -> 0.078003 |
+| DW2D | 1.940773 -> 0.151375 | 0.715530 -> 0.156857 |
 
-Representative path-sanitized values are in
-[`results/public/ala2/representative_attempts.json`](results/public/ala2/representative_attempts.json).
-The full historical inventory remains an archival diagnostic record and must
-not be used for best-run selection without accounting for exploration bias.
+DW1D anchor arrays contain only 16 samples and have incomplete generation
+provenance. DW2D also has incomplete generation provenance. These rows are
+retained as hash-bound legacy evidence, not newly corrected multi-seed
+benchmarks.
 
-## Release boundary
+## Superseded v0.1 results
 
-The v0.1.0 claims are therefore:
-
-- **Positive:** DW1D, DW2D, and the three-run DW4 result.
-- **Mixed:** MB2D and LJ13.
-- **Experimental failed case:** Ala2.
-
-No result from an exploratory best-checkpoint scan is included in the formal
-aggregate, and no clipped, filtered, or selected result is silently presented
-as an unfiltered multi-seed benchmark.
+The original MB2D, DW4, and LJ13 values were computed against rejected
+finite-time ULA/biased references. They are preserved only at the immutable
+[`v0.1.0`](https://github.com/korarako/TAM/tree/v0.1.0) tag and must not be
+quoted as corrected equilibrium results.

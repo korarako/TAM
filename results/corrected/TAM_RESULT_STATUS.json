@@ -1,0 +1,175 @@
+{
+  "schema": "tam.corrected_result_freeze.v1",
+  "freeze_date": "2026-07-26",
+  "publication_identity": {
+    "repository": "https://github.com/korarako/TAM.git",
+    "branch": "main",
+    "tag": "v0.1.0",
+    "commit": "57f6a2c17c00276e5604ecad2933c4a7c06683ac",
+    "meaning": "source identity only; not certification of legacy result validity"
+  },
+  "checkpoint_policy": {
+    "included": false,
+    "forbidden_extensions": [
+      ".pkl",
+      ".ckpt",
+      ".pt",
+      ".pth",
+      ".safetensors"
+    ]
+  },
+  "systems": {
+    "mb2d_reference_v2": {
+      "status": "validated_corrected_single_seed_pilot",
+      "reference": "analytic_float64_midpoint_quadrature_1024x1024",
+      "independent_train_eval_samples_per_beta": 100000,
+      "seed": 0,
+      "target_beta": 1.2,
+      "energy_w2_20k": {
+        "fm": 0.549178,
+        "am": 0.065675,
+        "reference_floor_mean": 0.028405,
+        "reference_floor_sd": 0.003355
+      },
+      "analytic_grid_js": {
+        "fm": 0.190643,
+        "am": 0.008814
+      },
+      "claim_limit": "not an end-to-end multi-seed result"
+    },
+    "dw4_reference_v2": {
+      "status": "validated_corrected_am_seed_aggregate",
+      "reference": "intrinsic_6d_smc_mala_independent_train_eval",
+      "independent_train_eval_samples_per_beta": 100000,
+      "shared_fm_seed": 0,
+      "am_seeds": [
+        1,
+        2,
+        3
+      ],
+      "target_beta": 1.0,
+      "energy_w2_20k": {
+        "fm": 0.748119,
+        "am_mean": 0.359301,
+        "am_sample_sd": 0.000981,
+        "wins": "3/3"
+      },
+      "pair_distance_w2_20k": {
+        "fm": 0.055866,
+        "am_mean": 0.035973,
+        "am_sample_sd": 0.000096,
+        "wins": "3/3"
+      },
+      "geometric_w2_2k": {
+        "fm": 0.155135,
+        "am_mean": 0.137861,
+        "am_sample_sd": 0.000054,
+        "wins": "3/3"
+      },
+      "claim_limit": "AM-stage robustness conditional on one shared FM seed"
+    },
+    "dw1d": {
+      "status": "accepted_hash_bound_legacy",
+      "energy_w2": {
+        "fm": 0.604278,
+        "am": 0.184344
+      },
+      "geometric_w2": {
+        "fm": 0.246554,
+        "am": 0.078003
+      },
+      "claim_limit": "anchor arrays contain only 16 samples and generation provenance is incomplete"
+    },
+    "dw2d": {
+      "status": "accepted_hash_bound_legacy",
+      "energy_w2": {
+        "fm": 1.940773,
+        "am": 0.151375
+      },
+      "geometric_w2": {
+        "fm": 0.71553,
+        "am": 0.156857
+      },
+      "claim_limit": "legacy generation provenance is incomplete"
+    },
+    "ala2": {
+      "status": "single_seed_mixed_partial_and_negative_diagnostics",
+      "canonical_protocol": "same canonical MD array and same fixed 10000 indices for MD/FM/AM; no filtering; double-precision OpenMM energy",
+      "best_available_500K_to_400K_seed2": {
+        "registered_rows_per_series": 100000,
+        "canonical_rows_per_series": 10000,
+        "energy_w2_kj_mol": {
+          "fm": 469713387.1371555,
+          "am": 1359.061945587941
+        },
+        "pair_distance_w2_nm": {
+          "fm": 0.0008545433453827784,
+          "am": 0.0011006289896489786
+        },
+        "phi_w2_rad": {
+          "fm": 0.1428981504957096,
+          "am": 0.10913737226689349
+        },
+        "psi_w2_rad": {
+          "fm": 0.14083436631596316,
+          "am": 0.2526683831181746
+        },
+        "ramachandran_js": {
+          "fm": 0.08068323456466403,
+          "am": 0.07843708675080938
+        }
+      },
+      "claim_limit": "single-seed mixed/partial correction only; the energy metric is tail dominated, pair-distance and psi worsen, and no symmetry-aware geometric W2 is reported"
+    },
+    "lj13": {
+      "status": "validated_corrected_conditional_negative_result",
+      "target": "BMS Eq. 234 with epsilon=r_m=tau=c_osc=1",
+      "intrinsic_com_free_dimension": 36,
+      "method": "replica_exchange_hmc_with_metropolis_corrected_trajectories_and_swaps",
+      "target_betas": [
+        0.8,
+        1.0,
+        1.2
+      ],
+      "independent_ensembles": 4,
+      "independent_train_eval_samples_per_beta": 100000,
+      "train_audit": "pass",
+      "eval_audit": "pass",
+      "cross_split_audit": "pass",
+      "production_divergences": {
+        "train": 0,
+        "eval": 0
+      },
+      "maximum_cross_split_absolute_z": 1.214682332931743,
+      "reference_manifest_sha256": "5487261ba70d2e4c3c10189432dfa31a67c6f32ba3575fe3ec1c388a7039fdb1",
+      "canonical_score_protocol": "adtm.lj13_reference_v2.score2k.v1; Energy/Pair/Rg/MinPair/Geo use the same 2000 rows without filtering",
+      "shared_fm_seed": 0,
+      "am_seeds": [
+        1,
+        2,
+        3
+      ],
+      "primary_metrics": {
+        "energy_w2_2k": {
+          "fm": 1.343121,
+          "am_mean": 1.508057,
+          "am_sample_sd": 0.115961,
+          "am_wins": "0/3"
+        },
+        "geometric_w2_2k": {
+          "fm": 3.005161,
+          "am_mean": 3.013798,
+          "am_sample_sd": 0.003287,
+          "am_wins": "0/3"
+        }
+      },
+      "auxiliary_minimum_pair_w2_2k": {
+        "fm": 0.012508,
+        "am_mean": 0.01045,
+        "am_sample_sd": 0.000576,
+        "am_wins": "3/3"
+      },
+      "claim_limit": "conditional negative result for three AM seeds sharing one FM seed; not three end-to-end seeds and not a general impossibility claim"
+    }
+  }
+}

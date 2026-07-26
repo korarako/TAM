@@ -1,0 +1,102 @@
+{
+  "cross_split_status": "pass",
+  "legacy_reference_used": false,
+  "legacy_unadjusted_langevin_used": false,
+  "method": "replica_exchange_hmc_with_metropolis_corrected_trajectories_and_swaps",
+  "preset": "formal",
+  "runtime": {
+    "jax_backend": "cpu",
+    "jax_devices": [
+      "TFRT_CPU_0"
+    ],
+    "jax_enable_x64": true,
+    "jax_version": "0.7.1"
+  },
+  "schema": "adtm.lj13_reference_v2.bundle.v1",
+  "source_sha256": {
+    "generate_lj13_reference_v2.py": "7cda7b2333cd9bac434525a8d721f71e18426c401066de3ce5cb68b62925946f",
+    "problem/lj13.py": "32d93f91d36964a22cc6f056d2123c706cbc7a5308f13b28df48ea1a4a66291b",
+    "reference/lj13_rehmc.py": "93c2277a8f88e5cd69763a699a8408f0cf6c1c610439203810ab90b98233e8f7"
+  },
+  "splits": {
+    "eval": {
+      "audit_status": "pass",
+      "config": {
+        "adaptation_rate": 0.2,
+        "beta_max": 1.2,
+        "beta_min": 0.15,
+        "block_rounds": 50,
+        "initial_step_size": 0.018,
+        "leapfrog_max": 15,
+        "leapfrog_min": 5,
+        "maximum_step_size": 0.018,
+        "minimum_step_size": 1e-06,
+        "n_ensembles": 4,
+        "n_replicas": 24,
+        "production_rounds": 100000,
+        "seed": 161004,
+        "settle_rounds": 2000,
+        "storage_stride": 4,
+        "target_accept": 0.8,
+        "target_betas": [
+          0.8,
+          1.0,
+          1.2
+        ],
+        "warmup_rounds": 20000
+      },
+      "publishable": true
+    },
+    "train": {
+      "audit_status": "pass",
+      "config": {
+        "adaptation_rate": 0.2,
+        "beta_max": 1.2,
+        "beta_min": 0.15,
+        "block_rounds": 50,
+        "initial_step_size": 0.018,
+        "leapfrog_max": 15,
+        "leapfrog_min": 5,
+        "maximum_step_size": 0.018,
+        "minimum_step_size": 1e-06,
+        "n_ensembles": 4,
+        "n_replicas": 24,
+        "production_rounds": 100000,
+        "seed": 61001,
+        "settle_rounds": 2000,
+        "storage_stride": 4,
+        "target_accept": 0.8,
+        "target_betas": [
+          0.8,
+          1.0,
+          1.2
+        ],
+        "warmup_rounds": 20000
+      },
+      "publishable": true
+    }
+  },
+  "status": "validated_equilibrium_reference",
+  "support": {
+    "absolute_jacobian_determinant_in_intrinsic_coordinates": 1.0,
+    "coordinate_transform": "fixed_orthonormal_Helmert",
+    "helmert_basis_sha256": "0e3d95a9cbbdecc3cd10c02fc1b64fd067d569fa65079eb4e19a3685948fe640",
+    "kind": "com_free"
+  },
+  "target": {
+    "BMS_parameters": {
+      "c_osc": 1.0,
+      "epsilon": 1.0,
+      "r_m": 1.0,
+      "tau": 1.0
+    },
+    "ambient_dimension": 39,
+    "formula": "sum_{i<j}[(1/r_ij)^12 - 2(1/r_ij)^6] + sum_i ||x_i-x_COM||^2",
+    "id": "lj13_bms_eq234_lj1_confinement1_comfree_v1",
+    "intrinsic_com_free_dimension": 36,
+    "minimum_distance_numerical_guard": 1e-06,
+    "n_particles": 13,
+    "runtime_training_guard_note": "problem/lj13.py currently uses a 0.1 safety clamp; the formal reference uses only a 1e-6 numerical guard and audits that no stored sample approaches either guard",
+    "spatial_dim": 3
+  }
+}

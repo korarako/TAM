@@ -1,0 +1,86 @@
+{
+  "data_name": "dw4_reference_v2/train",
+  "energy_w2_samples": 20000,
+  "eval_betas": [
+    1.0
+  ],
+  "geometric_w2_samples": 2000,
+  "per_beta": {
+    "1.00": {
+      "am": {
+        "ew2": 0.3767497721411705,
+        "ew2_n": 0.35819887278152335,
+        "geometric_w2": 0.13781275045434963,
+        "pairwise_distance_w2": 0.03524771913348834,
+        "sample_path": "${ADTM_ROOT}/outputs/dw4/dw4_reference_v2_egnn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/am_beta_sweep/am_samples_beta_1.00.npy",
+        "sample_rows": 100000,
+        "status": "ok"
+      },
+      "beta": 1.0,
+      "fm": {
+        "ew2": 0.7687512015295066,
+        "ew2_n": 0.7481188689592072,
+        "geometric_w2": 0.15513495314985598,
+        "pairwise_distance_w2": 0.055754910494150565,
+        "sample_path": "${ADTM_ROOT}/outputs/dw4/dw4_reference_v2_egnn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/fm_beta_sweep/fm_samples_beta_1.00.npy",
+        "sample_rows": 100000,
+        "status": "ok"
+      },
+      "reference_baseline": {
+        "ew2_n_mean": 0.12238531105195376,
+        "ew2_n_std": 0.04308131976021958,
+        "geometric_w2_mean": 0.13172963255960296,
+        "geometric_w2_std": 0.0058447640964884385,
+        "n_samples": 2000,
+        "pairwise_distance_w2_mean": 0.012790916957467277,
+        "repeats": 5,
+        "runs": [
+          {
+            "ew2_n": 0.08877103402718817,
+            "geometric_w2": 0.1300190413639126,
+            "n_samples": 2000,
+            "pairwise_distance_w2": 0.008852955952504231,
+            "repeat": 0
+          },
+          {
+            "ew2_n": 0.1031213365921794,
+            "geometric_w2": 0.1327483188407831,
+            "n_samples": 2000,
+            "pairwise_distance_w2": 0.012455470892489367,
+            "repeat": 1
+          },
+          {
+            "ew2_n": 0.07549684975287638,
+            "geometric_w2": 0.140815032677947,
+            "n_samples": 2000,
+            "pairwise_distance_w2": 0.01924111578640817,
+            "repeat": 2
+          },
+          {
+            "ew2_n": 0.15489406044522241,
+            "geometric_w2": 0.1324862987583374,
+            "n_samples": 2000,
+            "pairwise_distance_w2": 0.011039876333746442,
+            "repeat": 3
+          },
+          {
+            "ew2_n": 0.18964327444230245,
+            "geometric_w2": 0.12257947115703469,
+            "n_samples": 2000,
+            "pairwise_distance_w2": 0.01236516582218817,
+            "repeat": 4
+          }
+        ]
+      },
+      "reference_rows": 100000,
+      "reference_source": "${ADTM_ROOT}/data/dw4_reference_v2/eval/samples_beta_1.00.npy"
+    }
+  },
+  "problem": "dw4",
+  "reference_data_name": "dw4_reference_v2/eval",
+  "run_dir": "${ADTM_ROOT}/outputs/dw4/dw4_reference_v2_egnn128x5_anchor_0p8_1p2_target_1p0_seed2_run1",
+  "score_kinds": [
+    "fm",
+    "am"
+  ]
+}

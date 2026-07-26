@@ -1,0 +1,754 @@
+{
+  "cases": {
+    "best_mixed": {
+      "case_id": "best_mixed",
+      "energy": {
+        "axis_kj_mol": [
+          -90.03659706115722,
+          102.40157142639144
+        ],
+        "binding": {
+          "case_id": "best_mixed",
+          "plot_script_sha256": "c3e4701324b4a544552ed320a0a407aeae0ffea4b82e8749168b1c72b81af90f",
+          "potential": {
+            "ala2_problem_source": {
+              "bytes": 5398,
+              "path": "${ADTM_ROOT}/src/adj_thermo/problem/ala2.py",
+              "sha256": "06ed0ad7eeb4d37690cccaf12e9d33cf17d08f65901c3faa2f6aa5fe1dcc3c9f"
+            },
+            "center_before_evaluation": true,
+            "constraints": null,
+            "coordinates_unit": "nm",
+            "energy_unit": "kJ/mol",
+            "forcefield": "amber99sbildn.xml",
+            "forcefield_water": "implicit/obc1.xml",
+            "gradient_clip": null,
+            "nonbonded_method": "NoCutoff",
+            "openmm_bridge": {
+              "bytes": 7616,
+              "path": "${ADTM_ROOT}/src/adj_thermo/openmm_ala2.py",
+              "sha256": "fa9377f88cb12ec605fd4241cb77e0f89d0d2689a68a7bbc22b5311cc8a10c0c"
+            },
+            "openmm_device": "cpu",
+            "openmm_installation": {
+              "native_extension": {
+                "bytes": 3357216,
+                "path": "${CONDA_ROOT}/envs/ab/lib/python3.11/site-packages/openmm/_openmm.cpython-311-x86_64-linux-gnu.so",
+                "sha256": "33b81eb725b41d94dbec0f3e24d7d1bdc882b7cb3ba6d65168e7a160dd4cdc22"
+              },
+              "python_package": {
+                "bytes": 1569,
+                "path": "${CONDA_ROOT}/envs/ab/lib/python3.11/site-packages/openmm/__init__.py",
+                "sha256": "b0ecdd72b160c71f057adc68bb29eba66b653f3615ac6d4cffa0ef5ef3a32f7a"
+              },
+              "version": "8.2.0"
+            },
+            "openmm_precision": "double",
+            "pdb": {
+              "bytes": 2123,
+              "path": "${AMBOLTZ_ROOT}/data/ala2/structure_vac.pdb",
+              "sha256": "285b9bb0307b3e0fbf806d9d4cab5bc1bfdbf0157b5ec9e7a1d191a8334204bb"
+            },
+            "remove_cmmotion": false,
+            "system_name": "amber99sbildn_obc1_xml"
+          },
+          "schema": "adtm.ala2.openmm_energy_cache.v1",
+          "selection": {
+            "count": 10000,
+            "first": 0,
+            "indices_sha256": "7beadd4b3018c6bdce20c4e0497d6d2f769026bd695cdf4ebb2030e38e9d2fb6",
+            "last": 99999,
+            "no_content_filtering": true,
+            "policy": "same deterministic evenly-spaced index positions; all positions when N=10000"
+          },
+          "sources": {
+            "am": {
+              "dtype": "float32",
+              "indices_sha256": "7beadd4b3018c6bdce20c4e0497d6d2f769026bd695cdf4ebb2030e38e9d2fb6",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid35_am_500K_to_400K_1k_lr1e-6_const_bs16_K40_loss20_keep10_eg0p35_seed2_adam095_wd0p01_gc0_fixedsigma/am_beta_sweep/am_samples_beta_0.30.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "06f8fe67b584ac06b02e55075e5f0dd27a5ae57594da30797ef64bdee0f61674",
+              "shape": [
+                100000,
+                66
+              ]
+            },
+            "fm": {
+              "dtype": "float32",
+              "indices_sha256": "7beadd4b3018c6bdce20c4e0497d6d2f769026bd695cdf4ebb2030e38e9d2fb6",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid35_am_500K_to_400K_1k_lr1e-6_const_bs16_K40_loss20_keep10_eg0p35_seed2_adam095_wd0p01_gc0_fixedsigma/fm_beta_sweep/fm_samples_beta_0.30.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "80bc863d7db83d0c728087da35581d841c9a2fa2fd2e7dc4996588fedf2dfc67",
+              "shape": [
+                100000,
+                66
+              ]
+            },
+            "md": {
+              "dtype": "float32",
+              "indices_sha256": "7beadd4b3018c6bdce20c4e0497d6d2f769026bd695cdf4ebb2030e38e9d2fb6",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid35_am_500K_to_400K_1k_lr1e-6_const_bs16_K40_loss20_keep10_eg0p35_seed2_adam095_wd0p01_gc0_fixedsigma/am_beta_sweep/md_samples_beta_0.30.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "38fd0cbe173f4ce344ed282ed041a1b218a05b648048084e93b5395c1974d345",
+              "shape": [
+                100000,
+                66
+              ]
+            }
+          }
+        },
+        "cache": "${ADTM_ROOT}/outputs/ala2/ala2_adtm_extended_fair10k_eval_20260726/derived/best_mixed_openmm_energy_10k.npz",
+        "cache_reused": false,
+        "cache_sha256": "9081ce9a7331059bb92ae4b0d8bb01c55ac5930b34c41f1a68e166a50cd89996",
+        "robust_quantiles": [
+          0.01,
+          0.99
+        ],
+        "runtime": {
+          "device": "cpu",
+          "openmm_runtime_version": "8.2.0",
+          "precision": "double"
+        },
+        "tail_mass": {
+          "am": {
+            "above_axis_fraction": 0.0111,
+            "below_axis_fraction": 0.0191,
+            "outside_axis_fraction": 0.030199999999999998,
+            "shown_fraction": 0.9698
+          },
+          "fm": {
+            "above_axis_fraction": 0.0189,
+            "below_axis_fraction": 0.0095,
+            "outside_axis_fraction": 0.0284,
+            "shown_fraction": 0.9716
+          },
+          "md": {
+            "above_axis_fraction": 0.0,
+            "below_axis_fraction": 0.0014,
+            "outside_axis_fraction": 0.0014,
+            "shown_fraction": 0.9986
+          }
+        }
+      },
+      "figures": [
+        {
+          "files": [
+            "figures/best_mixed/best_mixed_400k_rama_fes_md.png",
+            "figures/best_mixed/best_mixed_400k_rama_fes_md.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "md"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "best_mixed_400k_rama_fes_md"
+        },
+        {
+          "files": [
+            "figures/best_mixed/best_mixed_400k_rama_fes_fm.png",
+            "figures/best_mixed/best_mixed_400k_rama_fes_fm.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "fm"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "best_mixed_400k_rama_fes_fm"
+        },
+        {
+          "files": [
+            "figures/best_mixed/best_mixed_400k_rama_fes_am.png",
+            "figures/best_mixed/best_mixed_400k_rama_fes_am.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "am"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "best_mixed_400k_rama_fes_am"
+        },
+        {
+          "files": [
+            "figures/best_mixed/best_mixed_400k_phi_marginal.png",
+            "figures/best_mixed/best_mixed_400k_phi_marginal.pdf"
+          ],
+          "kind": "phi_marginal",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "best_mixed_400k_phi_marginal"
+        },
+        {
+          "files": [
+            "figures/best_mixed/best_mixed_400k_psi_marginal.png",
+            "figures/best_mixed/best_mixed_400k_psi_marginal.pdf"
+          ],
+          "kind": "psi_marginal",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "best_mixed_400k_psi_marginal"
+        },
+        {
+          "axis_kj_mol": [
+            -90.03659706115722,
+            102.40157142639144
+          ],
+          "files": [
+            "figures/best_mixed/best_mixed_400k_energy_robust.png",
+            "figures/best_mixed/best_mixed_400k_energy_robust.pdf"
+          ],
+          "kind": "robust_energy_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "best_mixed_400k_energy_robust",
+          "tail_mass": {
+            "am": {
+              "above_axis_fraction": 0.0111,
+              "below_axis_fraction": 0.0191,
+              "outside_axis_fraction": 0.030199999999999998,
+              "shown_fraction": 0.9698
+            },
+            "fm": {
+              "above_axis_fraction": 0.0189,
+              "below_axis_fraction": 0.0095,
+              "outside_axis_fraction": 0.0284,
+              "shown_fraction": 0.9716
+            },
+            "md": {
+              "above_axis_fraction": 0.0,
+              "below_axis_fraction": 0.0014,
+              "outside_axis_fraction": 0.0014,
+              "shown_fraction": 0.9986
+            }
+          }
+        },
+        {
+          "axis_nm": [
+            0.0,
+            0.10565276962518694
+          ],
+          "files": [
+            "figures/best_mixed/best_mixed_400k_min_pair_distance.png",
+            "figures/best_mixed/best_mixed_400k_min_pair_distance.pdf"
+          ],
+          "kind": "minimum_pair_distance_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "best_mixed_400k_min_pair_distance"
+        },
+        {
+          "atom_indices_data_order": {
+            "C": 8,
+            "CA": 7,
+            "CB": 12,
+            "N": 6
+          },
+          "axis": [
+            -1.0,
+            1.0
+          ],
+          "files": [
+            "figures/best_mixed/best_mixed_400k_chirality.png",
+            "figures/best_mixed/best_mixed_400k_chirality.pdf"
+          ],
+          "kind": "chirality_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "best_mixed_400k_chirality"
+        }
+      ],
+      "selection": {
+        "first": 0,
+        "indices_sha256": "7beadd4b3018c6bdce20c4e0497d6d2f769026bd695cdf4ebb2030e38e9d2fb6",
+        "last": 99999,
+        "no_content_filtering": true,
+        "policy": "same deterministic evenly-spaced index positions; all positions when N=10000",
+        "same_positions_for_md_fm_am": true,
+        "selected_rows": 10000,
+        "source_rows": 100000
+      }
+    },
+    "failure": {
+      "case_id": "failure",
+      "energy": {
+        "axis_kj_mol": [
+          -40.02040184020996,
+          413.750579833984
+        ],
+        "binding": {
+          "case_id": "failure",
+          "plot_script_sha256": "c3e4701324b4a544552ed320a0a407aeae0ffea4b82e8749168b1c72b81af90f",
+          "potential": {
+            "ala2_problem_source": {
+              "bytes": 5398,
+              "path": "${ADTM_ROOT}/src/adj_thermo/problem/ala2.py",
+              "sha256": "06ed0ad7eeb4d37690cccaf12e9d33cf17d08f65901c3faa2f6aa5fe1dcc3c9f"
+            },
+            "center_before_evaluation": true,
+            "constraints": null,
+            "coordinates_unit": "nm",
+            "energy_unit": "kJ/mol",
+            "forcefield": "amber99sbildn.xml",
+            "forcefield_water": "implicit/obc1.xml",
+            "gradient_clip": null,
+            "nonbonded_method": "NoCutoff",
+            "openmm_bridge": {
+              "bytes": 7616,
+              "path": "${ADTM_ROOT}/src/adj_thermo/openmm_ala2.py",
+              "sha256": "fa9377f88cb12ec605fd4241cb77e0f89d0d2689a68a7bbc22b5311cc8a10c0c"
+            },
+            "openmm_device": "cpu",
+            "openmm_installation": {
+              "native_extension": {
+                "bytes": 3357216,
+                "path": "${CONDA_ROOT}/envs/ab/lib/python3.11/site-packages/openmm/_openmm.cpython-311-x86_64-linux-gnu.so",
+                "sha256": "33b81eb725b41d94dbec0f3e24d7d1bdc882b7cb3ba6d65168e7a160dd4cdc22"
+              },
+              "python_package": {
+                "bytes": 1569,
+                "path": "${CONDA_ROOT}/envs/ab/lib/python3.11/site-packages/openmm/__init__.py",
+                "sha256": "b0ecdd72b160c71f057adc68bb29eba66b653f3615ac6d4cffa0ef5ef3a32f7a"
+              },
+              "version": "8.2.0"
+            },
+            "openmm_precision": "double",
+            "pdb": {
+              "bytes": 2123,
+              "path": "${AMBOLTZ_ROOT}/data/ala2/structure_vac.pdb",
+              "sha256": "285b9bb0307b3e0fbf806d9d4cab5bc1bfdbf0157b5ec9e7a1d191a8334204bb"
+            },
+            "remove_cmmotion": false,
+            "system_name": "amber99sbildn_obc1_xml"
+          },
+          "schema": "adtm.ala2.openmm_energy_cache.v1",
+          "selection": {
+            "count": 10000,
+            "first": 0,
+            "indices_sha256": "9e1c19b3fdc185411bd1a987deb6a9fda2531116aac060a84c4d878854d1c099",
+            "last": 9999,
+            "no_content_filtering": true,
+            "policy": "same deterministic evenly-spaced index positions; all positions when N=10000"
+          },
+          "sources": {
+            "am": {
+              "dtype": "float32",
+              "indices_sha256": "9e1c19b3fdc185411bd1a987deb6a9fda2531116aac060a84c4d878854d1c099",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid3579_am_900K_to_800K_1k_lr5e-7_bs16_K40_loss20_keep10_eg1_adam095_wd0p01_gc0_fixedsigma/am_beta_sweep/am_samples_beta_0.15.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "355c1f22135a5190f0237ee7d64a5d6120907259a626e7629c533874f9b68576",
+              "shape": [
+                10000,
+                66
+              ]
+            },
+            "fm": {
+              "dtype": "float32",
+              "indices_sha256": "9e1c19b3fdc185411bd1a987deb6a9fda2531116aac060a84c4d878854d1c099",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid3579_30k_constlr1e-4/fm_beta_sweep/fm_samples_beta_0.15.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "d5ae5a67c8cae1f06eebfd0325b85eaa0fbf74d16d4621f2fb45cbddfc3e7217",
+              "shape": [
+                10000,
+                66
+              ]
+            },
+            "md": {
+              "dtype": "float32",
+              "indices_sha256": "9e1c19b3fdc185411bd1a987deb6a9fda2531116aac060a84c4d878854d1c099",
+              "path": "${ADTM_ROOT}/outputs/ala2/pasttry/ala2_chiro_painn_jax_grid3579_am_900K_to_800K_1k_lr5e-7_bs16_K40_loss20_keep10_eg1_adam095_wd0p01_gc0_fixedsigma/am_beta_sweep/md_samples_beta_0.15.npy",
+              "selected_shape": [
+                10000,
+                66
+              ],
+              "sha256": "36ef14729898b169212360e2b4caac10ba9e5b1180f49da4a095b81327862e24",
+              "shape": [
+                10000,
+                66
+              ]
+            }
+          }
+        },
+        "cache": "${ADTM_ROOT}/outputs/ala2/ala2_adtm_extended_fair10k_eval_20260726/derived/failure_openmm_energy_10k.npz",
+        "cache_reused": false,
+        "cache_sha256": "72eb9a9d0201f568136c0fb82649cf5e7cc044f69b1e348d799130a5109c1561",
+        "robust_quantiles": [
+          0.01,
+          0.99
+        ],
+        "runtime": {
+          "device": "cpu",
+          "openmm_runtime_version": "8.2.0",
+          "precision": "double"
+        },
+        "tail_mass": {
+          "am": {
+            "above_axis_fraction": 0.0125,
+            "below_axis_fraction": 0.0238,
+            "outside_axis_fraction": 0.0363,
+            "shown_fraction": 0.9637
+          },
+          "fm": {
+            "above_axis_fraction": 0.0175,
+            "below_axis_fraction": 0.0054,
+            "outside_axis_fraction": 0.022900000000000004,
+            "shown_fraction": 0.9771
+          },
+          "md": {
+            "above_axis_fraction": 0.0,
+            "below_axis_fraction": 0.0008,
+            "outside_axis_fraction": 0.0008,
+            "shown_fraction": 0.9992
+          }
+        }
+      },
+      "figures": [
+        {
+          "files": [
+            "figures/failure/failure_800k_rama_fes_md.png",
+            "figures/failure/failure_800k_rama_fes_md.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "md"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "failure_800k_rama_fes_md"
+        },
+        {
+          "files": [
+            "figures/failure/failure_800k_rama_fes_fm.png",
+            "figures/failure/failure_800k_rama_fes_fm.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "fm"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "failure_800k_rama_fes_fm"
+        },
+        {
+          "files": [
+            "figures/failure/failure_800k_rama_fes_am.png",
+            "figures/failure/failure_800k_rama_fes_am.pdf"
+          ],
+          "kind": "ramachandran_fes",
+          "series": [
+            "am"
+          ],
+          "shared_scale_kbt": [
+            0.0,
+            8.0
+          ],
+          "stem": "failure_800k_rama_fes_am"
+        },
+        {
+          "files": [
+            "figures/failure/failure_800k_phi_marginal.png",
+            "figures/failure/failure_800k_phi_marginal.pdf"
+          ],
+          "kind": "phi_marginal",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "failure_800k_phi_marginal"
+        },
+        {
+          "files": [
+            "figures/failure/failure_800k_psi_marginal.png",
+            "figures/failure/failure_800k_psi_marginal.pdf"
+          ],
+          "kind": "psi_marginal",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "failure_800k_psi_marginal"
+        },
+        {
+          "axis_kj_mol": [
+            -40.02040184020996,
+            413.750579833984
+          ],
+          "files": [
+            "figures/failure/failure_800k_energy_robust.png",
+            "figures/failure/failure_800k_energy_robust.pdf"
+          ],
+          "kind": "robust_energy_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "failure_800k_energy_robust",
+          "tail_mass": {
+            "am": {
+              "above_axis_fraction": 0.0125,
+              "below_axis_fraction": 0.0238,
+              "outside_axis_fraction": 0.0363,
+              "shown_fraction": 0.9637
+            },
+            "fm": {
+              "above_axis_fraction": 0.0175,
+              "below_axis_fraction": 0.0054,
+              "outside_axis_fraction": 0.022900000000000004,
+              "shown_fraction": 0.9771
+            },
+            "md": {
+              "above_axis_fraction": 0.0,
+              "below_axis_fraction": 0.0008,
+              "outside_axis_fraction": 0.0008,
+              "shown_fraction": 0.9992
+            }
+          }
+        },
+        {
+          "axis_nm": [
+            0.0,
+            0.10637285633012661
+          ],
+          "files": [
+            "figures/failure/failure_800k_min_pair_distance.png",
+            "figures/failure/failure_800k_min_pair_distance.pdf"
+          ],
+          "kind": "minimum_pair_distance_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "failure_800k_min_pair_distance"
+        },
+        {
+          "atom_indices_data_order": {
+            "C": 8,
+            "CA": 7,
+            "CB": 12,
+            "N": 6
+          },
+          "axis": [
+            -1.0,
+            1.0
+          ],
+          "files": [
+            "figures/failure/failure_800k_chirality.png",
+            "figures/failure/failure_800k_chirality.pdf"
+          ],
+          "kind": "chirality_distribution",
+          "series": [
+            "md",
+            "fm",
+            "am"
+          ],
+          "stem": "failure_800k_chirality"
+        }
+      ],
+      "selection": {
+        "first": 0,
+        "indices_sha256": "9e1c19b3fdc185411bd1a987deb6a9fda2531116aac060a84c4d878854d1c099",
+        "last": 9999,
+        "no_content_filtering": true,
+        "policy": "same deterministic evenly-spaced index positions; all positions when N=10000",
+        "same_positions_for_md_fm_am": true,
+        "selected_rows": 10000,
+        "source_rows": 10000
+      }
+    }
+  },
+  "colors": {
+    "am": "#4776CC",
+    "fm": "#F2A270",
+    "md": "#8FD18A"
+  },
+  "fm_baseline_200k": {
+    "figures": [
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_300k_rama_fes_md.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_300k_rama_fes_md.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "md"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_300k_rama_fes_md"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_300k_rama_fes_fm.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_300k_rama_fes_fm.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "fm"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_300k_rama_fes_fm"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_500k_rama_fes_md.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_500k_rama_fes_md.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "md"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_500k_rama_fes_md"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_500k_rama_fes_fm.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_500k_rama_fes_fm.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "fm"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_500k_rama_fes_fm"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_700k_rama_fes_md.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_700k_rama_fes_md.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "md"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_700k_rama_fes_md"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_700k_rama_fes_fm.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_700k_rama_fes_fm.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "fm"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_700k_rama_fes_fm"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_900k_rama_fes_md.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_900k_rama_fes_md.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "md"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_900k_rama_fes_md"
+      },
+      {
+        "files": [
+          "figures/fm_baseline_200k/fm_baseline_200k_900k_rama_fes_fm.png",
+          "figures/fm_baseline_200k/fm_baseline_200k_900k_rama_fes_fm.pdf"
+        ],
+        "kind": "ramachandran_fes",
+        "sample_count": 200000,
+        "series": [
+          "fm"
+        ],
+        "shared_scale_kbt": [
+          0.0,
+          8.0
+        ],
+        "stem": "fm_baseline_200k_900k_rama_fes_fm"
+      }
+    ],
+    "protocol": {
+      "fes_display_kbt": [
+        0.0,
+        8.0
+      ],
+      "fes_floor": 1e-12,
+      "rama_bins": 80,
+      "selection": "all 200000 rows for every MD/FM temperature pair"
+    }
+  },
+  "output_root": "${ADTM_ROOT}/outputs/ala2/ala2_adtm_extended_fair10k_eval_20260726",
+  "schema": "adtm.ala2.extended_freeze.v1",
+  "script_sha256": "c3e4701324b4a544552ed320a0a407aeae0ffea4b82e8749168b1c72b81af90f",
+  "script_version": "1.0.0"
+}

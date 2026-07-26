@@ -1,0 +1,1138 @@
+{
+  "figures": {
+    "energy_distribution": {
+      "bins": 110,
+      "display_quantiles": [
+        0.0005,
+        0.9995
+      ],
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_energy_distribution.pdf",
+          "sha256": "9eb931ef34b4facb9fee2f76680156e014acf6073d647944f2f9c28578d8740d"
+        },
+        "png": {
+          "path": "lj13_beta1p00_energy_distribution.png",
+          "sha256": "9fc5d85e0cbe2a48aa45d10fd5df1d83cd67ca4c5be67cb261dd97001bf88ca8"
+        }
+      },
+      "normalization": "counts / (full validated sample count * bin width); samples outside the robust display window are not deleted and tails are not renormalized",
+      "tails": {
+        "Adjoint Matching seed1": {
+          "above": 29,
+          "above_fraction": 0.00029,
+          "below": 6,
+          "below_fraction": 6e-05,
+          "full_max": 16805891994.420742,
+          "full_min": -17.30814243092249,
+          "inside_fraction": 0.99965,
+          "n": 100000
+        },
+        "Adjoint Matching seed2": {
+          "above": 32,
+          "above_fraction": 0.00032,
+          "below": 6,
+          "below_fraction": 6e-05,
+          "full_max": 12107910956.26984,
+          "full_min": -17.30818928729797,
+          "inside_fraction": 0.99962,
+          "n": 100000
+        },
+        "Adjoint Matching seed3": {
+          "above": 28,
+          "above_fraction": 0.00028,
+          "below": 6,
+          "below_fraction": 6e-05,
+          "full_max": 10469877914.239439,
+          "full_min": -17.315621463972576,
+          "inside_fraction": 0.99966,
+          "n": 100000
+        },
+        "Flow Matching": {
+          "above": 44,
+          "above_fraction": 0.00044,
+          "below": 7,
+          "below_fraction": 7e-05,
+          "full_max": 10620153173.70799,
+          "full_min": -16.618833348908925,
+          "inside_fraction": 0.99949,
+          "n": 100000
+        },
+        "MD reference": {
+          "above": 10,
+          "above_fraction": 0.0001,
+          "below": 19,
+          "below_fraction": 0.00019,
+          "full_max": 29.68626340024065,
+          "full_min": -18.480351371224867,
+          "inside_fraction": 0.99971,
+          "n": 100000
+        }
+      },
+      "title": "LJ13 at $\\beta=1.00$: energy distribution",
+      "xlabel": "$U(x)$",
+      "xlim": [
+        -15.40890530108259,
+        26.937514674542374
+      ]
+    },
+    "minimum_pair_distance_distribution": {
+      "bins": 110,
+      "display_quantiles": [
+        0.001,
+        0.999
+      ],
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_minimum_pair_distance_distribution.pdf",
+          "sha256": "30d82a3fe65890c79f669d54e05e435ab2edb6ed4eeac7e947f9887fbcfd2dab"
+        },
+        "png": {
+          "path": "lj13_beta1p00_minimum_pair_distance_distribution.png",
+          "sha256": "2111fdf3b7429036eabc83e515c3ecf0b67847bf143fd07812f2a5cdb961e911"
+        }
+      },
+      "normalization": "counts / (full validated sample count * bin width); samples outside the robust display window are not deleted and tails are not renormalized",
+      "tails": {
+        "Adjoint Matching seed1": {
+          "above": 60,
+          "above_fraction": 0.0006,
+          "below": 44,
+          "below_fraction": 0.00044,
+          "full_max": 9231.377642466492,
+          "full_min": 0.7368856959073653,
+          "inside_fraction": 0.99896,
+          "n": 100000
+        },
+        "Adjoint Matching seed2": {
+          "above": 64,
+          "above_fraction": 0.00064,
+          "below": 42,
+          "below_fraction": 0.00042,
+          "full_max": 7785.459929926209,
+          "full_min": 0.7386918979894501,
+          "inside_fraction": 0.99894,
+          "n": 100000
+        },
+        "Adjoint Matching seed3": {
+          "above": 57,
+          "above_fraction": 0.00057,
+          "below": 45,
+          "below_fraction": 0.00045,
+          "full_max": 10241.968131114856,
+          "full_min": 0.7365225880484669,
+          "inside_fraction": 0.99898,
+          "n": 100000
+        },
+        "Flow Matching": {
+          "above": 80,
+          "above_fraction": 0.0008,
+          "below": 28,
+          "below_fraction": 0.00028,
+          "full_max": 4710.508938389038,
+          "full_min": 0.7679241046158282,
+          "inside_fraction": 0.99892,
+          "n": 100000
+        },
+        "MD reference": {
+          "above": 47,
+          "above_fraction": 0.00047,
+          "below": 53,
+          "below_fraction": 0.00053,
+          "full_max": 1.0603933287608875,
+          "full_min": 0.7778864301476823,
+          "inside_fraction": 0.999,
+          "n": 100000
+        }
+      },
+      "title": "LJ13 at $\\beta=1.00$: minimum pair distance",
+      "xlabel": "Minimum pair distance",
+      "xlim": [
+        0.808088226865648,
+        1.0103477970086778
+      ]
+    },
+    "pair_distance_distribution": {
+      "bins": 110,
+      "display_quantiles": [
+        0.001,
+        0.999
+      ],
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_pair_distance_distribution.pdf",
+          "sha256": "88b2ce86843915580a0ad9604d754c29fdcdca35794d97853908ee221f175e07"
+        },
+        "png": {
+          "path": "lj13_beta1p00_pair_distance_distribution.png",
+          "sha256": "37d8affd27f60d438cc7ce81493ce9e0599f0d96a7200895f86453c89bea6b3b"
+        }
+      },
+      "normalization": "counts / (full validated sample count * bin width); samples outside the robust display window are not deleted and tails are not renormalized",
+      "tails": {
+        "Adjoint Matching seed1": {
+          "above": 5079,
+          "above_fraction": 0.0006511538461538461,
+          "below": 0,
+          "below_fraction": 0.0,
+          "full_max": 115168.19397460978,
+          "full_min": 0.7368856959073653,
+          "inside_fraction": 0.9993488461538461,
+          "n": 7800000
+        },
+        "Adjoint Matching seed2": {
+          "above": 5252,
+          "above_fraction": 0.0006733333333333333,
+          "below": 0,
+          "below_fraction": 0.0,
+          "full_max": 94143.34171944247,
+          "full_min": 0.7386918979894501,
+          "inside_fraction": 0.9993266666666667,
+          "n": 7800000
+        },
+        "Adjoint Matching seed3": {
+          "above": 5014,
+          "above_fraction": 0.0006428205128205128,
+          "below": 0,
+          "below_fraction": 0.0,
+          "full_max": 81803.31006053097,
+          "full_min": 0.7365225880484669,
+          "inside_fraction": 0.9993571794871795,
+          "n": 7800000
+        },
+        "Flow Matching": {
+          "above": 5883,
+          "above_fraction": 0.0007542307692307692,
+          "below": 0,
+          "below_fraction": 0.0,
+          "full_max": 105844.57041122875,
+          "full_min": 0.7679241046158282,
+          "inside_fraction": 0.9992457692307692,
+          "n": 7800000
+        },
+        "MD reference": {
+          "above": 2751,
+          "above_fraction": 0.0003526923076923077,
+          "below": 0,
+          "below_fraction": 0.0,
+          "full_max": 6.0493283946476675,
+          "full_min": 0.7778864301476823,
+          "inside_fraction": 0.9996473076923077,
+          "n": 7800000
+        }
+      },
+      "title": "LJ13 at $\\beta=1.00$: pair distances",
+      "xlabel": "Pair distance",
+      "xlim": [
+        0.7336331961126541,
+        4.200415939428971
+      ]
+    },
+    "primary_metric_seed_summary": {
+      "energy_w2_2k": {
+        "am_by_seed": {
+          "1": 1.481645495118548,
+          "2": 1.634946319030331,
+          "3": 1.407580001605307
+        },
+        "fm": 1.3431212033386088,
+        "reference_floor": {
+          "max": 0.5327867195699904,
+          "mean": 0.39936577688179675,
+          "median": 0.4676837308021808,
+          "min": 0.25627493193823736,
+          "n": 5,
+          "sample_std_ddof1": 0.13047608234073785,
+          "values": [
+            0.2617995351916081,
+            0.25627493193823736,
+            0.5327867195699904,
+            0.47828396690696706,
+            0.4676837308021808
+          ]
+        }
+      },
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_primary_metric_seed_summary.pdf",
+          "sha256": "fa22665fb18a950ee05d1e73686c69ca30e7799e0ee94771a4127feb6f95dbc8"
+        },
+        "png": {
+          "path": "lj13_beta1p00_primary_metric_seed_summary.png",
+          "sha256": "45435165259b2f867aa1ed07fcaa913378d36a5df8fb15512fd0f41ea2293587"
+        }
+      },
+      "geometric_w2_2k": {
+        "am_by_seed": {
+          "1": 3.0127269244664787,
+          "2": 3.0174871819082854,
+          "3": 3.0111795979207994
+        },
+        "fm": 3.0051608723497245,
+        "reference_floor": {
+          "max": 2.984176400891392,
+          "mean": 2.975888618402845,
+          "median": 2.976081821605408,
+          "min": 2.969937439156431,
+          "n": 5,
+          "sample_std_ddof1": 0.005635194428332769,
+          "values": [
+            2.984176400891392,
+            2.9777606327900883,
+            2.9714867975709036,
+            2.969937439156431,
+            2.976081821605408
+          ]
+        }
+      },
+      "reference_floors": {
+        "construction": "independent corrected RE-HMC train split versus eval split; subsets are globally disjoint across all five repeats within each split; every metric in a repeat uses the same 2k subset",
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "geometric_rows_each": 2000,
+        "metrics": {
+          "energy_w2_2k": {
+            "max": 0.5327867195699904,
+            "mean": 0.39936577688179675,
+            "median": 0.4676837308021808,
+            "min": 0.25627493193823736,
+            "n": 5,
+            "sample_std_ddof1": 0.13047608234073785,
+            "values": [
+              0.2617995351916081,
+              0.25627493193823736,
+              0.5327867195699904,
+              0.47828396690696706,
+              0.4676837308021808
+            ]
+          },
+          "geometric_w2_2k": {
+            "max": 2.984176400891392,
+            "mean": 2.975888618402845,
+            "median": 2.976081821605408,
+            "min": 2.969937439156431,
+            "n": 5,
+            "sample_std_ddof1": 0.005635194428332769,
+            "values": [
+              2.984176400891392,
+              2.9777606327900883,
+              2.9714867975709036,
+              2.969937439156431,
+              2.976081821605408
+            ]
+          },
+          "minimum_pair_distance_w2_2k": {
+            "max": 0.0028602663241417943,
+            "mean": 0.002077713640379305,
+            "median": 0.001841922852621022,
+            "min": 0.001676276862444929,
+            "n": 5,
+            "sample_std_ddof1": 0.0005136418681391062,
+            "values": [
+              0.001676276862444929,
+              0.001841922852621022,
+              0.0023333913733562285,
+              0.0016767107893325512,
+              0.0028602663241417943
+            ]
+          },
+          "pair_distance_w2_2k": {
+            "max": 0.011220369737676454,
+            "mean": 0.007312307449365946,
+            "median": 0.0074841737392309995,
+            "min": 0.0030358695061340093,
+            "n": 5,
+            "sample_std_ddof1": 0.003147368365585392,
+            "values": [
+              0.005676492900829139,
+              0.0030358695061340093,
+              0.011220369737676454,
+              0.00914463136295913,
+              0.0074841737392309995
+            ]
+          },
+          "radius_of_gyration_w2_2k": {
+            "max": 0.008248362821962504,
+            "mean": 0.005930452625186601,
+            "median": 0.005719025518381427,
+            "min": 0.003679455596022714,
+            "n": 5,
+            "sample_std_ddof1": 0.002142558831549574,
+            "values": [
+              0.004019354543338864,
+              0.003679455596022714,
+              0.008248362821962504,
+              0.0079860646462275,
+              0.005719025518381427
+            ]
+          }
+        },
+        "repeats": 5,
+        "runs": [
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.2617995351916081,
+            "eval_2k_indices_sha256": "83100d858034d1b4d79cbe225982ca2e0edc6ea338daefa9033041278dce5430",
+            "geometric_metric_seed": 1725564136,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.984176400891392,
+            "minimum_pair_distance_w2_2k": 0.001676276862444929,
+            "pair_distance_w2_2k": 0.005676492900829139,
+            "radius_of_gyration_w2_2k": 0.004019354543338864,
+            "repeat": 0,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "47121b15b8018364226458d4e22ec7a1ed1fe53f3cd129d0e840a01a8bbdfcbd"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.25627493193823736,
+            "eval_2k_indices_sha256": "02c93e2338c1914e0149dfe455401ecde10d80ed59e0febfd4fb52a13d9d4272",
+            "geometric_metric_seed": 338394270,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.9777606327900883,
+            "minimum_pair_distance_w2_2k": 0.001841922852621022,
+            "pair_distance_w2_2k": 0.0030358695061340093,
+            "radius_of_gyration_w2_2k": 0.003679455596022714,
+            "repeat": 1,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "403d338dee2c72f203fbb2826863a820ad6bdfbd4a91eeee52f11d6c55be2c63"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.5327867195699904,
+            "eval_2k_indices_sha256": "c6eb87da79fc324e03ff5482d24bd428d31a76ac53e73e73072fe78e25ad71e0",
+            "geometric_metric_seed": 3134574537,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.9714867975709036,
+            "minimum_pair_distance_w2_2k": 0.0023333913733562285,
+            "pair_distance_w2_2k": 0.011220369737676454,
+            "radius_of_gyration_w2_2k": 0.008248362821962504,
+            "repeat": 2,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "138ae829c336179cf26a329f0cb7f1c722e5a9f524e75a6affeac853326fd08b"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.47828396690696706,
+            "eval_2k_indices_sha256": "8bcdfe041988ac55759a12b18818fdb55318475438bb1ab65e4c1a9ec5f93120",
+            "geometric_metric_seed": 369968229,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.969937439156431,
+            "minimum_pair_distance_w2_2k": 0.0016767107893325512,
+            "pair_distance_w2_2k": 0.00914463136295913,
+            "radius_of_gyration_w2_2k": 0.0079860646462275,
+            "repeat": 3,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "30db1c1fc32e7564ca02e11bfa01728f54b7fd13f05a90fac433c6b635fab78c"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.4676837308021808,
+            "eval_2k_indices_sha256": "75906802417640832bea5f7421f018a721b3eea066c9b048f48d32e76fa3c2b8",
+            "geometric_metric_seed": 2680498043,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.976081821605408,
+            "minimum_pair_distance_w2_2k": 0.0028602663241417943,
+            "pair_distance_w2_2k": 0.0074841737392309995,
+            "radius_of_gyration_w2_2k": 0.005719025518381427,
+            "repeat": 4,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "28bd9b4aca9240453499f21b130d56f8ef3b0698532b6c553f626f289731d483"
+          }
+        ],
+        "selection_seeds": {
+          "eval_2k": 3593326296,
+          "train_2k": 3871377150
+        }
+      },
+      "score_sources": {
+        "am_seed1": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed1_run1/score_lj13_reference_v2.json",
+        "am_seed2": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/score_lj13_reference_v2.json",
+        "am_seed3": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed3_run1/score_lj13_reference_v2.json",
+        "fm": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/score_lj13_reference_v2.json"
+      }
+    },
+    "radius_of_gyration_distribution": {
+      "bins": 110,
+      "display_quantiles": [
+        0.001,
+        0.999
+      ],
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_radius_of_gyration_distribution.pdf",
+          "sha256": "b255a8e3aa327114145045a2ecd394e383baa1eb9f2558aaf7d5306f21e2da6e"
+        },
+        "png": {
+          "path": "lj13_beta1p00_radius_of_gyration_distribution.png",
+          "sha256": "550a1487b664f1c0f17ad19518aaa72f4b84c5fff868be0f872a4da795e4d6c9"
+        }
+      },
+      "normalization": "counts / (full validated sample count * bin width); samples outside the robust display window are not deleted and tails are not renormalized",
+      "tails": {
+        "Adjoint Matching seed1": {
+          "above": 65,
+          "above_fraction": 0.00065,
+          "below": 16,
+          "below_fraction": 0.00016,
+          "full_max": 35954.984670386795,
+          "full_min": 1.02582614066,
+          "inside_fraction": 0.99919,
+          "n": 100000
+        },
+        "Adjoint Matching seed2": {
+          "above": 71,
+          "above_fraction": 0.00071,
+          "below": 10,
+          "below_fraction": 0.0001,
+          "full_max": 30518.48236506708,
+          "full_min": 1.0274125976892794,
+          "inside_fraction": 0.99919,
+          "n": 100000
+        },
+        "Adjoint Matching seed3": {
+          "above": 63,
+          "above_fraction": 0.00063,
+          "below": 16,
+          "below_fraction": 0.00016,
+          "full_max": 28379.13360503214,
+          "full_min": 1.0250349289417153,
+          "inside_fraction": 0.99921,
+          "n": 100000
+        },
+        "Flow Matching": {
+          "above": 78,
+          "above_fraction": 0.00078,
+          "below": 10,
+          "below_fraction": 0.0001,
+          "full_max": 28582.07234467087,
+          "full_min": 1.0357163796318551,
+          "inside_fraction": 0.99912,
+          "n": 100000
+        },
+        "MD reference": {
+          "above": 17,
+          "above_fraction": 0.00017,
+          "below": 43,
+          "below_fraction": 0.00043,
+          "full_max": 1.7082243644635327,
+          "full_min": 1.0299692073914029,
+          "inside_fraction": 0.9994,
+          "n": 100000
+        }
+      },
+      "title": "LJ13 at $\\beta=1.00$: radius of gyration",
+      "xlabel": "$R_g$",
+      "xlim": [
+        1.0558223223328616,
+        1.6575934519768427
+      ]
+    }
+  },
+  "observable_definitions": {
+    "energy": "sum_{i<j}[(1/r_ij)^12 - 2(1/r_ij)^6] + sum_i ||x_i-x_COM||^2",
+    "minimum_pair_distance": "Minimum of the 78 pair distances per frame.",
+    "pair_distance": "All 78 unordered Euclidean pair distances per frame.",
+    "radius_of_gyration": "sqrt(mean_i ||x_i-x_COM||^2)."
+  },
+  "palette": {
+    "am_fill": "#86A9E6",
+    "am_mean": "#4776CC",
+    "am_seeds": [
+      "#9BB9EE",
+      "#6E97DE",
+      "#3267B8",
+      "#174A8B"
+    ],
+    "fm": "#F2A270",
+    "md": "#8FD18A"
+  },
+  "plotting_policy": {
+    "benchmark_scores_use_canonical_2k_subsets": true,
+    "display_tails_are_recorded": true,
+    "display_uses_robust_quantile_windows": true,
+    "histograms_are_not_tail_renormalized": true
+  },
+  "reference_binding": {
+    "manifest_sha256": "5487261ba70d2e4c3c10189432dfa31a67c6f32ba3575fe3ec1c388a7039fdb1",
+    "path": "${ADTM_ROOT}/data/lj13_reference_v2_formal_20260726_run2_eps018",
+    "selected_files": {
+      "eval": {
+        "declared_sha256": "5d62b9b1ed9339f3fc13d689b54aa467edb121eb9531ae52c49ab3b8213b5407",
+        "path": "${ADTM_ROOT}/data/lj13_reference_v2_formal_20260726_run2_eps018/eval/samples_beta_1.00.npy",
+        "sha256": "5d62b9b1ed9339f3fc13d689b54aa467edb121eb9531ae52c49ab3b8213b5407"
+      },
+      "train": {
+        "declared_sha256": "0d850851e6d66c10558e243fb889f96416a57f23d4fc80b8f81d5ac3c9718b43",
+        "path": "${ADTM_ROOT}/data/lj13_reference_v2_formal_20260726_run2_eps018/train/samples_beta_1.00.npy",
+        "sha256": "0d850851e6d66c10558e243fb889f96416a57f23d4fc80b8f81d5ac3c9718b43"
+      }
+    },
+    "sha256s_sha256": "cf4713260c4d0598b6695db07ecd2bf5f69e4279da0262e547eb829339e4335b"
+  },
+  "reference_floors": {
+    "construction": "independent corrected RE-HMC train split versus eval split; subsets are globally disjoint across all five repeats within each split; every metric in a repeat uses the same 2k subset",
+    "energy_pair_rg_minpair_rows_each": 2000,
+    "geometric_rows_each": 2000,
+    "metrics": {
+      "energy_w2_2k": {
+        "max": 0.5327867195699904,
+        "mean": 0.39936577688179675,
+        "median": 0.4676837308021808,
+        "min": 0.25627493193823736,
+        "n": 5,
+        "sample_std_ddof1": 0.13047608234073785,
+        "values": [
+          0.2617995351916081,
+          0.25627493193823736,
+          0.5327867195699904,
+          0.47828396690696706,
+          0.4676837308021808
+        ]
+      },
+      "geometric_w2_2k": {
+        "max": 2.984176400891392,
+        "mean": 2.975888618402845,
+        "median": 2.976081821605408,
+        "min": 2.969937439156431,
+        "n": 5,
+        "sample_std_ddof1": 0.005635194428332769,
+        "values": [
+          2.984176400891392,
+          2.9777606327900883,
+          2.9714867975709036,
+          2.969937439156431,
+          2.976081821605408
+        ]
+      },
+      "minimum_pair_distance_w2_2k": {
+        "max": 0.0028602663241417943,
+        "mean": 0.002077713640379305,
+        "median": 0.001841922852621022,
+        "min": 0.001676276862444929,
+        "n": 5,
+        "sample_std_ddof1": 0.0005136418681391062,
+        "values": [
+          0.001676276862444929,
+          0.001841922852621022,
+          0.0023333913733562285,
+          0.0016767107893325512,
+          0.0028602663241417943
+        ]
+      },
+      "pair_distance_w2_2k": {
+        "max": 0.011220369737676454,
+        "mean": 0.007312307449365946,
+        "median": 0.0074841737392309995,
+        "min": 0.0030358695061340093,
+        "n": 5,
+        "sample_std_ddof1": 0.003147368365585392,
+        "values": [
+          0.005676492900829139,
+          0.0030358695061340093,
+          0.011220369737676454,
+          0.00914463136295913,
+          0.0074841737392309995
+        ]
+      },
+      "radius_of_gyration_w2_2k": {
+        "max": 0.008248362821962504,
+        "mean": 0.005930452625186601,
+        "median": 0.005719025518381427,
+        "min": 0.003679455596022714,
+        "n": 5,
+        "sample_std_ddof1": 0.002142558831549574,
+        "values": [
+          0.004019354543338864,
+          0.003679455596022714,
+          0.008248362821962504,
+          0.0079860646462275,
+          0.005719025518381427
+        ]
+      }
+    },
+    "repeats": 5,
+    "runs": [
+      {
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "energy_w2_2k": 0.2617995351916081,
+        "eval_2k_indices_sha256": "83100d858034d1b4d79cbe225982ca2e0edc6ea338daefa9033041278dce5430",
+        "geometric_metric_seed": 1725564136,
+        "geometric_rows_each": 2000,
+        "geometric_w2_2k": 2.984176400891392,
+        "minimum_pair_distance_w2_2k": 0.001676276862444929,
+        "pair_distance_w2_2k": 0.005676492900829139,
+        "radius_of_gyration_w2_2k": 0.004019354543338864,
+        "repeat": 0,
+        "same_2k_subset_for_all_metrics": true,
+        "train_2k_indices_sha256": "47121b15b8018364226458d4e22ec7a1ed1fe53f3cd129d0e840a01a8bbdfcbd"
+      },
+      {
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "energy_w2_2k": 0.25627493193823736,
+        "eval_2k_indices_sha256": "02c93e2338c1914e0149dfe455401ecde10d80ed59e0febfd4fb52a13d9d4272",
+        "geometric_metric_seed": 338394270,
+        "geometric_rows_each": 2000,
+        "geometric_w2_2k": 2.9777606327900883,
+        "minimum_pair_distance_w2_2k": 0.001841922852621022,
+        "pair_distance_w2_2k": 0.0030358695061340093,
+        "radius_of_gyration_w2_2k": 0.003679455596022714,
+        "repeat": 1,
+        "same_2k_subset_for_all_metrics": true,
+        "train_2k_indices_sha256": "403d338dee2c72f203fbb2826863a820ad6bdfbd4a91eeee52f11d6c55be2c63"
+      },
+      {
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "energy_w2_2k": 0.5327867195699904,
+        "eval_2k_indices_sha256": "c6eb87da79fc324e03ff5482d24bd428d31a76ac53e73e73072fe78e25ad71e0",
+        "geometric_metric_seed": 3134574537,
+        "geometric_rows_each": 2000,
+        "geometric_w2_2k": 2.9714867975709036,
+        "minimum_pair_distance_w2_2k": 0.0023333913733562285,
+        "pair_distance_w2_2k": 0.011220369737676454,
+        "radius_of_gyration_w2_2k": 0.008248362821962504,
+        "repeat": 2,
+        "same_2k_subset_for_all_metrics": true,
+        "train_2k_indices_sha256": "138ae829c336179cf26a329f0cb7f1c722e5a9f524e75a6affeac853326fd08b"
+      },
+      {
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "energy_w2_2k": 0.47828396690696706,
+        "eval_2k_indices_sha256": "8bcdfe041988ac55759a12b18818fdb55318475438bb1ab65e4c1a9ec5f93120",
+        "geometric_metric_seed": 369968229,
+        "geometric_rows_each": 2000,
+        "geometric_w2_2k": 2.969937439156431,
+        "minimum_pair_distance_w2_2k": 0.0016767107893325512,
+        "pair_distance_w2_2k": 0.00914463136295913,
+        "radius_of_gyration_w2_2k": 0.0079860646462275,
+        "repeat": 3,
+        "same_2k_subset_for_all_metrics": true,
+        "train_2k_indices_sha256": "30db1c1fc32e7564ca02e11bfa01728f54b7fd13f05a90fac433c6b635fab78c"
+      },
+      {
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "energy_w2_2k": 0.4676837308021808,
+        "eval_2k_indices_sha256": "75906802417640832bea5f7421f018a721b3eea066c9b048f48d32e76fa3c2b8",
+        "geometric_metric_seed": 2680498043,
+        "geometric_rows_each": 2000,
+        "geometric_w2_2k": 2.976081821605408,
+        "minimum_pair_distance_w2_2k": 0.0028602663241417943,
+        "pair_distance_w2_2k": 0.0074841737392309995,
+        "radius_of_gyration_w2_2k": 0.005719025518381427,
+        "repeat": 4,
+        "same_2k_subset_for_all_metrics": true,
+        "train_2k_indices_sha256": "28bd9b4aca9240453499f21b130d56f8ef3b0698532b6c553f626f289731d483"
+      }
+    ],
+    "selection_seeds": {
+      "eval_2k": 3593326296,
+      "train_2k": 3871377150
+    }
+  },
+  "run_bindings": {
+    "am_runs": {
+      "1": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed1_run1",
+      "2": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1",
+      "3": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed3_run1"
+    },
+    "primary_am_seed": 2,
+    "primary_run": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1"
+  },
+  "sample_bindings": {
+    "am_by_seed": {
+      "1": {
+        "path": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed1_run1/am_beta_sweep/am_samples_beta_1.00.npy",
+        "sha256": "82c86dc54a4b0fc0ccce5b404b4a45c5a9be7114e61fd48488d2580d432c3031"
+      },
+      "2": {
+        "path": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/am_beta_sweep/am_samples_beta_1.00.npy",
+        "sha256": "af5bb5f0b018150a5d43a9159339d9f47a34743f84d5348b50b302984e5649a6"
+      },
+      "3": {
+        "path": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed3_run1/am_beta_sweep/am_samples_beta_1.00.npy",
+        "sha256": "f7f4f78322f4a81b340fdf3b3b8e7f1c476207ceaa7eb800a8bf2af02724cf13"
+      }
+    },
+    "fm": {
+      "path": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/fm_beta_sweep/fm_samples_beta_1.00.npy",
+      "sha256": "d70570e2947358e28a23793d7c29ab2480d556f85bf75eb292300c0a21b61b57"
+    }
+  },
+  "sample_health": {
+    "am_by_seed": {
+      "1": {
+        "absolute_com_tolerance": 1e-05,
+        "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+        "dtype": "float32",
+        "finite_rows": 100000,
+        "max_abs_com": 0.00037560096153846156,
+        "max_abs_coordinate": 74978.765625,
+        "max_scale_normalized_com": 4.6224672833140025e-08,
+        "minimum_pair_distance": 0.7368856959073653,
+        "minimum_pair_guard": 0.1,
+        "nonfinite_rows": 0,
+        "relative_com_tolerance": 1e-07,
+        "rows_above_absolute_com_tolerance": 1,
+        "rows_at_or_below_minimum_pair_guard": 0,
+        "rows_failing_scale_aware_com_tolerance": 0,
+        "shape": [
+          100000,
+          39
+        ]
+      },
+      "2": {
+        "absolute_com_tolerance": 1e-05,
+        "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+        "dtype": "float32",
+        "finite_rows": 100000,
+        "max_abs_com": 0.00034273587740384613,
+        "max_abs_coordinate": 48054.41796875,
+        "max_scale_normalized_com": 5.279820734699151e-08,
+        "minimum_pair_distance": 0.7386918979894501,
+        "minimum_pair_guard": 0.1,
+        "nonfinite_rows": 0,
+        "relative_com_tolerance": 1e-07,
+        "rows_above_absolute_com_tolerance": 1,
+        "rows_at_or_below_minimum_pair_guard": 0,
+        "rows_failing_scale_aware_com_tolerance": 0,
+        "shape": [
+          100000,
+          39
+        ]
+      },
+      "3": {
+        "absolute_com_tolerance": 1e-05,
+        "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+        "dtype": "float32",
+        "finite_rows": 100000,
+        "max_abs_com": 0.00014085036057692306,
+        "max_abs_coordinate": 43057.17578125,
+        "max_scale_normalized_com": 5.082533555564205e-08,
+        "minimum_pair_distance": 0.7365225880484669,
+        "minimum_pair_guard": 0.1,
+        "nonfinite_rows": 0,
+        "relative_com_tolerance": 1e-07,
+        "rows_above_absolute_com_tolerance": 1,
+        "rows_at_or_below_minimum_pair_guard": 0,
+        "rows_failing_scale_aware_com_tolerance": 0,
+        "shape": [
+          100000,
+          39
+        ]
+      }
+    },
+    "fm": {
+      "absolute_com_tolerance": 1e-05,
+      "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+      "dtype": "float32",
+      "finite_rows": 100000,
+      "max_abs_com": 0.00021597055288461538,
+      "max_abs_coordinate": 61098.30078125,
+      "max_scale_normalized_com": 6.408508529980376e-08,
+      "minimum_pair_distance": 0.7679241046158282,
+      "minimum_pair_guard": 0.1,
+      "nonfinite_rows": 0,
+      "relative_com_tolerance": 1e-07,
+      "rows_above_absolute_com_tolerance": 6,
+      "rows_at_or_below_minimum_pair_guard": 0,
+      "rows_failing_scale_aware_com_tolerance": 0,
+      "shape": [
+        100000,
+        39
+      ]
+    },
+    "reference_eval": {
+      "absolute_com_tolerance": 1e-09,
+      "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+      "dtype": "float64",
+      "finite_rows": 100000,
+      "max_abs_com": 2.348548705937831e-16,
+      "max_abs_coordinate": 3.551611971074912,
+      "max_scale_normalized_com": 1.6560965396787286e-16,
+      "minimum_pair_distance": 0.7778864301476823,
+      "minimum_pair_guard": 0.1,
+      "nonfinite_rows": 0,
+      "relative_com_tolerance": 0.0,
+      "rows_above_absolute_com_tolerance": 0,
+      "rows_at_or_below_minimum_pair_guard": 0,
+      "rows_failing_scale_aware_com_tolerance": 0,
+      "shape": [
+        100000,
+        39
+      ]
+    },
+    "reference_train": {
+      "absolute_com_tolerance": 1e-09,
+      "com_rule": "row_max_abs_com <= absolute_com_tolerance + relative_com_tolerance * max(1, row_max_abs_coordinate)",
+      "dtype": "float64",
+      "finite_rows": 100000,
+      "max_abs_com": 2.391249591500337e-16,
+      "max_abs_coordinate": 3.242267322226028,
+      "max_scale_normalized_com": 1.378660476443864e-16,
+      "minimum_pair_distance": 0.7845522856358156,
+      "minimum_pair_guard": 0.1,
+      "nonfinite_rows": 0,
+      "relative_com_tolerance": 0.0,
+      "rows_above_absolute_com_tolerance": 0,
+      "rows_at_or_below_minimum_pair_guard": 0,
+      "rows_failing_scale_aware_com_tolerance": 0,
+      "shape": [
+        100000,
+        39
+      ]
+    }
+  },
+  "schema": "adtm.lj13_reference_v2.publication_figures.v1",
+  "scores": {
+    "primary_metric_summary": {
+      "energy_w2_2k": {
+        "am_by_seed": {
+          "1": 1.481645495118548,
+          "2": 1.634946319030331,
+          "3": 1.407580001605307
+        },
+        "fm": 1.3431212033386088,
+        "reference_floor": {
+          "max": 0.5327867195699904,
+          "mean": 0.39936577688179675,
+          "median": 0.4676837308021808,
+          "min": 0.25627493193823736,
+          "n": 5,
+          "sample_std_ddof1": 0.13047608234073785,
+          "values": [
+            0.2617995351916081,
+            0.25627493193823736,
+            0.5327867195699904,
+            0.47828396690696706,
+            0.4676837308021808
+          ]
+        }
+      },
+      "files": {
+        "pdf": {
+          "path": "lj13_beta1p00_primary_metric_seed_summary.pdf",
+          "sha256": "fa22665fb18a950ee05d1e73686c69ca30e7799e0ee94771a4127feb6f95dbc8"
+        },
+        "png": {
+          "path": "lj13_beta1p00_primary_metric_seed_summary.png",
+          "sha256": "45435165259b2f867aa1ed07fcaa913378d36a5df8fb15512fd0f41ea2293587"
+        }
+      },
+      "geometric_w2_2k": {
+        "am_by_seed": {
+          "1": 3.0127269244664787,
+          "2": 3.0174871819082854,
+          "3": 3.0111795979207994
+        },
+        "fm": 3.0051608723497245,
+        "reference_floor": {
+          "max": 2.984176400891392,
+          "mean": 2.975888618402845,
+          "median": 2.976081821605408,
+          "min": 2.969937439156431,
+          "n": 5,
+          "sample_std_ddof1": 0.005635194428332769,
+          "values": [
+            2.984176400891392,
+            2.9777606327900883,
+            2.9714867975709036,
+            2.969937439156431,
+            2.976081821605408
+          ]
+        }
+      },
+      "reference_floors": {
+        "construction": "independent corrected RE-HMC train split versus eval split; subsets are globally disjoint across all five repeats within each split; every metric in a repeat uses the same 2k subset",
+        "energy_pair_rg_minpair_rows_each": 2000,
+        "geometric_rows_each": 2000,
+        "metrics": {
+          "energy_w2_2k": {
+            "max": 0.5327867195699904,
+            "mean": 0.39936577688179675,
+            "median": 0.4676837308021808,
+            "min": 0.25627493193823736,
+            "n": 5,
+            "sample_std_ddof1": 0.13047608234073785,
+            "values": [
+              0.2617995351916081,
+              0.25627493193823736,
+              0.5327867195699904,
+              0.47828396690696706,
+              0.4676837308021808
+            ]
+          },
+          "geometric_w2_2k": {
+            "max": 2.984176400891392,
+            "mean": 2.975888618402845,
+            "median": 2.976081821605408,
+            "min": 2.969937439156431,
+            "n": 5,
+            "sample_std_ddof1": 0.005635194428332769,
+            "values": [
+              2.984176400891392,
+              2.9777606327900883,
+              2.9714867975709036,
+              2.969937439156431,
+              2.976081821605408
+            ]
+          },
+          "minimum_pair_distance_w2_2k": {
+            "max": 0.0028602663241417943,
+            "mean": 0.002077713640379305,
+            "median": 0.001841922852621022,
+            "min": 0.001676276862444929,
+            "n": 5,
+            "sample_std_ddof1": 0.0005136418681391062,
+            "values": [
+              0.001676276862444929,
+              0.001841922852621022,
+              0.0023333913733562285,
+              0.0016767107893325512,
+              0.0028602663241417943
+            ]
+          },
+          "pair_distance_w2_2k": {
+            "max": 0.011220369737676454,
+            "mean": 0.007312307449365946,
+            "median": 0.0074841737392309995,
+            "min": 0.0030358695061340093,
+            "n": 5,
+            "sample_std_ddof1": 0.003147368365585392,
+            "values": [
+              0.005676492900829139,
+              0.0030358695061340093,
+              0.011220369737676454,
+              0.00914463136295913,
+              0.0074841737392309995
+            ]
+          },
+          "radius_of_gyration_w2_2k": {
+            "max": 0.008248362821962504,
+            "mean": 0.005930452625186601,
+            "median": 0.005719025518381427,
+            "min": 0.003679455596022714,
+            "n": 5,
+            "sample_std_ddof1": 0.002142558831549574,
+            "values": [
+              0.004019354543338864,
+              0.003679455596022714,
+              0.008248362821962504,
+              0.0079860646462275,
+              0.005719025518381427
+            ]
+          }
+        },
+        "repeats": 5,
+        "runs": [
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.2617995351916081,
+            "eval_2k_indices_sha256": "83100d858034d1b4d79cbe225982ca2e0edc6ea338daefa9033041278dce5430",
+            "geometric_metric_seed": 1725564136,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.984176400891392,
+            "minimum_pair_distance_w2_2k": 0.001676276862444929,
+            "pair_distance_w2_2k": 0.005676492900829139,
+            "radius_of_gyration_w2_2k": 0.004019354543338864,
+            "repeat": 0,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "47121b15b8018364226458d4e22ec7a1ed1fe53f3cd129d0e840a01a8bbdfcbd"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.25627493193823736,
+            "eval_2k_indices_sha256": "02c93e2338c1914e0149dfe455401ecde10d80ed59e0febfd4fb52a13d9d4272",
+            "geometric_metric_seed": 338394270,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.9777606327900883,
+            "minimum_pair_distance_w2_2k": 0.001841922852621022,
+            "pair_distance_w2_2k": 0.0030358695061340093,
+            "radius_of_gyration_w2_2k": 0.003679455596022714,
+            "repeat": 1,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "403d338dee2c72f203fbb2826863a820ad6bdfbd4a91eeee52f11d6c55be2c63"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.5327867195699904,
+            "eval_2k_indices_sha256": "c6eb87da79fc324e03ff5482d24bd428d31a76ac53e73e73072fe78e25ad71e0",
+            "geometric_metric_seed": 3134574537,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.9714867975709036,
+            "minimum_pair_distance_w2_2k": 0.0023333913733562285,
+            "pair_distance_w2_2k": 0.011220369737676454,
+            "radius_of_gyration_w2_2k": 0.008248362821962504,
+            "repeat": 2,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "138ae829c336179cf26a329f0cb7f1c722e5a9f524e75a6affeac853326fd08b"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.47828396690696706,
+            "eval_2k_indices_sha256": "8bcdfe041988ac55759a12b18818fdb55318475438bb1ab65e4c1a9ec5f93120",
+            "geometric_metric_seed": 369968229,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.969937439156431,
+            "minimum_pair_distance_w2_2k": 0.0016767107893325512,
+            "pair_distance_w2_2k": 0.00914463136295913,
+            "radius_of_gyration_w2_2k": 0.0079860646462275,
+            "repeat": 3,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "30db1c1fc32e7564ca02e11bfa01728f54b7fd13f05a90fac433c6b635fab78c"
+          },
+          {
+            "energy_pair_rg_minpair_rows_each": 2000,
+            "energy_w2_2k": 0.4676837308021808,
+            "eval_2k_indices_sha256": "75906802417640832bea5f7421f018a721b3eea066c9b048f48d32e76fa3c2b8",
+            "geometric_metric_seed": 2680498043,
+            "geometric_rows_each": 2000,
+            "geometric_w2_2k": 2.976081821605408,
+            "minimum_pair_distance_w2_2k": 0.0028602663241417943,
+            "pair_distance_w2_2k": 0.0074841737392309995,
+            "radius_of_gyration_w2_2k": 0.005719025518381427,
+            "repeat": 4,
+            "same_2k_subset_for_all_metrics": true,
+            "train_2k_indices_sha256": "28bd9b4aca9240453499f21b130d56f8ef3b0698532b6c553f626f289731d483"
+          }
+        ],
+        "selection_seeds": {
+          "eval_2k": 3593326296,
+          "train_2k": 3871377150
+        }
+      },
+      "score_sources": {
+        "am_seed1": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed1_run1/score_lj13_reference_v2.json",
+        "am_seed2": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/score_lj13_reference_v2.json",
+        "am_seed3": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed3_run1/score_lj13_reference_v2.json",
+        "fm": "${ADTM_ROOT}/outputs/lj13/lj13_reference_v2_painn128x5_anchor_0p8_1p2_target_1p0_seed2_run1/score_lj13_reference_v2.json"
+      }
+    },
+    "schema": "adtm.lj13_reference_v2.score2k.v1",
+    "source": "canonical per-run score_lj13_reference_v2.json artifacts"
+  },
+  "script_binding": {
+    "path": "${ADTM_ROOT}/scripts/plot_lj13_reference_v2.py",
+    "sha256": "8220947a532833b053ade23a36775039854b6fd7a672eb194df3632851148057"
+  },
+  "target": {
+    "BMS_parameters": {
+      "c_osc": 1.0,
+      "epsilon": 1.0,
+      "r_m": 1.0,
+      "tau": 1.0
+    },
+    "ambient_dimension": 39,
+    "formula": "sum_{i<j}[(1/r_ij)^12 - 2(1/r_ij)^6] + sum_i ||x_i-x_COM||^2",
+    "id": "lj13_bms_eq234_lj1_confinement1_comfree_v1",
+    "intrinsic_com_free_dimension": 36,
+    "minimum_distance_numerical_guard": 1e-06,
+    "n_particles": 13,
+    "runtime_training_guard_note": "problem/lj13.py currently uses a 0.1 safety clamp; the formal reference uses only a 1e-6 numerical guard and audits that no stored sample approaches either guard",
+    "spatial_dim": 3
+  },
+  "target_beta": 1.0,
+  "versions": {
+    "matplotlib": "3.10.9",
+    "numpy": "1.26.4",
+    "python": "3.11.15"
+  }
+}

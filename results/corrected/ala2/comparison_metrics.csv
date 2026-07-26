@@ -1,0 +1,13 @@
+case_id,case_status,metric,fm,am,fm_minus_am,am_improves,n_eval_per_method,same_md_and_indices,content_filtering
+best_mixed,single_seed_mixed_partial_correction,energy_w2_10k_kj_mol,469713387.1371555,1359.061945587941,469712028.07520986,1,10000,1,0
+best_mixed,single_seed_mixed_partial_correction,min_pair_distance_w2_10k_nm,0.001693103006690655,0.0014775745079226735,0.00021552849876798155,1,10000,1,0
+best_mixed,single_seed_mixed_partial_correction,pair_distance_w2_10k_nm,0.0008545433453827784,0.0011006289896489786,-0.00024608564426620023,0,10000,1,0
+best_mixed,single_seed_mixed_partial_correction,phi_w2_10k_linear_cut_rad,0.1428981504957096,0.10913737226689349,0.033760778228816124,1,10000,1,0
+best_mixed,single_seed_mixed_partial_correction,psi_w2_10k_linear_cut_rad,0.14083436631596316,0.2526683831181746,-0.11183401680221142,0,10000,1,0
+best_mixed,single_seed_mixed_partial_correction,rama_js_10k_80bin,0.08068323456466403,0.07843708675080938,0.0022461478138546542,1,10000,1,0
+failure,single_seed_negative_failure_diagnostic,energy_w2_10k_kj_mol,925.3487236173299,439.48999103714164,485.8587325801883,1,10000,1,0
+failure,single_seed_negative_failure_diagnostic,min_pair_distance_w2_10k_nm,0.002678328147370294,0.0022409853948066726,0.0004373427525636215,1,10000,1,0
+failure,single_seed_negative_failure_diagnostic,pair_distance_w2_10k_nm,0.0013437049830855514,0.001564649870641718,-0.00022094488755616663,0,10000,1,0
+failure,single_seed_negative_failure_diagnostic,phi_w2_10k_linear_cut_rad,0.15396512413808042,0.16817447185780118,-0.014209347719720766,0,10000,1,0
+failure,single_seed_negative_failure_diagnostic,psi_w2_10k_linear_cut_rad,0.06202313686216533,0.17690332539046327,-0.11488018852829794,0,10000,1,0
+failure,single_seed_negative_failure_diagnostic,rama_js_10k_80bin,0.11362297828709839,0.11347543689819702,0.00014754138890137047,1,10000,1,0

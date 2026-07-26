@@ -1,0 +1,21 @@
+{
+  "policy": {
+    "checkpoints_included": false,
+    "forbidden_suffixes": [
+      ".ckpt",
+      ".npy",
+      ".npz",
+      ".pkl",
+      ".pt",
+      ".pth",
+      ".safetensors"
+    ],
+    "machine_paths_sanitized": true,
+    "sample_arrays_included": false,
+    "whitelist_export": true
+  },
+  "release": "v0.2.0",
+  "schema": "tam.corrected_release_provenance.v1",
+  "source_freeze_date": "2026-07-26",
+  "source_freeze_manifest_sha256": "47dd188e1154ddb9bf4e929d8803195b4d5d353fd74fb8368f32b292b941ff05"
+}

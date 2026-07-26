@@ -1,0 +1,45 @@
+{
+  "audit_status": "pass",
+  "betas": [
+    0.8,
+    1.0,
+    1.2
+  ],
+  "energy": {
+    "ambient_dimension": 8,
+    "formula": "sum_{i<j}[-4*(d_ij-1)^2 + 0.9*(d_ij-1)^4]",
+    "intrinsic_com_free_dimension": 6,
+    "n_particles": 4,
+    "spatial_dim": 2
+  },
+  "importance_audit": {
+    "n_samples": 5000000,
+    "seed": 57001
+  },
+  "legacy_fixed_step_ula_used": false,
+  "method": "annealed SMC from exact Gaussian source with systematic resampling and MALA",
+  "schema": "adtm.dw4_reference_v2.bundle.v1",
+  "smc_config": {
+    "final_mala_steps": 64,
+    "mala_step_decay": 0.75,
+    "mala_step_size": 0.02,
+    "mala_steps_per_stage": 8,
+    "max_stages": 256,
+    "source_sigma": 1.0,
+    "target_cess": 0.8
+  },
+  "source_sha256": {
+    "dw4_smc.py": "670fe1c7aee79a032b5f0d45819dc5f1de794c0e25cdb95b446d563abe15b773",
+    "generate_dw4_reference_v2.py": "5ad0b1c02bcb80111ff773337ae1a295f5b9ecc98d946ebd7258dd671b2bbd37"
+  },
+  "splits": {
+    "eval": {
+      "n_per_beta": 100000,
+      "seed_base": 47001
+    },
+    "train": {
+      "n_per_beta": 100000,
+      "seed_base": 37001
+    }
+  }
+}

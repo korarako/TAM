@@ -1,115 +1,87 @@
 # Limitations
 
-TAM v0.1.0 is a research release, not a production molecular-simulation
-package. The limitations below define the boundary of its scientific claims.
+TAM v0.2.0 is a research release. Its evidence does not support a claim that
+Adjoint Matching always improves a pretrained Flow Matching proposal.
 
-## Adjoint Matching is not uniformly improving
+## Evidence units differ
 
-The released experiments do not support a claim that Adjoint Matching always
-improves a pretrained Flow Matching model.
+- MB2D is one predeclared model seed.
+- DW4 uses one shared FM seed and three independent AM optimization seeds.
+- LJ13 uses one shared FM seed and three independent AM optimization seeds.
+- Ala2 is a fair fixed-10k single-seed diagnostic.
+- DW1D and DW2D are retained hash-bound legacy runs.
 
-- DW1D and DW2D are clear positive toy examples.
-- All three formal DW4 AM training seeds improve the released energy metric.
-- MB2D is transfer-dependent: the high-beta transfers improve, whereas the
-  low-beta transfers worsen in energy W2 despite small geometric improvements.
-- LJ13 shows modest and comparatively stable pairwise/radial improvements, but
-  its energy W2 is sensitive to evaluation seed.
-- Ala2 remains an unsuccessful application of the released route.
+These repetitions must not be pooled or described as the same form of
+multi-seed uncertainty. DW4 establishes robustness of the AM stage conditional
+on one FM controller, not robustness of the full FM+AM pipeline.
 
-Energy and geometry can therefore move in different directions. Results should
-be reported per observable and per transfer, rather than collapsed into a
-single success label.
+## Corrected references changed the conclusions
 
-## Ala2 is an explicit failed case
+The v0.1 MB2D, DW4, and LJ13 values were tied to finite-time ULA/biased
+references that failed later equilibrium audits. Those values remain
+available at the immutable `v0.1.0` tag for history only.
 
-The Ala2 checkpoints are preserved for transparency and follow-up research.
-They are not evidence of successful temperature transfer.
+Version 0.2 uses:
 
-Across the representative 400 K, 600 K, and 800 K attempts, some energy,
-Ramachandran, or torsion metrics improve in isolation. However, the generated
-energy distribution retains a substantially heavier high-energy tail than the
-MD reference. The 600 K route is approximately null or worse, and the strongest
-800 K energy correction does not yield a corresponding Ramachandran
-improvement.
+- analytic float64 quadrature for MB2D;
+- intrinsic-coordinate SMC/MALA for DW4;
+- replica-exchange HMC for LJ13.
 
-Consequently:
+Reference quality is therefore part of the result, not a cosmetic evaluation
+choice.
 
-- Ala2 is excluded from successful aggregate tables;
-- its checkpoints are labeled `experimental_failed_case`;
-- no released checkpoint should be described as a validated Ala2 Boltzmann
-  generator.
+## The method is not uniformly improving
 
-## Seed semantics differ across systems
+- Corrected MB2D is a strong positive single-seed pilot.
+- Corrected DW4 improves all three registered metrics for every AM seed,
+  conditional on one FM model.
+- Corrected LJ13 improves neither preregistered primary metric in any AM seed.
+- Ala2 improves some energy, contact, and torsion diagnostics while worsening
+  other structural observables.
 
-The three DW4 records are three independently trained AM checkpoints. The
-three LJ13 records use the same FM and AM checkpoint with evaluation seeds 101,
-202, and 303. LJ13 therefore measures sampling/evaluation variability, not
-training-seed variability.
+Energy and geometry can move in opposite directions. Conclusions must be
+reported by system, observable, and evidence unit.
 
-These two forms of repetition must not be pooled or described interchangeably.
+## Ala2 is mixed and tail dominated
 
-## Representative and exploratory checkpoints
+The canonical Ala2 comparison uses identical deterministic 10,000-row subsets
+for MD, FM, and AM without filtering. Rare high-energy samples dominate the
+unclipped energy W2. Robust energy-axis limits affect display only.
 
-DW4 seed 2 is the representative formal checkpoint, but the formal conclusion
-uses all three training seeds. An exploratory scan-selected checkpoint may be
-retained for provenance; it is not part of the formal three-seed evidence and
-should not be substituted into the aggregate result.
+Pooled pair-distance W2 is not a symmetry-aware geometric W2. No Ala2
+geometric-W2 claim is made. The released Ala2 evidence is single-seed and must
+not be described as a validated general temperature-transfer result.
 
-## Metric protocol
+## Legacy DW1D and DW2D
 
-The number of generated samples and the number used in each metric computation
-are separate. Release-facing `energy_w2_2k` and `geometric_w2_2k` values use
-fixed-size 2,000-sample subsets. Repeated subset statistics are required where
-the run record specifies them.
+DW1D and DW2D retain positive hash-bound results, but their generation
+provenance is incomplete. DW1D anchor arrays contain only 16 samples. These
+rows support retained artifact-level evidence, not a corrected multi-seed
+benchmark.
 
-Changing the subset size, reference archive, integration method, ODE step
-count, or seed creates a different evaluation protocol. Such results should not
-be compared directly with the curated v0.1.0 numbers without an explicit
-protocol-matching analysis.
+## Metric protocols are fixed
 
-## Reconstructed legacy profiles
+Metric sample counts are part of the protocol:
 
-Some early toy runs did not preserve a standalone configuration. Their
-reproduction profiles were reconstructed from checkpoint shapes, run history,
-and legacy defaults and are marked accordingly. These profiles support
-method-level reproduction, not a claim of exact historical provenance or
-byte-identical retraining.
+- MB2D primary energy uses 20k rows.
+- DW4 energy/pair distance use 20k rows and geometric W2 uses 2k.
+- LJ13 uses the same 2k rows for every reported observable without filtering.
+- Ala2 uses the same fixed 10k indices for MD/FM/AM.
 
-Even exact profiles can differ at the bit level because accelerator kernels and
-parallel reductions may be nondeterministic.
+Changing the reference, subset, seed, sample count, clipping, filtering, or
+integration settings creates a different result.
 
-## Data distribution
+## No checkpoint or sample payloads in v0.2
 
-Large NumPy reference arrays are intentionally excluded from ordinary Git
-history. Non-Ala2 arrays are distributed as a versioned GitHub Release asset
-and are described by the manifests in `data/`. Ala2 MD trajectories are
-distributed separately.
+The v0.2 source release contains metrics, figures, configurations, scripts,
+and provenance hashes, but no model parameters or sample arrays. The binaries
+remain in the private research archive and are bound by SHA-256 values. The
+public release therefore supports evidence inspection and method-level
+reproduction, not byte-identical checkpoint recovery.
 
-A run is only comparable with the release when its data match the manifest
-hashes, shapes, thermodynamic settings, and units. The repository cannot
-guarantee continued availability of third-party or separately hosted Ala2
-archives.
+## Numerical and software scope
 
-## Integrators and physical validation
-
-The release uses finite-step numerical integration. Accuracy depends on the
-configured method and step count. The repository does not establish that every
-configuration is converged with respect to integration error.
-
-Toy and LJ13 reference data use the documented Langevin procedure; Ala2 uses
-separately generated OpenMM MD trajectories. These references are not
-interchangeable, and agreement with them does not constitute validation against
-experiment.
-
-## Parameterization coverage
-
-Every benchmark result in v0.1.0 uses `target-refinement`. The
-`anchor-residual` parameterization is implemented as a research option but has
-not been included in the released benchmark study. Its presence in the code is
-not an empirical claim.
-
-## Software scope
-
-TAM targets the tested Python/JAX/OpenMM configurations recorded by the
-release. It is not certified for long-term production MD, distributed
-multi-node execution, arbitrary molecular topologies, or safety-critical use.
+TAM uses finite-step ODE/SDE and Monte Carlo procedures. The release records
+the tested settings but does not certify arbitrary step sizes, hardware,
+topologies, or distributed configurations. Accelerator kernels may prevent
+bitwise-identical retraining.

@@ -1,0 +1,82 @@
+{
+  "eval": {
+    "basin_probabilities": {
+      "empirical": {
+        "center": 0.19157,
+        "left_upper": 0.6377,
+        "right_lower": 0.17073
+      },
+      "l1": 0.0023543198568352075,
+      "target": {
+        "center": 0.19274715992837307,
+        "left_upper": 0.6376095462058562,
+        "right_lower": 0.16964329386568172
+      }
+    },
+    "beta": 1.5,
+    "energy": {
+      "max": 4.812673389197916,
+      "mean": -1.6460306096574158,
+      "min": -2.933984328195259,
+      "std": 0.9785389593229255,
+      "w2_grid_quantiles": 0.007421918014948935,
+      "w2_quantile_count": 20000
+    },
+    "finite_fraction": 1.0,
+    "finite_rows": 100000,
+    "grid_js_nats_including_outside_bin": 0.0060426652514160295,
+    "grid_total_variation_including_outside_bin": 0.05288192665471245,
+    "histogram_grid_shape_yx": [
+      128,
+      128
+    ],
+    "inside_domain_fraction": 1.0,
+    "marginals": {
+      "x_js_nats_including_outside_bin": 0.00013508737619711566,
+      "x_w2": 0.004604271833273901,
+      "y_js_nats_including_outside_bin": 0.0001222382816351939,
+      "y_w2": 0.004711040295898713
+    },
+    "rows": 100000
+  },
+  "train": {
+    "basin_probabilities": {
+      "empirical": {
+        "center": 0.19404,
+        "left_upper": 0.63699,
+        "right_lower": 0.16897
+      },
+      "l1": 0.0025856801431648757,
+      "target": {
+        "center": 0.19274715992837307,
+        "left_upper": 0.6376095462058562,
+        "right_lower": 0.16964329386568172
+      }
+    },
+    "beta": 1.5,
+    "energy": {
+      "max": 4.9580380986366315,
+      "mean": -1.642342417051679,
+      "min": -2.933989205553248,
+      "std": 0.9794136589226514,
+      "w2_grid_quantiles": 0.006909508526204721,
+      "w2_quantile_count": 20000
+    },
+    "finite_fraction": 1.0,
+    "finite_rows": 100000,
+    "grid_js_nats_including_outside_bin": 0.006123918966972931,
+    "grid_total_variation_including_outside_bin": 0.05209496680661742,
+    "histogram_grid_shape_yx": [
+      128,
+      128
+    ],
+    "inside_domain_fraction": 1.0,
+    "marginals": {
+      "x_js_nats_including_outside_bin": 0.0001315232048567431,
+      "x_w2": 0.005245663315067891,
+      "y_js_nats_including_outside_bin": 8.500712373160258e-05,
+      "y_w2": 0.0040957002468515295
+    },
+    "rows": 100000
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "approximation": "piecewise-uniform finite-domain approximation to the continuous Boltzmann density; convergence_audit.json quantifies grid/domain error",
+  "betas": {
+    "0.25": {
+      "beta": 0.25,
+      "cell_mass": "grid/cell_mass_beta_0.25.npy",
+      "eval": {
+        "path": "eval/samples_beta_0.25.npy",
+        "samples": 100000,
+        "seed": 27001
+      },
+      "log_partition_quadrature": 2.498798787677618,
+      "observables": "observables/beta_0.25.json",
+      "train": {
+        "path": "train/samples_beta_0.25.npy",
+        "samples": 100000,
+        "seed": 17001
+      }
+    },
+    "0.50": {
+      "beta": 0.5,
+      "cell_mass": "grid/cell_mass_beta_0.50.npy",
+      "eval": {
+        "path": "eval/samples_beta_0.50.npy",
+        "samples": 100000,
+        "seed": 1027004
+      },
+      "log_partition_quadrature": 2.400475817146301,
+      "observables": "observables/beta_0.50.json",
+      "train": {
+        "path": "train/samples_beta_0.50.npy",
+        "samples": 100000,
+        "seed": 1017004
+      }
+    },
+    "0.75": {
+      "beta": 0.75,
+      "cell_mass": "grid/cell_mass_beta_0.75.npy",
+      "eval": {
+        "path": "eval/samples_beta_0.75.npy",
+        "samples": 100000,
+        "seed": 2027007
+      },
+      "log_partition_quadrature": 2.480767416690865,
+      "observables": "observables/beta_0.75.json",
+      "train": {
+        "path": "train/samples_beta_0.75.npy",
+        "samples": 100000,
+        "seed": 2017007
+      }
+    },
+    "1.00": {
+      "beta": 1.0,
+      "cell_mass": "grid/cell_mass_beta_1.00.npy",
+      "eval": {
+        "path": "eval/samples_beta_1.00.npy",
+        "samples": 100000,
+        "seed": 3027010
+      },
+      "log_partition_quadrature": 2.6847284963671285,
+      "observables": "observables/beta_1.00.json",
+      "train": {
+        "path": "train/samples_beta_1.00.npy",
+        "samples": 100000,
+        "seed": 3017010
+      }
+    },
+    "1.20": {
+      "beta": 1.2,
+      "cell_mass": "grid/cell_mass_beta_1.20.npy",
+      "eval": {
+        "path": "eval/samples_beta_1.20.npy",
+        "samples": 100000,
+        "seed": 4027013
+      },
+      "log_partition_quadrature": 2.91874463351472,
+      "observables": "observables/beta_1.20.json",
+      "train": {
+        "path": "train/samples_beta_1.20.npy",
+        "samples": 100000,
+        "seed": 4017013
+      }
+    },
+    "1.50": {
+      "beta": 1.5,
+      "cell_mass": "grid/cell_mass_beta_1.50.npy",
+      "eval": {
+        "path": "eval/samples_beta_1.50.npy",
+        "samples": 100000,
+        "seed": 5027016
+      },
+      "log_partition_quadrature": 3.363527678670403,
+      "observables": "observables/beta_1.50.json",
+      "train": {
+        "path": "train/samples_beta_1.50.npy",
+        "samples": 100000,
+        "seed": 5017016
+      }
+    }
+  },
+  "comparison_labels": [],
+  "created_utc": "2026-07-26T02:38:39.400482+00:00",
+  "energy": {
+    "constants": {
+      "A": [
+        -200.0,
+        -100.0,
+        -170.0,
+        15.0
+      ],
+      "a": [
+        -1.0,
+        -1.0,
+        -6.5,
+        0.7
+      ],
+      "b": [
+        0.0,
+        0.0,
+        11.0,
+        0.6
+      ],
+      "c": [
+        -10.0,
+        -10.0,
+        -6.5,
+        0.7
+      ],
+      "scale": 0.02,
+      "shift": 0.0,
+      "x0": [
+        1.0,
+        0.0,
+        -0.5,
+        -1.0
+      ],
+      "y0": [
+        0.0,
+        0.5,
+        1.5,
+        1.0
+      ]
+    },
+    "definition_sha256": "d5e96a9df94b122cc3834379bf56eeb8327a534db8bfd199e5ba25dae469fbf3",
+    "name": "scaled Mueller--Brown"
+  },
+  "legacy_fixed_step_ula_used": false,
+  "quadrature": {
+    "audit_pass": true,
+    "audited_resolutions": [
+      256,
+      512,
+      1024
+    ],
+    "domain": {
+      "x_max": 2.5,
+      "x_min": -4.0,
+      "y_max": 4.5,
+      "y_min": -2.5
+    },
+    "domain_padding_fraction": 0.15,
+    "final_resolution": [
+      1024,
+      1024
+    ],
+    "method": "midpoint rectangular cells",
+    "stable_normalization": "float64 log-sum-exp",
+    "strict": true
+  },
+  "recommended_cli": {
+    "evaluation": "--reference-data-name mb2d_reference_v2/eval",
+    "training": "--data-name mb2d_reference_v2/train"
+  },
+  "sampler": "iid categorical draw from normalized midpoint-quadrature cell masses, then independent uniform jitter inside each selected cell",
+  "schema": "adj_thermo.mb2d.reference_v2",
+  "split_policy": {
+    "beta_seed_stride": 1000003,
+    "eval_path": "eval/",
+    "eval_seed_base": 27001,
+    "independent_seeds": true,
+    "train_path": "train/",
+    "train_seed_base": 17001
+  },
+  "target": "p_beta(x) = exp(-beta * U(x)) / Z_beta",
+  "version": 2
+}

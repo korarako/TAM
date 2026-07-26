@@ -1,0 +1,24 @@
+{
+  "density_hutchinson_probes": 1,
+  "density_mode": "hutchinson",
+  "energy_w2_samples": 2000,
+  "eval_betas": [
+    1.0
+  ],
+  "n_eval": 100000,
+  "ode_method": "euler",
+  "ode_steps": 150,
+  "per_beta": {
+    "1.00": {
+      "beta": 1.0,
+      "ew2": 53145401.44980939,
+      "ew2_2k": 1.627898534008814,
+      "geometric_w2": 2.2953764574799074,
+      "reference_source": "dataset:${ADTM_ROOT}/data/lj13_reference_v2/eval/samples_beta_1.00.npy",
+      "w2": 167.70932143303193
+    }
+  },
+  "problem": "lj13",
+  "reweight": false,
+  "track_density": false
+}

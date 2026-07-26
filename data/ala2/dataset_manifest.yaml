@@ -6,13 +6,10 @@ coordinate_unit: nanometer
 default_environment_variable: TAM_ALA2_DATA_ROOT
 topology: structure_vac.pdb
 available_temperatures_kelvin: [300, 320, 350, 380, 400, 500, 600, 700, 800, 900, 1000]
-required_for_reproduction_profile:
-  ala2_fm_baseline: [300, 500, 700, 900]
-required_for_experimental_checkpoint_evaluation:
-  grid35_t400: [400]
-  grid3579_t400: [400]
-  grid3579_t600: [600]
-  grid3579_125k_t800: [800]
+required_for_corrected_fair10k_evidence:
+  fm_anchor_temperatures: [300, 500, 700, 900]
+  best_mixed_transfer: [500, 400]
+  negative_mixed_transfer: [900, 800]
 files:
   300: implicit_obc1_openmm.npz
   320: ala2_obc1_actual320K_sys0_dataset.npz
@@ -25,4 +22,4 @@ files:
   800: ala2_obc1_actual800K_sys0_dataset.npz
   900: ala2_obc1_actual900K_sys0_dataset.npz
   1000: ala2_obc1_actual1000K_sys0_dataset.npz
-release_note: Trajectory archives are approximately 0.5 GB each and are distributed separately from the source repository.
+release_note: Trajectory archives are approximately 0.5 GB each and are external to the checkpoint/sample-free v0.2 source release.

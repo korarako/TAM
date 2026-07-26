@@ -1,69 +1,54 @@
-schema_version: 1
-release_version: 0.1.0
+schema_version: 2
+release_version: 0.2.0
+release_date: 2026-07-26
 
 result_classes:
-  positive:
-    - dw1d_0p25_to_0p70
-    - dw2d_0p25_to_0p70
-    - dw4_formal_seeds_1_2_3
-  mixed:
-    - mb2d_0p25_to_0p30
-    - mb2d_0p50_to_0p60
-    - mb2d_0p75_to_0p90
-    - mb2d_1p00_to_1p20
-    - lj13_single_checkpoint_eval_seeds_101_202_303
-  experimental_failed_case:
-    - ala2_grid35_t400
-    - ala2_grid3579_t400
-    - ala2_grid3579_t600
-    - ala2_grid3579_125k_t800
+  accepted_hash_bound_legacy:
+    - dw1d
+    - dw2d
+  corrected_single_seed_positive_pilot:
+    - mb2d_reference_v2_seed0
+  corrected_conditional_positive:
+    - dw4_reference_v2_shared_fm_seed0_am_seeds_1_2_3
+  corrected_conditional_negative:
+    - lj13_reference_v2_shared_fm_seed0_am_seeds_1_2_3
+  single_seed_mixed_diagnostic:
+    - ala2_fair10k
 
-formal_checkpoint_files:
-  - checkpoints/dw1d/0p25_to_0p70/fm_params.pkl
-  - checkpoints/dw1d/0p25_to_0p70/am_params.pkl
-  - checkpoints/dw2d/0p25_to_0p70/fm_params.pkl
-  - checkpoints/dw2d/0p25_to_0p70/am_params.pkl
-  - checkpoints/mb2d/multianchor/fm_params.pkl
-  - checkpoints/mb2d/0p25_to_0p30/am_params.pkl
-  - checkpoints/mb2d/0p50_to_0p60/am_params.pkl
-  - checkpoints/mb2d/0p75_to_0p90/am_params.pkl
-  - checkpoints/mb2d/1p00_to_1p20/am_params.pkl
-  - checkpoints/dw4/0p8_1p2_to_1p0/fm_params.pkl
-  - checkpoints/dw4/0p8_1p2_to_1p0/am_seed1.pkl
-  - checkpoints/dw4/0p8_1p2_to_1p0/am_seed2.pkl
-  - checkpoints/dw4/0p8_1p2_to_1p0/am_seed3.pkl
-  - checkpoints/lj13/0p8_1p2_to_1p0/fm_params.pkl
-  - checkpoints/lj13/0p8_1p2_to_1p0/am_params.pkl
+corrected_results:
+  root: results/corrected
+  manifest: results/corrected/MANIFEST.json
+  checksums: results/corrected/SHA256SUMS
+  provenance: results/corrected/PROVENANCE.json
 
-experimental_checkpoint_files:
-  - checkpoints/ala2/grid35_t400/fm_params.pkl
-  - checkpoints/ala2/grid35_t400/am_params.pkl
-  - checkpoints/ala2/grid3579/fm_params.pkl
-  - checkpoints/ala2/grid3579_t400/am_params.pkl
-  - checkpoints/ala2/grid3579_t600/am_params.pkl
-  - checkpoints/ala2/grid3579_125k_t800/fm_params.pkl
-  - checkpoints/ala2/grid3579_125k_t800/am_params.pkl
+payload_policy:
+  model_checkpoints_included: false
+  sample_arrays_included: false
+  forbidden_extensions:
+    - .ckpt
+    - .npy
+    - .npz
+    - .pkl
+    - .pt
+    - .pth
+    - .safetensors
+  retained_provenance:
+    - checkpoint SHA-256 values
+    - source sample/reference SHA-256 values
+    - training and evaluation configurations
+    - exact scripts and code snapshots
 
-repository_data:
-  include:
-    - data/README.md
-    - data/**/dataset_manifest.yaml
-    - data/ala2/structure_vac.pdb
-  exclude:
-    - data/**/*.npy
-    - data/**/*.npz
-  distribution: Reference arrays are distributed as versioned release assets; Ala2 trajectories remain external.
+superseded_v0_1:
+  immutable_tag: v0.1.0
+  commit: 57f6a2c17c00276e5604ecad2933c4a7c06683ac
+  systems:
+    - mb2d
+    - dw4
+    - lj13
+  reason: >
+    The original result records were tied to rejected finite-time ULA/biased
+    references and are historical only.
 
-excluded_artifacts:
-  - path: local_archive/checkpoints/dw4/0p8_1p2_to_1p0/am_best_scan_clip0.pkl
-    reason: Exploratory scan-selected checkpoint; excluded to avoid selection-biased formal claims.
-  - path: local_archive/results/dw4/seed1.json
-    reason: Machine-local extraction record superseded by the sanitized public DW4 record.
-  - path: local_archive/results/dw4/seed2.json
-    reason: Machine-local extraction record superseded by the sanitized public DW4 record.
-  - path: local_archive/results/dw4/seed3.json
-    reason: Machine-local extraction record superseded by the sanitized public DW4 record.
-  - path: local_archive/results/lj13/evaluation_seeds_101_202_303.json
-    reason: Machine-local extraction record superseded by the sanitized public LJ13 record.
-  - path: local_archive/results/ala2/all_historical_runs.json
-    reason: Exploratory inventory with machine-local paths; representative failed attempts remain public.
+verification:
+  corrected_export: cd results/corrected && sha256sum -c SHA256SUMS
+  tests: pytest

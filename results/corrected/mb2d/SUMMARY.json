@@ -1,0 +1,89 @@
+{
+  "artifact": "adtm.mb2d.reference_v2.seed0",
+  "status": "completed_single_seed_pilot",
+  "target": {
+    "energy": "0.02 * scaled Mueller-Brown",
+    "density": "exp(-beta * U(x)) / Z_beta",
+    "beta0": 1.0,
+    "beta1": 1.2
+  },
+  "reference": {
+    "betas": [0.25, 0.5, 0.75, 1.0, 1.2, 1.5],
+    "domain": {
+      "x_min": -4.0,
+      "x_max": 2.5,
+      "y_min": -2.5,
+      "y_max": 4.5
+    },
+    "resolutions": [256, 512, 1024],
+    "train_samples_per_beta": 100000,
+    "eval_samples_per_beta": 100000,
+    "train_seed_base": 17001,
+    "eval_seed_base": 27001,
+    "audit_pass": true,
+    "worst_outside_domain_mass": 2.5456706742588153e-09,
+    "worst_adjacent_grid_tv": 0.0007248806571470771,
+    "manifest_sha256": "8f8d27311420b47833fe7ccbc7a1d831b851cb327731b93a99479c285069fbfc"
+  },
+  "training": {
+    "model_seed": 0,
+    "model": "mlp",
+    "hidden_dim": 512,
+    "n_layers": 3,
+    "t_embed_dim": 16,
+    "beta_embed_dim": 8,
+    "fm_steps": 30000,
+    "fm_batch_size": 512,
+    "fm_lr": 0.001,
+    "fm_lr_min": 0.00001,
+    "am_steps": 10000,
+    "am_batch_size": 512,
+    "am_lr": 0.00002,
+    "am_lr_min": 0.0000002,
+    "am_K": 40,
+    "am_num_loss_steps": 20,
+    "am_keep_last_steps": 10,
+    "max_sigma": 50.0,
+    "prior_scale": 1.0,
+    "energy_grad_scale": 1.0,
+    "grad_clip": 1.0,
+    "ode_method": "euler",
+    "ode_steps": 300,
+    "eval_samples": 100000,
+    "fm_final_loss": 1.108674,
+    "am_final_loss": 0.435274,
+    "fm_checkpoint_sha256": "cb18f47fb2106612b0cde0611eebc6090f8d0524b71982a416a4ddf22375ebf5",
+    "am_checkpoint_sha256": "650d073f61d93fc0234d6c3593b5e9075f3db47ee6da77ce53f005396cbe6fef"
+  },
+  "beta_1p20": {
+    "reference_energy_w2_20k_mean": 0.028404724816015747,
+    "reference_energy_w2_20k_std": 0.0033552009199120615,
+    "fm": {
+      "energy_w2_20k": 0.5491784402900343,
+      "analytic_grid_js": 0.19064277085010672,
+      "analytic_grid_tv": 0.48093843968621186,
+      "basin_l1": 0.1423643006434244,
+      "analytic_grid_energy_w2": 0.5553283720028745,
+      "x1_w2": 0.11944188995219703,
+      "x2_w2": 0.12602108839508544
+    },
+    "am": {
+      "energy_w2_20k": 0.06567531334664682,
+      "analytic_grid_js": 0.008814439360959901,
+      "analytic_grid_tv": 0.0853205563463802,
+      "basin_l1": 0.018292603534154545,
+      "analytic_grid_energy_w2": 0.05625641817951882,
+      "x1_w2": 0.012751311032050842,
+      "x2_w2": 0.01673397471119666
+    }
+  },
+  "legacy_beta_1p20": {
+    "fm_analytic_grid_js": 0.17440177486544212,
+    "fm_energy_w2_20k": 0.4055189117231454,
+    "am_analytic_grid_js": 0.05358321579503443,
+    "am_energy_w2_20k": 0.22998187488434896,
+    "ula_reference_analytic_grid_js": 0.05171441523877503
+  },
+  "publication_claim_ready": false,
+  "next_gate": "repeat identical protocol for two additional predeclared model seeds"
+}

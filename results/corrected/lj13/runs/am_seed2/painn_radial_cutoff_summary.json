@@ -1,0 +1,18 @@
+{
+  "adtm_jax_painn": {
+    "cutoff": "painn_jax.cosine_cutoff",
+    "n_rbf": 32,
+    "radial_basis": "painn_jax.gaussian_rbf",
+    "radius": 6.0
+  },
+  "amboltz_reference": {
+    "num_radial_basis": 32,
+    "painn_aligned_py_cutoff": "cosine",
+    "painn_py_cutoff": "polynomial",
+    "r_max": 6.0
+  },
+  "cutoff_curve_comparison": {
+    "cosine_vs_polynomial_max_abs_diff": 0.04365860724517667,
+    "cosine_vs_polynomial_mean_abs_diff": 0.02539052298497571
+  }
+}

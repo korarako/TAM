@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tam-boltzmann"
-version = "0.1.0"
+version = "0.2.0"
 description = "Thermodynamic Adjoint Matching for Boltzmann generators"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
 dependencies = [
-  "jax>=0.7,<0.8",
-  "jaxlib>=0.7,<0.8",
+  "jax>=0.4.38,<0.5",
+  "jaxlib>=0.4.38,<0.5",
   "numpy>=1.26,<3",
   "scipy>=1.11",
   "PyYAML>=6",

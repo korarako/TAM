@@ -1,0 +1,16 @@
+schema_version: 2
+dataset: lj13_reference_v2
+status: validated_corrected_equilibrium_reference
+target: BMS Eq. 234
+parameters: {epsilon: 1.0, r_m: 1.0, tau: 1.0, c_osc: 1.0}
+intrinsic_com_free_dimension: 36
+method: replica_exchange_hmc_with_metropolis_corrected_trajectories_and_swaps
+betas: [0.80, 1.00, 1.20]
+independent_ensembles: 4
+train_samples_per_beta: 100000
+eval_samples_per_beta: 100000
+independent_train_eval: true
+production_divergences: 0
+source_manifest_sha256: 5487261ba70d2e4c3c10189432dfa31a67c6f32ba3575fe3ec1c388a7039fdb1
+public_metadata: results/corrected/lj13/reference_binding/manifest.json
+arrays_in_source_release: false

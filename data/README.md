@@ -1,15 +1,18 @@
-# Reference data
+# Data manifests
 
-All released non-Ala2 reference datasets were generated with Langevin dynamics.
-LJ13 uses the same unadjusted Langevin update with batched JAX execution,
-center-of-mass projection, and mean-free Gaussian noise. No Metropolis/MALA
-accept-reject step is used by the release implementation.
+The v0.2 source release does not store NumPy sample arrays. Corrected
+reference metadata is recorded in:
 
-Ala2 uses separately distributed OpenMM molecular-dynamics trajectories rather
-than the toy/LJ13 Langevin generator. Set `TAM_ALA2_DATA_ROOT` to the directory
-containing the `.npz` files listed in `data/ala2/dataset_manifest.yaml`. The
-small topology file is included in `data/ala2`.
+- `mb2d_reference_v2/dataset_manifest.yaml`
+- `dw4_reference_v2/dataset_manifest.yaml`
+- `lj13_reference_v2/dataset_manifest.yaml`
 
-The checked-out working copy may contain NumPy data for immediate evaluation.
-The `*.npy` files are ignored by Git and should be distributed through Git LFS
-or an external archive together with `SHA256SUMS` and the dataset manifests.
+The full audit records and source hashes are under the corresponding
+`results/corrected/<system>` directories.
+
+DW1D and DW2D are retained as legacy evidence only. Ala2 trajectories remain
+external and are described by `ala2/dataset_manifest.yaml`.
+
+The v0.1 MB2D, DW4, and LJ13 finite-time ULA manifests are intentionally absent
+from the current branch. They remain available for historical audit at the
+immutable `v0.1.0` tag.

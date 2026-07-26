@@ -1,0 +1,47 @@
+{
+  "density_hutchinson_probes": 1,
+  "density_mode": "hutchinson",
+  "energy_w2_samples": 20000,
+  "eval_betas": [
+    1.0
+  ],
+  "n_eval": 100000,
+  "ode_method": "euler",
+  "ode_steps": 150,
+  "per_beta": {
+    "1.00": {
+      "beta": 1.0,
+      "fm_energy_stats": {
+        "max": -3.6643762588500977,
+        "mean": -20.98792741484642,
+        "min": -25.229053497314453,
+        "std": 2.281664098468729
+      },
+      "fm_energy_w2": 0.7687512015295066,
+      "fm_energy_w2_2k": 0.7517417736939301,
+      "fm_geometric_w2": 0.16333355132288943,
+      "fm_marginal_w2": {
+        "mean_marginal_w2": 0.007964607673763424,
+        "x0_w2": 0.004835644135901012,
+        "x1_w2": 0.009278157132082559,
+        "x2_w2": 0.007632060904696527,
+        "x3_w2": 0.0052830307656835,
+        "x4_w2": 0.008985063862460046,
+        "x5_w2": 0.011050236426847323,
+        "x6_w2": 0.0070516607766846874,
+        "x7_w2": 0.009601007385751734
+      },
+      "fm_pairwise_distance_w2": 0.055754910494150565,
+      "md_energy_stats": {
+        "max": -7.641712665557861,
+        "mean": -21.699141446509362,
+        "min": -25.258684158325195,
+        "std": 2.0189508567831944
+      },
+      "reference_source": "dataset:${ADTM_ROOT}/data/dw4_reference_v2/eval/samples_beta_1.00.npy"
+    }
+  },
+  "problem": "dw4",
+  "reweight": false,
+  "track_density": false
+}
