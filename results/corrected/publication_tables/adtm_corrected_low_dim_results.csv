@@ -1,4 +1,0 @@
-system,reference_status,fm_anchors,am_beta0,am_beta1,energy_w2_n,fm_energy_w2,am_energy_w2,fm_mean_marginal_w2,am_mean_marginal_w2,claim_scope
-DW-1,hash_bound_legacy,"[0.25,1.50]",0.25,0.70,2000,0.6042780426772028,0.18434365081006437,0.25621912532376384,0.049297927767040305,legacy result with incomplete generation provenance
-DW-2,hash_bound_legacy,"[0.25,1.50]",0.25,0.70,2000,1.940773244323372,0.1513745862351376,0.3949576857436363,0.031238063779969683,legacy result with incomplete generation provenance
-MB-2,corrected_reference_v2_single_seed_pilot,"[0.25,0.50,0.75,1.00,1.50]",1.00,1.20,20000,0.5491784402900343,0.06567531334664682,0.12273148917364124,0.014742642871623751,corrected seed-0 pilot; not end-to-end multi-seed

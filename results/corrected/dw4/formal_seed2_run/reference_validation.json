@@ -1,7 +1,0 @@
-{
-  "errors": [],
-  "manifest_sha256": "3ae2b927765c37354e591808f90b86f4eb3078a7f9fac8ded2618157b025c932",
-  "root": "${ADTM_ROOT}/data/dw4_reference_v2",
-  "sha256sums_sha256": "e3d7c81030c29ca8309f197121cd92099e0c96f467567d3a13587493b8626843",
-  "status": "pass"
-}

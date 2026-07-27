@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import shlex
 from pathlib import Path
 from typing import Any
 
@@ -388,63 +387,6 @@ def evaluate_stage(args: argparse.Namespace) -> None:
     print(f"[evaluate] wrote {output}", flush=True)
 
 
-def _profile_cli_args(values: dict[str, Any]) -> list[str]:
-    result: list[str] = []
-    for key, value in values.items():
-        if value is None or value is False:
-            continue
-        option = "--" + str(key).replace("_", "-")
-        if value is True:
-            result.append(option)
-        elif isinstance(value, list):
-            result.append(option)
-            result.extend(str(item) for item in value)
-        else:
-            result.extend([option, str(value)])
-    return result
-
-
-def reproduce_stage(args: argparse.Namespace) -> None:
-    profile_path = ROOT / "configs" / "reproduction_profiles.yaml"
-    payload = yaml.safe_load(profile_path.read_text(encoding="utf-8"))
-    profiles = payload["profiles"]
-    if args.profile not in profiles:
-        raise ValueError(f"Unknown profile {args.profile!r}. Choose one of: {', '.join(sorted(profiles))}")
-    profile = profiles[args.profile]
-    run_dir = _path(args.run_dir or f"outputs/{args.profile}")
-    data_dir = args.data_dir or profile["data_dir"]
-    phases = [args.phase] if args.phase != "all" else ["fm", "am"]
-    if "am" in phases and "am" not in profile:
-        raise ValueError(f"Profile {args.profile!r} has no successful AM configuration.")
-
-    print(f"[reproduce] profile={args.profile} status={profile['status']}", flush=True)
-    for phase in phases:
-        stage = "train-fm" if phase == "fm" else "train-am"
-        command = [
-            stage,
-            "--problem",
-            str(profile["problem"]),
-            "--model",
-            str(profile["model"]),
-            "--run-dir",
-            str(run_dir),
-        ]
-        if phase == "fm":
-            command.extend(["--data-dir", str(data_dir)])
-            if profile["problem"] == "ala2":
-                command.extend(["--ala2-data-root", str(data_dir)])
-        else:
-            checkpoint = args.base_checkpoint or str(run_dir / "fm_params.pkl")
-            command.extend(["--base-checkpoint", str(checkpoint)])
-            if profile["problem"] == "ala2":
-                command.extend(["--ala2-data-root", str(data_dir)])
-        command.extend(_profile_cli_args(profile[phase]))
-        print("tam " + shlex.join(command), flush=True)
-        if args.execute:
-            nested = build_parser().parse_args(command)
-            nested.handler(nested)
-
-
 def _common_problem(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--problem", choices=PROBLEMS, required=True)
     parser.add_argument("--seed", type=int, default=0)
@@ -558,14 +500,6 @@ def build_parser() -> argparse.ArgumentParser:
     evaluate.add_argument("--output", required=True)
     evaluate.set_defaults(handler=evaluate_stage)
 
-    reproduce = stages.add_parser("reproduce", help="Print or execute a recorded best-run profile.")
-    reproduce.add_argument("--profile", required=True)
-    reproduce.add_argument("--phase", choices=("fm", "am", "all"), default="all")
-    reproduce.add_argument("--run-dir", default=None)
-    reproduce.add_argument("--data-dir", default=None)
-    reproduce.add_argument("--base-checkpoint", default=None)
-    reproduce.add_argument("--execute", action="store_true")
-    reproduce.set_defaults(handler=reproduce_stage)
     return parser
 
 
