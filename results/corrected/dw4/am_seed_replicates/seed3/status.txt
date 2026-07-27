@@ -1,9 +1,0 @@
-phase=complete
-updated_utc=2026-07-26T11:19:34Z
-host=TUMWMFM-GPU04
-cuda_visible_devices=3
-shared_fm_seed=0
-am_seed=3
-evaluation_seed=0
-parent_fm_sha256=4746a1df5057301da085d20155b2e740d3d08126d1ea705863ed90cf9a61fbde
-reference_manifest_sha256=3ae2b927765c37354e591808f90b86f4eb3078a7f9fac8ded2618157b025c932

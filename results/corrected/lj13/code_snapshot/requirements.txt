@@ -1,7 +1,0 @@
-jax
-jaxlib
-numpy
-matplotlib
-pyro-ppl
-pyyaml
-pytest

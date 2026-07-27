@@ -2,14 +2,13 @@ cff-version: 1.2.0
 title: "TAM: Thermodynamic Adjoint Matching for Boltzmann Generators"
 message: "If you use this software, please cite this release."
 type: software
-version: 0.2.0
-date-released: 2026-07-26
+version: 0.2.1
+date-released: 2026-07-27
 authors:
   - given-names: "Ke"
     family-names: "Xin"
-    email: "go25bah@tum.de"
 repository-code: "https://github.com/korarako/TAM"
-url: "https://github.com/korarako/TAM/releases/tag/v0.2.0"
+url: "https://github.com/korarako/TAM"
 license: MIT
 keywords:
   - adjoint matching

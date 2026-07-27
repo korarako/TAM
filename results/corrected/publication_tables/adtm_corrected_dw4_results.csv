@@ -1,4 +1,0 @@
-row,reference_status,n_fm_seeds,n_am_seeds,geo_w2_2k,geo_w2_sd,pair_w2_20k,pair_w2_sd,energy_w2_20k,energy_w2_sd,claim_scope
-Direct FM,corrected_reference_v2,1,0,0.15513495314985598,,0.05586556978269441,,0.7481188689592072,,one shared FM seed
-AM,corrected_reference_v2,1,3,0.13786133380095353,0.000054116278713468756,0.03597281013741458,0.00009617806660495662,0.3593005741432864,0.0009805065746419648,three independent AM seeds conditional on shared FM
-Ref vs Ref floor,independent_corrected_smc_train_eval,0,0,0.12825564482871682,0.0060280588684573835,0.0034813272144716425,0.0009792567571782979,0.04015748166441578,0.010157553388478114,empirical reference split floor

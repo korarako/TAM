@@ -8,6 +8,13 @@ build/
 samples/
 outputs/
 local_archive/
+results/
+checkpoints/
+tests/
+scripts/
+configs/
 data/**/*.npy
 data/**/*.npz
-!data/**/dataset_manifest.yaml
+data/**/dataset_manifest.yaml
+data/README.md
+*.pkl
