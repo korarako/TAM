@@ -10,7 +10,6 @@ outputs/
 local_archive/
 results/
 checkpoints/
-tests/
 scripts/
 configs/
 data/**/*.npy

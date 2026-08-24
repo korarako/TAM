@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+from dataclasses import asdict, dataclass
 import itertools
+import warnings
 
 import numpy as np
+from scipy.optimize import linear_sum_assignment
 
+from adj_thermo.geometric_alignment import joint_alignment_cost_matrix
 from adj_thermo.problem.base import ProblemSpec
 from adj_thermo.utils import pairwise_distances
 
@@ -80,8 +84,31 @@ def pairwise_distance_w2(samples: np.ndarray, ref: np.ndarray, problem: ProblemS
 
 
 
+def _sample_matrix(samples: np.ndarray) -> np.ndarray:
+    value = np.asarray(samples, dtype=np.float64)
+    if value.ndim == 0:
+        raise ValueError("samples must have a leading sample dimension")
+    feature_size = int(np.prod(value.shape[1:])) if value.ndim > 1 else 1
+    return value.reshape((value.shape[0], feature_size))
+
+
+def _reshape_particle_coords(
+    samples: np.ndarray,
+    n_particles: int,
+    spatial_dim: int,
+) -> np.ndarray:
+    matrix = _sample_matrix(samples)
+    expected = int(n_particles) * int(spatial_dim)
+    if matrix.shape[1] != expected:
+        raise ValueError(
+            "particle configurations have the wrong flattened dimension: "
+            f"expected {expected}, received {matrix.shape[1]}"
+        )
+    return matrix.reshape((matrix.shape[0], int(n_particles), int(spatial_dim)))
+
+
 def _center_coords(samples: np.ndarray, n_particles: int, spatial_dim: int) -> np.ndarray:
-    x = np.asarray(samples, dtype=np.float64).reshape((-1, int(n_particles), int(spatial_dim)))
+    x = _reshape_particle_coords(samples, n_particles, spatial_dim)
     return x - np.mean(x, axis=1, keepdims=True)
 
 
@@ -228,24 +255,9 @@ def _orthogonal_procrustes_sq_cost(x: np.ndarray, y: np.ndarray) -> float:
 
 
 def _linear_sum_assignment(cost: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    try:
-        from scipy.optimize import linear_sum_assignment
+    """Solve the exact linear assignment used by empirical equal-weight OT."""
 
-        return linear_sum_assignment(cost)
-    except Exception:
-        # Fallback keeps the metric available in minimal environments.  It is a
-        # greedy one-to-one matching, not exact OT.
-        remaining = set(range(cost.shape[1]))
-        rows = []
-        cols = []
-        for i in range(cost.shape[0]):
-            if not remaining:
-                break
-            j = min(remaining, key=lambda c: cost[i, c])
-            rows.append(i)
-            cols.append(j)
-            remaining.remove(j)
-        return np.asarray(rows, dtype=np.int64), np.asarray(cols, dtype=np.int64)
+    return linear_sum_assignment(np.asarray(cost, dtype=np.float64))
 
 
 def _hungarian_reorder_to_reference(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -260,6 +272,22 @@ def _hungarian_reorder_to_reference(x: np.ndarray, y: np.ndarray) -> np.ndarray:
 def _hungarian_procrustes_pair_cost(x: np.ndarray, y: np.ndarray) -> float:
     y_reordered = _hungarian_reorder_to_reference(x, y)
     return _orthogonal_procrustes_sq_cost(x, y_reordered)
+
+
+def _sequential_geometric_cost_matrix(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    """Full squared-cost matrix for the literature sequential alignment.
+
+    This reproduces the convention that first fixes a raw-coordinate Hungarian
+    particle assignment and then performs one O(s) Procrustes alignment.  It is
+    intentionally available for protocol comparison, but it is not invariant
+    to independent rotations of the two input configurations.
+    """
+
+    out = np.empty((x.shape[0], y.shape[0]), dtype=np.float64)
+    for i, xi in enumerate(x):
+        for j, yj in enumerate(y):
+            out[i, j] = _hungarian_procrustes_pair_cost(xi, yj)
+    return out
 
 
 def _dem_hungarian_procrustes_distance_matrix(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -365,6 +393,291 @@ def dem_eq_emd2(
     return float(np.mean(cost[rows, cols]))
 
 
+GEOMETRIC_PROTOCOLS = ("auto", "exact", "joint", "sequential", "legacy-topk")
+
+
+@dataclass(frozen=True)
+class GeometricW2Result:
+    value: float | None
+    requested_protocol: str
+    resolved_protocol: str
+    sample_count: int
+    n_particles: int | None
+    spatial_dim: int | None
+    ground_cost: str
+    outer_transport: str
+    subsampling: str
+    seed: int
+    alignment_parallel_backend: str | None
+    alignment_workers: int | None
+    joint_max_iterations: int | None
+    candidate_truncation: int | None
+    symmetry_consistent: bool
+    approximate_particle_alignment: bool
+
+    def to_dict(self) -> dict[str, object]:
+        return asdict(self)
+
+
+def _resolve_geometric_protocol(
+    problem: ProblemSpec,
+    requested: str,
+    exact_permutation_max_particles: int,
+) -> str:
+    protocol = str(requested).lower()
+    if protocol not in GEOMETRIC_PROTOCOLS:
+        raise ValueError(
+            f"unknown geometric protocol {requested!r}; expected one of {GEOMETRIC_PROTOCOLS}"
+        )
+    if not problem.n_particles or not problem.spatial_dim:
+        if protocol != "auto":
+            raise ValueError("non-particle systems support only geometric protocol 'auto'")
+        return "euclidean"
+    if protocol == "auto":
+        return (
+            "exact"
+            if int(problem.n_particles) <= int(exact_permutation_max_particles)
+            else "joint"
+        )
+    if protocol == "legacy-topk" and int(problem.n_particles) <= int(
+        exact_permutation_max_particles
+    ):
+        # TAM <=0.2.1 already used exact permutation enumeration for small
+        # systems; only its larger-system branch used proxy/top-k refinement.
+        return "exact"
+    if protocol == "exact" and int(problem.n_particles) > int(exact_permutation_max_particles):
+        raise ValueError(
+            "exact particle-permutation enumeration is disabled for "
+            f"{problem.n_particles} particles; increase exact_permutation_max_particles "
+            "only if the factorial cost is tractable"
+        )
+    return protocol
+
+
+def geometric_w2_result(
+    samples: np.ndarray,
+    ref: np.ndarray,
+    problem: ProblemSpec,
+    n_samples: int = 2000,
+    seed: int = 0,
+    exact_permutation_max_particles: int = 6,
+    cost_chunk_size: int = 16,
+    dem_refine_top_k: int | None = None,
+    *,
+    protocol: str = "auto",
+    joint_max_iterations: int = 50,
+    joint_workers: int = 1,
+    joint_parallel_backend: str = "process",
+) -> GeometricW2Result:
+    """Evaluate empirical geometric W2 with an explicit alignment protocol.
+
+    ``auto`` uses exact permutation enumeration for small systems (including
+    DW-4) and full all-pairs iterative joint alignment for larger systems
+    (including LJ-13). ``sequential`` reproduces the published convention that
+    performs raw-coordinate Hungarian matching before rigid alignment.
+    ``legacy-topk`` reproduces the mixed proxy/refinement estimator from TAM
+    v0.2.1 and should be used only to audit historical results.
+    """
+
+    requested_protocol = str(protocol).lower()
+    if dem_refine_top_k is not None and requested_protocol == "auto":
+        warnings.warn(
+            "Passing dem_refine_top_k with protocol='auto' selects the deprecated "
+            "legacy-topk estimator. Pass protocol='legacy-topk' explicitly when "
+            "reproducing TAM <=0.2.1 results.",
+            FutureWarning,
+            stacklevel=2,
+        )
+        requested_protocol = "legacy-topk"
+    elif dem_refine_top_k is not None and requested_protocol != "legacy-topk":
+        raise ValueError("dem_refine_top_k is valid only for protocol='legacy-topk'")
+
+    resolved_protocol = _resolve_geometric_protocol(
+        problem,
+        requested_protocol,
+        exact_permutation_max_particles,
+    )
+    joint_parallel_backend = str(joint_parallel_backend).lower()
+    if joint_parallel_backend not in {"process", "thread"}:
+        raise ValueError("joint_parallel_backend must be 'process' or 'thread'")
+    if int(joint_workers) < 1:
+        raise ValueError("joint_workers must be positive")
+    if int(joint_max_iterations) < 1:
+        raise ValueError("joint_max_iterations must be positive")
+    alignment_parallel_backend = (
+        ("serial" if int(joint_workers) == 1 else joint_parallel_backend)
+        if resolved_protocol == "joint"
+        else None
+    )
+    alignment_workers = int(joint_workers) if resolved_protocol == "joint" else None
+    recorded_max_iterations = (
+        int(joint_max_iterations) if resolved_protocol == "joint" else None
+    )
+    species = getattr(problem, "atom_species", None)
+    if resolved_protocol != "euclidean" and species is not None:
+        if len(species) != int(problem.n_particles):
+            raise ValueError("atom_species must contain one entry per particle")
+        if len(set(species)) > 1:
+            raise ValueError(
+                "geometric W2 currently supports permutations of identical particles "
+                "only; species-constrained particle assignment is not implemented"
+            )
+
+    samples = _sample_matrix(samples)
+    ref = _sample_matrix(ref)
+    if resolved_protocol == "euclidean" and samples.shape[1] != ref.shape[1]:
+        raise ValueError(
+            "generated and reference samples must have the same flattened dimension: "
+            f"received {samples.shape[1]} and {ref.shape[1]}"
+        )
+    if resolved_protocol != "euclidean":
+        expected_dim = int(problem.n_particles) * int(problem.spatial_dim)
+        if samples.shape[1] != expected_dim or ref.shape[1] != expected_dim:
+            raise ValueError(
+                "particle configurations have the wrong flattened dimension: "
+                f"expected {expected_dim}, received {samples.shape[1]} and {ref.shape[1]}"
+            )
+    samples = samples[np.isfinite(samples).all(axis=1)]
+    ref = ref[np.isfinite(ref).all(axis=1)]
+    n = min(int(n_samples), samples.shape[0], ref.shape[0])
+    if n <= 0:
+        return GeometricW2Result(
+            value=float("nan"),
+            requested_protocol=str(protocol).lower(),
+            resolved_protocol=resolved_protocol,
+            sample_count=0,
+            n_particles=problem.n_particles,
+            spatial_dim=problem.spatial_dim,
+            ground_cost="squared Frobenius L2; no per-particle normalization",
+            outer_transport="exact equal-weight linear assignment",
+            subsampling="single deterministic RNG draw (generated, then reference)",
+            seed=int(seed),
+            alignment_parallel_backend=alignment_parallel_backend,
+            alignment_workers=alignment_workers,
+            joint_max_iterations=recorded_max_iterations,
+            candidate_truncation=None,
+            symmetry_consistent=resolved_protocol in {"euclidean", "exact", "joint"},
+            approximate_particle_alignment=resolved_protocol in {"joint", "sequential", "legacy-topk"},
+        )
+    # Keep the TAM <=0.2.1 draw order so DW-4 and non-particle metrics do not
+    # change merely because the LJ-13 alignment implementation was corrected.
+    rng = np.random.default_rng(int(seed))
+    samples = (
+        samples[rng.choice(samples.shape[0], size=n, replace=False)]
+        if samples.shape[0] > n
+        else samples[:n]
+    )
+    ref = (
+        ref[rng.choice(ref.shape[0], size=n, replace=False)]
+        if ref.shape[0] > n
+        else ref[:n]
+    )
+    subsampling = "single deterministic RNG draw (generated, then reference)"
+
+    candidate_truncation: int | None = None
+    if resolved_protocol == "euclidean":
+        x_norm = np.sum(samples * samples, axis=1)
+        y_norm = np.sum(ref * ref, axis=1)
+        cost = np.maximum(x_norm[:, None] + y_norm[None, :] - 2.0 * samples @ ref.T, 0.0)
+    else:
+        raw_x = _reshape_particle_coords(
+            samples,
+            int(problem.n_particles),
+            int(problem.spatial_dim),
+        )
+        raw_y = _reshape_particle_coords(
+            ref,
+            int(problem.n_particles),
+            int(problem.spatial_dim),
+        )
+        if resolved_protocol == "joint":
+            # The pair solver performs centering exactly once.
+            cost = joint_alignment_cost_matrix(
+                raw_x,
+                raw_y,
+                max_iterations=int(joint_max_iterations),
+                workers=int(joint_workers),
+                parallel_backend=joint_parallel_backend,
+            )
+        else:
+            x = raw_x - np.mean(raw_x, axis=1, keepdims=True)
+            y = raw_y - np.mean(raw_y, axis=1, keepdims=True)
+
+        if resolved_protocol == "exact":
+            try:
+                cost = _exact_permutation_geometric_cost_matrix_jax(
+                    x,
+                    y,
+                    chunk_size=max(16, int(cost_chunk_size) * 8),
+                )
+            except Exception as exc:
+                print(
+                    f"[geometric_w2] JAX exact cost failed, falling back to NumPy: {exc}",
+                    flush=True,
+                )
+                cost = _exact_permutation_geometric_cost_matrix(
+                    x,
+                    y,
+                    chunk_size=max(1, int(cost_chunk_size)),
+                )
+        elif resolved_protocol == "sequential":
+            cost = _sequential_geometric_cost_matrix(x, y)
+        elif resolved_protocol == "legacy-topk":
+            requested_top_k = 32 if dem_refine_top_k is None else int(dem_refine_top_k)
+            if requested_top_k < 1:
+                raise ValueError("dem_refine_top_k must be positive")
+            candidate_truncation = (
+                None if max(x.shape[0], y.shape[0]) <= 256
+                else min(requested_top_k, y.shape[0])
+            )
+            species = problem.atom_species if getattr(problem, "atom_species", None) else None
+            x_sig = _canonicalize_by_distance_signature(x, species)
+            y_sig = _canonicalize_by_distance_signature(y, species)
+            try:
+                approx_cost = _procrustes_cost_matrix_jax(
+                    x_sig,
+                    y_sig,
+                    chunk_size=max(64, int(cost_chunk_size) * 16),
+                )
+            except Exception as exc:
+                print(
+                    f"[geometric_w2] JAX proxy cost failed, falling back to NumPy: {exc}",
+                    flush=True,
+                )
+                approx_cost = _procrustes_cost_matrix(
+                    x_sig,
+                    y_sig,
+                    chunk_size=max(1, int(cost_chunk_size)),
+                )
+            cost = _dem_style_geometric_cost_matrix(
+                x,
+                y,
+                approx_cost=approx_cost,
+                refine_top_k=requested_top_k,
+            )
+
+    rows, cols = _linear_sum_assignment(cost)
+    value = float("nan") if len(rows) == 0 else float(np.sqrt(np.mean(cost[rows, cols])))
+    return GeometricW2Result(
+        value=value,
+        requested_protocol=str(protocol).lower(),
+        resolved_protocol=resolved_protocol,
+        sample_count=n,
+        n_particles=problem.n_particles,
+        spatial_dim=problem.spatial_dim,
+        ground_cost="squared Frobenius L2; no per-particle normalization",
+        outer_transport="exact equal-weight linear assignment",
+        subsampling=subsampling,
+        seed=int(seed),
+        alignment_parallel_backend=alignment_parallel_backend,
+        alignment_workers=alignment_workers,
+        joint_max_iterations=recorded_max_iterations,
+        candidate_truncation=candidate_truncation,
+        symmetry_consistent=resolved_protocol in {"euclidean", "exact", "joint"},
+        approximate_particle_alignment=resolved_protocol in {"joint", "sequential", "legacy-topk"},
+    )
+
+
 def geometric_w2(
     samples: np.ndarray,
     ref: np.ndarray,
@@ -373,69 +686,26 @@ def geometric_w2(
     seed: int = 0,
     exact_permutation_max_particles: int = 6,
     cost_chunk_size: int = 16,
-    dem_refine_top_k: int = 32,
+    dem_refine_top_k: int | None = None,
+    *,
+    protocol: str = "auto",
+    joint_max_iterations: int = 50,
+    joint_workers: int = 1,
+    joint_parallel_backend: str = "process",
 ) -> float | None:
-    """Geometric Wasserstein-2 over samples.
+    """Return only the value from :func:`geometric_w2_result`."""
 
-    The ground distance is invariant to translations and orthogonal transforms
-    through Procrustes alignment.  For small systems such as dw4, particle
-    permutations are minimized exactly.  For larger systems such as lj13, we
-    follow the DEM-style approximation: a fast distance-signature Procrustes
-    cost matrix is refined with per-pair Hungarian particle matching + rigid
-    alignment for the nearest candidate pairs before solving sample-level OT.
-    """
-    samples = np.asarray(samples, dtype=np.float64).reshape((len(samples), -1))
-    ref = np.asarray(ref, dtype=np.float64).reshape((len(ref), -1))
-    finite_samples = np.isfinite(samples).all(axis=1)
-    finite_ref = np.isfinite(ref).all(axis=1)
-    samples = samples[finite_samples]
-    ref = ref[finite_ref]
-    n = min(int(n_samples), samples.shape[0], ref.shape[0])
-    if n <= 0:
-        return float("nan")
-    rng = np.random.default_rng(int(seed))
-    if samples.shape[0] > n:
-        samples = samples[rng.choice(samples.shape[0], size=n, replace=False)]
-    else:
-        samples = samples[:n]
-    if ref.shape[0] > n:
-        ref = ref[rng.choice(ref.shape[0], size=n, replace=False)]
-    else:
-        ref = ref[:n]
-
-    if not problem.n_particles or not problem.spatial_dim:
-        x_norm = np.sum(samples * samples, axis=1)
-        y_norm = np.sum(ref * ref, axis=1)
-        cost = x_norm[:, None] + y_norm[None, :] - 2.0 * samples @ ref.T
-        rows, cols = _linear_sum_assignment(np.maximum(cost, 0.0))
-        if len(rows) == 0:
-            return float("nan")
-        return float(np.sqrt(np.mean(np.maximum(cost[rows, cols], 0.0))))
-
-    x = _center_coords(samples, int(problem.n_particles), int(problem.spatial_dim))
-    y = _center_coords(ref, int(problem.n_particles), int(problem.spatial_dim))
-    if int(problem.n_particles) <= int(exact_permutation_max_particles):
-        try:
-            cost = _exact_permutation_geometric_cost_matrix_jax(x, y, chunk_size=max(16, int(cost_chunk_size) * 8))
-        except Exception as exc:
-            print(f"[geometric_w2] JAX exact cost failed, falling back to NumPy: {exc}", flush=True)
-            cost = _exact_permutation_geometric_cost_matrix(x, y, chunk_size=max(1, int(cost_chunk_size)))
-    else:
-        species = problem.atom_species if getattr(problem, "atom_species", None) else None
-        x_sig = _canonicalize_by_distance_signature(x, species)
-        y_sig = _canonicalize_by_distance_signature(y, species)
-        try:
-            approx_cost = _procrustes_cost_matrix_jax(x_sig, y_sig, chunk_size=max(64, int(cost_chunk_size) * 16))
-        except Exception as exc:
-            print(f"[geometric_w2] JAX Procrustes cost failed, falling back to NumPy: {exc}", flush=True)
-            approx_cost = _procrustes_cost_matrix(x_sig, y_sig, chunk_size=max(1, int(cost_chunk_size)))
-        cost = _dem_style_geometric_cost_matrix(
-            x,
-            y,
-            approx_cost=approx_cost,
-            refine_top_k=int(dem_refine_top_k),
-        )
-    rows, cols = _linear_sum_assignment(cost)
-    if len(rows) == 0:
-        return float("nan")
-    return float(np.sqrt(np.mean(cost[rows, cols])))
+    return geometric_w2_result(
+        samples,
+        ref,
+        problem,
+        n_samples=n_samples,
+        seed=seed,
+        exact_permutation_max_particles=exact_permutation_max_particles,
+        cost_chunk_size=cost_chunk_size,
+        dem_refine_top_k=dem_refine_top_k,
+        protocol=protocol,
+        joint_max_iterations=joint_max_iterations,
+        joint_workers=joint_workers,
+        joint_parallel_backend=joint_parallel_backend,
+    ).value

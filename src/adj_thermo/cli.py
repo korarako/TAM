@@ -21,7 +21,7 @@ from adj_thermo.am_velocity import (
 from adj_thermo.fm import load_beta_datasets, train_fm
 from adj_thermo.langevin import generate_langevin_dataset
 from adj_thermo.lj13_langevin import generate_lj13_langevin_dataset
-from adj_thermo.metrics import energy_w2_n, geometric_w2, pairwise_distance_w2
+from adj_thermo.metrics import energy_w2_n, geometric_w2_result, pairwise_distance_w2
 from adj_thermo.problem import make_problem
 from adj_thermo.sampler import sample_ode
 from adj_thermo.utils import ensure_dir, load_pickle
@@ -307,6 +307,13 @@ def _load_sample_array(path: Path) -> np.ndarray:
 
 
 def evaluate_stage(args: argparse.Namespace) -> None:
+    if (
+        args.geometric_refine_top_k is not None
+        and args.geometric_protocol != "legacy-topk"
+    ):
+        raise ValueError(
+            "--geometric-refine-top-k requires --geometric-protocol legacy-topk"
+        )
     problem = _make_problem(args)
     generated, generated_invalid = _finite_rows(_load_sample_array(_path(args.samples)))
     reference, reference_invalid = _finite_rows(_load_sample_array(_path(args.reference)))
@@ -339,24 +346,31 @@ def evaluate_stage(args: argparse.Namespace) -> None:
                 "pairwise_distance_w2": ala2_metrics["w2"],
             }
         else:
+            geometry = geometric_w2_result(
+                generated,
+                reference,
+                problem,
+                n_samples=args.metric_samples,
+                seed=seed,
+                cost_chunk_size=args.geometric_chunk_size,
+                dem_refine_top_k=args.geometric_refine_top_k,
+                protocol=args.geometric_protocol,
+                joint_max_iterations=args.geometric_max_iterations,
+                joint_workers=args.geometric_workers,
+                joint_parallel_backend=args.geometric_parallel_backend,
+            )
             row = {
                 "repeat": repeat,
                 "seed": seed,
                 energy_key: energy_w2_n(
-                    generated,
-                    reference,
+                    sample_subset,
+                    reference_subset,
                     problem,
                     n_samples=args.metric_samples,
                     seed=seed,
                 ),
-                geometry_key: geometric_w2(
-                    generated,
-                    reference,
-                    problem,
-                    n_samples=args.metric_samples,
-                    seed=seed,
-                    cost_chunk_size=args.geometric_chunk_size,
-                ),
+                geometry_key: geometry.value,
+                "geometric_w2_metadata": geometry.to_dict(),
                 "pairwise_distance_w2": pairwise_distance_w2(sample_subset, reference_subset, problem),
             }
         rows.append(row)
@@ -378,6 +392,7 @@ def evaluate_stage(args: argparse.Namespace) -> None:
         "reference_rows": len(reference),
         "generated_invalid_fraction": generated_invalid,
         "reference_invalid_fraction": reference_invalid,
+        "geometric_protocol_requested": args.geometric_protocol,
         "runs": rows,
         "aggregate": aggregate,
     }
@@ -497,6 +512,33 @@ def build_parser() -> argparse.ArgumentParser:
     evaluate.add_argument("--metric-samples", type=int, default=2000)
     evaluate.add_argument("--repeats", type=int, default=1)
     evaluate.add_argument("--geometric-chunk-size", type=int, default=16)
+    evaluate.add_argument(
+        "--geometric-protocol",
+        choices=("auto", "exact", "joint", "sequential", "legacy-topk"),
+        default="auto",
+        help=(
+            "Particle-alignment protocol. auto uses exact permutation search for "
+            "small systems and symmetry-consistent joint alignment for larger systems."
+        ),
+    )
+    evaluate.add_argument(
+        "--geometric-workers",
+        type=int,
+        default=1,
+        help="Parallel workers for the full joint-alignment cost matrix.",
+    )
+    evaluate.add_argument(
+        "--geometric-parallel-backend",
+        choices=("process", "thread"),
+        default="process",
+        help="Use processes for formal CPU runs or threads for notebook safety.",
+    )
+    evaluate.add_argument("--geometric-max-iterations", type=int, default=50)
+    evaluate.add_argument(
+        "--geometric-refine-top-k",
+        type=int,
+        help="Deprecated top-k refinement count, valid only with --geometric-protocol legacy-topk.",
+    )
     evaluate.add_argument("--output", required=True)
     evaluate.set_defaults(handler=evaluate_stage)
 
